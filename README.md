@@ -13,6 +13,7 @@ Threadit is a web application that allows users to share and discuss content thr
 ## Schema
 
 The following schema is used for the Threadit database:
+![threadit-schema](https://user-images.githubusercontent.com/47682357/226483795-5fd61572-04f9-4bea-8b45-03165e647c2b.png)
 
 
 ## Routes
