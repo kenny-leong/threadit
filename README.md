@@ -16,7 +16,7 @@ The following schema is used for the Threadit database:
 
 ![threadit-schema](https://user-images.githubusercontent.com/47682357/226485111-7e33a332-bbf0-4115-b14c-a353e3a021eb.png)
 
-## Routes
+## Backend Routes
 
 ### Users
 * GET /api/users/:id
