@@ -14,6 +14,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    subreddits = db.relationship('Subreddit', backref='creator')
+    posts = db.relationship('Post', backref='author')
+    comments = db.relationship('Comment', backref='author')
+    votes = db.relationship('Vote', backref='user')
+
     @property
     def password(self):
         return self.hashed_password
