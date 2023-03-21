@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from app.models import Vote
 
 
 class Post(db.Model):
@@ -18,6 +19,13 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post')
     votes = db.relationship('Vote', backref='post')
 
+    @property
+    def upvotes(self):
+        return sum(vote.type == 'upvote' for vote in self.votes)
+
+    @property
+    def downvotes(self):
+        return sum(vote.type == 'downvote' for vote in self.votes)
 
     def to_dict(self):
         return {

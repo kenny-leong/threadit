@@ -1,5 +1,6 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 from datetime import datetime
+from app.models import Vote
 
 
 class Comment(db.Model):
@@ -14,10 +15,17 @@ class Comment(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
-    upvotes = db.Column(db.Integer, default=0)
-    downvotes = db.Column(db.Integer, default=0)
-
     votes = db.relationship('Vote', backref='comment')
+
+    @property
+    def upvotes(self):
+        return sum(vote.type == 'upvote' for vote in self.votes)
+
+    @property
+    def downvotes(self):
+        return sum(vote.type == 'downvote' for vote in self.votes)
+
+
 
     def to_dict(self):
         return {
@@ -29,7 +37,3 @@ class Comment(db.Model):
             "upvotes": self.upvotes,
             "downvotes": self.downvotes
         }
-
-    def update_votes(self):
-        self.upvotes = Vote.query.filter_by(comment_id=self.id, type='upvote').count()
-        self.downvotes = Vote.query.filter_by(comment_id=self.id, type='downvote').count()
