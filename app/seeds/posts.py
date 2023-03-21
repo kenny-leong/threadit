@@ -4,21 +4,16 @@ from datetime import datetime
 
 # Adds seed data for posts
 def seed_posts():
-    user1 = User.query.filter_by(username='Demo').first()
-    user2 = User.query.filter_by(username='marnie').first()
-    user3 = User.query.filter_by(username='bobbie').first()
-
-    sub1 = Subreddit.query.filter_by(name='news').first()
-    sub2 = Subreddit.query.filter_by(name='programming').first()
-
-    post1 = Post(title='Important breaking news', content='...', author=user1, subreddit=sub1, created_at=datetime.utcnow())
-    post2 = Post(title='How to optimize your code', content='...', author=user2, subreddit=sub2, created_at=datetime.utcnow())
-    post3 = Post(title='Interesting article about Python', content='...', author=user3, subreddit=sub2, created_at=datetime.utcnow())
-
-    db.session.add(post1)
-    db.session.add(post2)
-    db.session.add(post3)
+    users = User.query.all()
+    subreddits = Subreddit.query.all()
+    posts = [
+        Post(title='Important breaking news', content='...', author=users[0], subreddit=subreddits[0], created_at=datetime.utcnow()),
+        Post(title='How to optimize your code', content='...', author=users[1], subreddit=subreddits[1], created_at=datetime.utcnow()),
+        Post(title='Interesting article about Python', content='...', author=users[2], subreddit=subreddits[1], created_at=datetime.utcnow())
+    ]
+    db.session.add_all(posts)
     db.session.commit()
+
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the posts table. SQLAlchemy doesn't
