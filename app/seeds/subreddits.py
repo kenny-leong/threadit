@@ -5,11 +5,13 @@ from datetime import datetime
 # Adds a demo subreddit, you can add other subreddits here if you want
 def seed_subreddits():
     subreddits = [
-        Subreddit(name='AskReddit', description='Ask and answer questions'),
+        Subreddit(name='AskThreadit', description='Ask and answer questions'),
         Subreddit(name='aww', description='Cute and cuddly animals'),
         Subreddit(name='todayilearned', description='Learn something new every day'),
         Subreddit(name='worldnews', description='News from around the world'),
-        Subreddit(name='funny', description='Funny memes and jokes')
+        Subreddit(name='funny', description='Funny memes and jokes'),
+        Subreddit(name='news', description='Current events'),
+        Subreddit(name='programming', description='Programming and software development')
     ]
 
     # Assign a creator to each subreddit
