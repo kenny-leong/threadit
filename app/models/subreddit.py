@@ -14,7 +14,7 @@ class Subreddit(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    posts = db.relationship('Post', backref='subreddit')
+    posts = db.relationship('Post', backref='subreddit', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {

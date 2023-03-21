@@ -15,7 +15,7 @@ class Comment(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
-    votes = db.relationship('Vote', backref='comment')
+    votes = db.relationship('Vote', backref='comment', cascade='all, delete-orphan')
 
     @property
     def upvotes(self):

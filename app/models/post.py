@@ -16,8 +16,8 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     subreddit_id = db.Column(db.Integer, db.ForeignKey('subreddits.id'), nullable=False)
 
-    comments = db.relationship('Comment', backref='post')
-    votes = db.relationship('Vote', backref='post')
+    comments = db.relationship('Comment', backref='post', cascade='all, delete-orphan')
+    votes = db.relationship('Vote', backref='post', cascade='all, delete-orphan')
 
     @property
     def upvotes(self):
