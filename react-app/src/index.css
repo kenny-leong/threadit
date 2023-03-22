@@ -1,1 +1,27 @@
 /* TODO Add site wide styles */
+
+
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(30, 30, 30);
+}
+
+/* Create a dark background for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #2b2b2b;
+    border-radius: 3px;
+}
+
+/* Change the cursor style on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+
+body {
+    background-color:#1A1A1B;
+}
