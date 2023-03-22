@@ -5,7 +5,7 @@ from app.models import Subreddit, Post, db
 subreddit_routes = Blueprint('subreddits', __name__)
 
 @subreddit_routes.route('')
-@login_required
+# @login_required
 def subreddits():
     """
     Query for all subreddits and returns them in a list of subreddit dictionaries
@@ -14,7 +14,7 @@ def subreddits():
     return {'subreddits': [subreddit.to_dict() for subreddit in subreddits]}
 
 @subreddit_routes.route('/<int:id>')
-@login_required
+# @login_required
 def subreddit(id):
     """
     Query for a subreddit by id and returns that subreddit in a dictionary
@@ -23,7 +23,7 @@ def subreddit(id):
     return subreddit.to_dict()
 
 @subreddit_routes.route('/<int:id>/posts')
-@login_required
+# @login_required
 def subreddit_posts(id):
     """
     Query for all posts in a subreddit and returns them in a list of post dictionaries
@@ -33,7 +33,7 @@ def subreddit_posts(id):
 
 
 @subreddit_routes.route('/<int:id>/create_post', methods=['POST'])
-@login_required
+# @login_required
 def create_post_in_subreddit(id):
     """
     Create a new post in a subreddit with the current user as the author

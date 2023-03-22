@@ -5,7 +5,7 @@ from .db import SCHEMA, add_prefix_for_prod, db, environment
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = 'threadit_users'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
