@@ -6,3 +6,57 @@
     width: 270px;
     background-color: rgb(24, 24, 24);
 }
+
+.feed-margin-div {
+    height: 100vh;
+    margin-top: 10px;
+}
+
+.feeds-text {
+    color: rgb(103, 103, 103);
+    font-family: Helvetica;
+    font-size: 10px;
+    margin-left: 25px;
+}
+
+.home-channel-div {
+    margin-top: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.popular-channel-div {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.home-channel-div:hover, .popular-channel-div:hover {
+    background-color: rgba(51, 51, 51, 0.462);
+}
+
+
+.home-channel-div .fa-house {
+    color: rgb(184, 184, 184);
+    font-size: 18px;
+    margin-right: 10px;
+    padding-left: 25px;
+}
+
+.popular-channel-div .fa-fire {
+    color: rgb(184, 184, 184);
+    font-size: 20px;
+    margin-right: 13px;
+    padding-left: 25px;
+}
+
+.home-channel-text, .popular-channel-text {
+    font-family: Helvetica;
+    color:rgb(184, 184, 184);
+    font-weight: 300;
+    font-size: 14px;
+}
