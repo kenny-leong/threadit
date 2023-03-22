@@ -1,6 +1,6 @@
 .nav-bar-container {
-    height: 100px;
-    border: 2px green solid;
+    height: 80px;
+
     position: fixed;
     top: 0;
     left: 0;
@@ -8,5 +8,7 @@
 }
 
 .nav-bar-container img {
-    height: 100px;
+    height: 60px;
+    margin-top: 15px;
+    margin-left: 15px;
 }
