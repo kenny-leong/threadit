@@ -1,0 +1,12 @@
+.nav-bar-container {
+    height: 100px;
+    border: 2px green solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
+.nav-bar-container img {
+    height: 100px;
+}

@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
+import NavBar from "./components/NavBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,17 +15,17 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
+      <Switch>
+        <Route exact path="/">
+          <NavBar />
+        </Route>
+        <Route exact path ='/login'>
+          {/* <LoginPage /> */}
+        </Route>
+        <Route exact path='/register'>
+          {/* <SignupPage /> */}
+        </Route>
+      </Switch>
     </>
   );
 }
