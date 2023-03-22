@@ -7,6 +7,9 @@ Create Date: 2023-03-21 20:43:31.403756
 """
 from alembic import op
 import sqlalchemy as sa
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -27,6 +30,10 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE threadit_users SET SCHEMA {SCHEMA};")
+
+
     op.create_table('subreddits',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
@@ -36,6 +43,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['creator_id'], ['threadit_users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE subreddits SET SCHEMA {SCHEMA};")
+
+
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
@@ -47,6 +58,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['subreddit_id'], ['subreddits.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
+
+
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.Text(), nullable=False),
@@ -57,6 +72,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+
     op.create_table('votes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=10), nullable=False),
@@ -69,6 +87,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['threadit_users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE votes SET SCHEMA {SCHEMA};")
+
+
     # ### end Alembic commands ###
 
 
