@@ -1,6 +1,5 @@
 from .db import db, environment, SCHEMA
 from datetime import datetime
-from app.models import Vote
 
 
 class Comment(db.Model):
