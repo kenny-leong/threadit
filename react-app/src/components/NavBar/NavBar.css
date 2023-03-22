@@ -1,14 +1,67 @@
 .nav-bar-container {
     height: 80px;
-
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 1px solid gray;
 }
 
 .nav-bar-container img {
     height: 60px;
     margin-top: 15px;
     margin-left: 15px;
+}
+
+.nav-search-bar {
+    height: 40px;
+    border: 1px gray solid;
+    background-color: rgb(26, 26, 26);
+    border-radius: 20px;
+    color: rgba(245, 245, 245, 0.621);
+    font-family: Helvetica;
+    font-size: 18px;
+    width: 50%;
+}
+
+#search-bar {
+    font-size: 14px;
+    background-image: url('../../static/search.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 40px;
+    box-shadow: none;
+    -webkit-appearance: none;
+}
+
+
+.nav-search-bar:focus {
+    outline: none;
+}
+
+.login-btn {
+    margin-right: 35px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: Helvetica;
+    background-color: #0079D3;
+    color: whitesmoke;
+}
+
+.signup-btn {
+    height: 40px;
+    width: 130px;
+    border: 1px solid #0079D3;
+    background-color: transparent;
+    font-size: 16px;
+    border-radius: 20px;
+    font-family: Helvetica;
+    color: #0079D3;
 }
