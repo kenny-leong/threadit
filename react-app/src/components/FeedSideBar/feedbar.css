@@ -8,7 +8,6 @@
 }
 
 .feed-margin-div {
-    height: 100vh;
     margin-top: 10px;
 }
 
@@ -19,15 +18,18 @@
     margin-left: 25px;
 }
 
-.home-channel-div {
-    margin-top: 10px;
+.home-channel-div, .gaming-channel-div {
+    margin-top: 15px;
     height: 40px;
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.popular-channel-div {
+.popular-channel-div, .sports-channel-div,
+.business-channel-div, .crypto-channel-div,
+.tv-channel-div, .celeb-channel-div,
+.more-topics-div {
     height: 40px;
     display: flex;
     align-items: center;
@@ -35,7 +37,15 @@
 }
 
 
-.home-channel-div:hover, .popular-channel-div:hover {
+.home-channel-div:hover,
+.popular-channel-div:hover,
+.gaming-channel-div:hover,
+.sports-channel-div:hover,
+.business-channel-div:hover,
+.crypto-channel-div:hover,
+.tv-channel-div:hover,
+.celeb-channel-div:hover,
+.more-topics-div:hover {
     background-color: rgba(51, 51, 51, 0.462);
 }
 
@@ -59,4 +69,46 @@
     color:rgb(184, 184, 184);
     font-weight: 300;
     font-size: 14px;
+}
+
+.topic-margin-div {
+    margin-top: 20px;
+}
+
+.topics-text {
+    color: rgb(103, 103, 103);
+    font-family: Helvetica;
+    font-size: 10px;
+    margin-left: 25px;
+}
+
+.gaming-channel-div .fa-twitch,
+.sports-channel-div .fa-basketball,
+.business-channel-div .fa-coins,
+.crypto-channel-div .fa-bitcoin,
+.tv-channel-div .fa-tv,
+.celeb-channel-div .fa-star,
+.more-topics-div .fa-ellipsis {
+    color: rgb(184, 184, 184);
+    font-size: 20px;
+    margin-right: 13px;
+    padding-left: 25px;
+}
+
+.join-threadit-div {
+    margin-top: 30px;
+    padding-left: 25px;
+    border-top: 1px solid rgb(36, 36, 36);
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.join-text {
+    color: rgb(218, 218, 218);
+    font-family: Helvetica;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.3;
+    width: 80%;
 }
