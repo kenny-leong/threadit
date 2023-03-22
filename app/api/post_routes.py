@@ -30,6 +30,18 @@ def create_post():
     db.session.commit()
     return post.to_dict()
 
+@post_routes.route('/<int:id>/comments')
+@login_required
+def post_comments(id):
+    """
+    Query for all comments of a post by id and returns them in a list of comment dictionaries
+    """
+    post = Post.query.get(id)
+    if not post:
+        return jsonify(message='Post not found'), 404
+    comments = post.comments
+    return {'comments': [comment.to_dict() for comment in comments]}
+
 @post_routes.route('/<int:id>')
 @login_required
 def post(id):
