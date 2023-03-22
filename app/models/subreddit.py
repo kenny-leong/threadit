@@ -12,7 +12,7 @@ class Subreddit(db.Model):
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    creator_id = db.Column(db.Integer, db.ForeignKey('threadit_users.id'), nullable=False)
+    creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('threadit_users.id')), nullable=False)
 
     posts = db.relationship('Post', backref='subreddit', cascade='all, delete-orphan')
 

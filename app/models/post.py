@@ -12,8 +12,8 @@ class Post(db.Model):
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    author_id = db.Column(db.Integer, db.ForeignKey('threadit_users.id'), nullable=False)
-    subreddit_id = db.Column(db.Integer, db.ForeignKey('subreddits.id'), nullable=False)
+    author_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('threadit_users.id')), nullable=False)
+    subreddit_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('subreddits.id')), nullable=False)
 
     comments = db.relationship('Comment', backref='post', cascade='all, delete-orphan')
     votes = db.relationship('Vote', backref='post', cascade='all, delete-orphan')
