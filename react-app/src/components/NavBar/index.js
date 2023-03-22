@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'
 import logo from '../../static/threadit.png'
@@ -13,7 +13,9 @@ function NavBar() {
 
 	return (
 		<div className='nav-bar-container'>
-			<img src={logo} alt='logo' />
+			<Link to='/'>
+				<img className='logo' src={logo} alt='logo' />
+			</Link>
 			<input
 				className="nav-search-bar"
 				type="text"

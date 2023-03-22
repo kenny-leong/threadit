@@ -8,7 +8,8 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 5px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(49, 49, 49);
+    background-color: rgb(22, 22, 22);
 }
 
 .nav-bar-container img {
@@ -20,24 +21,28 @@
 .nav-search-bar {
     height: 40px;
     border: 1px gray solid;
-    background-color: rgb(26, 26, 26);
+    background-color: rgb(37, 37, 37);
     border-radius: 20px;
     color: rgba(245, 245, 245, 0.621);
     font-family: Helvetica;
-    font-size: 18px;
     width: 50%;
     margin-left: 15px;
     margin-right: 15px;
 }
 
 #search-bar {
-    font-size: 14px;
+    font-size: 15px;
     background-image: url('../../static/search.png');
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 40px;
     box-shadow: none;
     -webkit-appearance: none;
+}
+
+#search-bar:hover {
+    border: 1px white solid;
+    background-color: rgb(26, 26, 26);
 }
 
 
@@ -78,4 +83,8 @@
 
 .login-btn-div button:hover {
     background-color: #058af0;
+}
+
+.logo {
+    cursor: pointer;
 }
