@@ -15,10 +15,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    subreddits = db.relationship('Subreddit', backref='creator_id')
-    posts = db.relationship('Post', backref='author_id')
-    comments = db.relationship('Comment', backref='author_id')
-    votes = db.relationship('Vote', backref='user_id')
+    subreddits = db.relationship('Subreddit', backref='creator')
+    posts = db.relationship('Post', backref='author')
+    comments = db.relationship('Comment', backref='author')
+    votes = db.relationship('Vote', backref='user')
 
     @property
     def password(self):
