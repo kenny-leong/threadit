@@ -16,7 +16,6 @@
 }
 
 .trending-div {
-    border: 1px solid green;
     margin-top: 15px;
 }
 
@@ -30,11 +29,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .trend-box {
-    border: purple 1px solid;
     color: whitesmoke;
     height: 200px;
     width: 220px;
@@ -42,22 +40,58 @@
     align-items: flex-end;
     font-family: Helvetica;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.trend-box.one {
+    background-image: url('../../static/chonky-cat.jpeg');
+    background-size: cover;
+}
+
+.trend-box.two {
+    background-image: url('../../static/slime.jpeg');
+    background-size: cover;
+}
+
+.trend-box.three {
+    background-image: url('../../static/suzume.jpeg');
+    background-size: cover;
+}
+
+.trend-box.four {
+    background-image: url('../../static/coding.jpeg');
+    background-size: cover;
 }
 
 .trend-headings {
     display: flex;
     flex-direction: column;
+    background: rgba(0, 0, 0, 0.4);
+    padding-top: 10px;
 }
 
 .trend-title {
     font-size: 20px;
     margin-left: 15px;
     font-weight: 400;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .trend-desc {
     margin-left: 15px;
     font-family: Helvetica;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.trend-category {
+    margin-left: 15px;
+    font-family: Helvetica;
+    font-size: 12px;
+    color: whitesmoke;
+    margin-bottom: 10px;
+    font-weight: 100;
 }
