@@ -1,0 +1,63 @@
+
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main-feed-div {
+    position: fixed;
+    top: 86px;
+    left: 300px;
+    height: 100vh;
+    width: 75%;
+}
+
+.trending-div {
+    border: 1px solid green;
+    margin-top: 15px;
+}
+
+.trending-text {
+    color: rgb(231, 231, 231);
+    font-family: 'Threadit';
+    font-size: 14px;
+}
+
+.trend-box-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.trend-box {
+    border: purple 1px solid;
+    color: whitesmoke;
+    height: 200px;
+    width: 220px;
+    display: flex;
+    align-items: flex-end;
+    font-family: Helvetica;
+    border-radius: 10px;
+}
+
+.trend-headings {
+    display: flex;
+    flex-direction: column;
+}
+
+.trend-title {
+    font-size: 20px;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.trend-desc {
+    margin-left: 15px;
+    font-family: Helvetica;
+    font-weight: 100;
+    font-size: 16px;
+}

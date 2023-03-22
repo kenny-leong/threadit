@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
+import MainFeed from "./components/MainFeed";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ function App() {
         <Route exact path="/">
           <NavBar />
           <FeedSideBar />
+          <MainFeed />
         </Route>
       </Switch>
     </>
