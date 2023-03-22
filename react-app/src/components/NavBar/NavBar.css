@@ -45,19 +45,8 @@
     outline: none;
 }
 
-.login-btn {
-    margin-right: 35px;
-    height: 40px;
-    width: 130px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    font-family: Helvetica;
-    background-color: #0079D3;
-    color: whitesmoke;
-}
 
-.signup-btn {
+.signup-btn-div button {
     height: 40px;
     width: 130px;
     border: 1px solid #0079D3;
@@ -67,4 +56,16 @@
     font-family: Helvetica;
     color: #0079D3;
     margin-right: 15px;
+}
+
+.login-btn-div button {
+    margin-right: 35px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: Helvetica;
+    background-color: #0079D3;
+    color: whitesmoke;
 }

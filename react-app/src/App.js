@@ -19,12 +19,6 @@ function App() {
         <Route exact path="/">
           <NavBar />
         </Route>
-        <Route exact path ='/login'>
-          {/* <LoginPage /> */}
-        </Route>
-        <Route exact path='/register'>
-          {/* <SignupPage /> */}
-        </Route>
       </Switch>
     </>
   );

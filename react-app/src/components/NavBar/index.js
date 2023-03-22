@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import OpenModalButton from '../OpenModalButton'
 import logo from '../../static/threadit.png'
+import LoginFormPage from '../LoginFormPage';
+import SignupFormPage from '../SignupFormPage';
 import './NavBar.css';
 
 function NavBar() {
@@ -19,8 +22,18 @@ function NavBar() {
 				placeholder='Search Threadit'
 				required
 			/>
-			<button className='signup-btn'>Sign Up</button>
-			<button className='login-btn'>Log In</button>
+			<div className='signup-btn-div'>
+				<OpenModalButton
+				buttonText={<span className='signup-text'>Sign Up</span>}
+				modalComponent={<SignupFormPage />}
+				/>
+			</div>
+			<div className='login-btn-div'>
+				<OpenModalButton
+				buttonText={<span className='login-text'>Log In</span>}
+				modalComponent={<LoginFormPage />}
+				/>
+			</div>
 		</div>
 	);
 }
