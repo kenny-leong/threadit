@@ -86,13 +86,25 @@
 .sports-channel-div .fa-basketball,
 .business-channel-div .fa-coins,
 .crypto-channel-div .fa-bitcoin,
-.tv-channel-div .fa-tv,
-.celeb-channel-div .fa-star,
-.more-topics-div .fa-ellipsis {
+.celeb-channel-div .fa-star {
     color: rgb(184, 184, 184);
     font-size: 20px;
     margin-right: 13px;
     padding-left: 25px;
+}
+
+.tv-channel-div .fa-tv {
+    color: rgb(184, 184, 184);
+    font-size: 17px;
+    margin-right: 13px;
+    padding-left: 25px;
+}
+
+.more-topics-div .fa-ellipsis {
+    color: rgb(184, 184, 184);
+    font-size: 20px;
+    margin-right: 15px;
+    padding-left: 28px;
 }
 
 .join-threadit-div {
