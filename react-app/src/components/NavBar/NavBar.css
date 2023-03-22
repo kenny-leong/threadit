@@ -56,6 +56,11 @@
     font-family: Helvetica;
     color: #0079D3;
     margin-right: 15px;
+    cursor: pointer;
+}
+
+.signup-btn-div button:hover {
+    background-color: #0078d320;
 }
 
 .login-btn-div button {
@@ -68,4 +73,9 @@
     font-family: Helvetica;
     background-color: #0079D3;
     color: whitesmoke;
+    cursor: pointer;
+}
+
+.login-btn-div button:hover {
+    background-color: #058af0;
 }
