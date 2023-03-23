@@ -13,6 +13,27 @@ def subreddits():
     subreddits = Subreddit.query.all()
     return {'subreddits': [subreddit.to_dict() for subreddit in subreddits]}
 
+
+@subreddit_routes.route('', methods=['POST'])
+@login_required
+def create_subreddit():
+    """
+    Create a new subreddit with the current user as the creator
+    """
+    data = request.get_json()
+    subreddit = Subreddit(
+        name=data['name'],
+        description=data['description'],
+        profile_picture=data['profile_picture'],
+        banner_image=data['banner_image'],
+        creator=current_user
+    )
+    db.session.add(subreddit)
+    db.session.commit()
+    return subreddit.to_dict()
+
+
+
 @subreddit_routes.route('/<int:id>')
 @login_required
 def subreddit(id):
@@ -42,7 +63,13 @@ def create_post_in_subreddit(id):
     subreddit = Subreddit.query.get(id)
     if not subreddit:
         return jsonify(message='Invalid subreddit'), 400
-    post = Post(title=data['title'], content=data['content'], subreddit=subreddit, author=current_user)
+    post = Post(
+        title=data['title'],
+        content=data['content'],
+        image_url=data['image_url'],
+        subreddit=subreddit,
+        author=current_user
+    )
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
