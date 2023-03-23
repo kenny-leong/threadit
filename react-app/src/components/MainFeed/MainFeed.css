@@ -35,14 +35,16 @@
 .trend-box {
     color: whitesmoke;
     height: 200px;
-    width: 220px;
     display: flex;
     align-items: flex-end;
     font-family: Helvetica;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 5px;
+    margin-right: 10px;
     transition: transform 0.1s ease-in-out;
+    flex-basis: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .trend-box:hover {
