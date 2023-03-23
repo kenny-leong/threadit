@@ -4,24 +4,27 @@
 
 const loadAllSR = (subreddits) => ({
     type: 'LOAD_SUBREDDITS',
-    payload: subreddits,
-    });
-
+    subreddits
+});
 
 const loadSingleSR = (subreddit) => ({
     type: 'LOAD_SINGLE_SR',
-    payload: subreddit
+    subreddit
 });
 
 const loadSubredditPosts = (posts) => ({
     type: 'LOAD_SUBREDDIT_POSTS',
-    payload: posts,
+    posts
 });
-
 
 const addPostToSubreddit = (post) => ({
     type: 'ADD_POST_TO_SUBREDDIT',
-    payload: post,
+    post
+});
+
+const addSubreddit = (subreddit) => ({
+    type: 'ADD_SUBREDDIT',
+    subreddit
 });
 
 
@@ -70,7 +73,7 @@ export const createPostInSubreddit = (subredditId, title, content) => async (dis
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ title, content }),
-        });
+    });
 
     if (res.ok) {
       const post = await res.json();
@@ -79,6 +82,30 @@ export const createPostInSubreddit = (subredditId, title, content) => async (dis
 };
 
 
+export const createSubreddit = ({ name, description, profile_picture, banner_image }) => async dispatch => {
+    const res = await fetch('/api/subreddits', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name,
+            description,
+            profile_picture,
+            banner_image,
+        })
+    });
+
+    if (res.ok) {
+      const newSubreddit = await res.json();
+      dispatch(addSubreddit(newSubreddit));
+      return newSubreddit;
+    }
+};
+
 
 
 // ---------------------------------------- subreddit reducer ----------------------------------------
+
+
+const initialState = {}
