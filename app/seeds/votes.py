@@ -9,7 +9,7 @@ def seed_votes():
     user2 = User.query.filter_by(username='marnie').first()
     user3 = User.query.filter_by(username='bobbie').first()
 
-    post1 = Post.query.filter_by(title='Important breaking news').first()
+    post1 = Post.query.filter_by(title='Genshin Impact addiction— Gamer spends $40,000 on gacha characters').first()
     post2 = Post.query.filter_by(title='How to optimize your code').first()
     post3 = Post.query.filter_by(title='Interesting article about Python').first()
 
