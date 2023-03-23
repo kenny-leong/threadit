@@ -14,18 +14,25 @@ function PostFeed() {
     const allPosts = useSelector(state => state.post.allPosts);
 
     useEffect(() => {
-        dispatch(getAllPosts())
-      }, [dispatch])
+        dispatch(getAllPosts());
+    }, [dispatch])
 
 
+    if (!allPosts) return null;
 
 
-
-
+    let postArr = Object.values(allPosts)
+    console.log(postArr)
 
     return (
         <div className='post-feed-div'>
-
+            {postArr.map(post => (
+                <div className='post-box'>
+                    <div className='vote-bar'>
+                        <span className='total-votes'>{post.upvotes - post.downvotes}</span>
+                    </div>
+                </div>
+            ))}
         </div>
     )
 }
