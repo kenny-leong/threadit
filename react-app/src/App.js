@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
+import SignupForm from "./components/SignupForm";
+import LoginForm from "./components/LoginForm";
 import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
