@@ -27,19 +27,6 @@ const deletePost = (postId) => ({
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // -------------------------------------- thunk action creators -----------------------------------
 
 // GET ALL POSTS
@@ -165,9 +152,9 @@ const postReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOAD_POSTS':
             const allPosts = {};
-            const postArr = action.posts;
+            const postArr = action.posts.posts
             postArr.forEach(post => {
-                allPosts[post.id] = post
+              allPosts[post.id] = post
             });
             return {
                 ...state,
