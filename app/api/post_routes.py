@@ -5,7 +5,6 @@ from app.models import Subreddit, Post, db
 post_routes = Blueprint('posts', __name__)
 
 @post_routes.route('')
-@login_required
 def posts():
     """
     Query for all posts and returns them in a list of post dictionaries
@@ -31,7 +30,6 @@ def create_post():
     return post.to_dict()
 
 @post_routes.route('/<int:id>/comments')
-@login_required
 def post_comments(id):
     """
     Query for all comments of a post by id and returns them in a list of comment dictionaries
@@ -43,7 +41,6 @@ def post_comments(id):
     return {'comments': [comment.to_dict() for comment in comments]}
 
 @post_routes.route('/<int:id>')
-@login_required
 def post(id):
     """
     Query for a post by id and returns that post in a dictionary
