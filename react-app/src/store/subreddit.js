@@ -12,16 +12,6 @@ const loadSingleSR = (subreddit) => ({
     subreddit
 });
 
-const loadSubredditPosts = (posts) => ({
-    type: 'LOAD_SUBREDDIT_POSTS',
-    posts
-});
-
-// const addPostToSubreddit = (post) => ({
-//     type: 'ADD_POST_TO_SUBREDDIT',
-//     post
-// });
-
 const addSubreddit = (subreddit) => ({
     type: 'ADD_SUBREDDIT',
     subreddit
@@ -63,15 +53,6 @@ export const getSingleSR = (subredditId) => async (dispatch) => {
     }
 };
 
-// GETS ALL POSTS FOR A GIVEN SUBREDDIT ID
-export const getSubredditPosts = (subredditId) => async (dispatch) => {
-    const res = await fetch(`/api/subreddits/${subredditId}/posts`);
-
-    if (res.ok) {
-      const posts = await res.json();
-      dispatch(loadSubredditPosts(posts));
-    }
-};
 
 
 // CREATE A NEW SUBREDDIT
@@ -141,26 +122,6 @@ export const deleteSubreddit = (subredditId) => async (dispatch) => {
     }
 };
 
-
-
-
-
-
-// CREATE A POST WITHIN A SPECIFIC SUBREDDIT
-// export const createPostInSubreddit = (subredditId, title, content) => async (dispatch) => {
-//     const res = await fetch(`/api/subreddits/${subredditId}/create_post`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ title, content }),
-//     });
-
-//     if (res.ok) {
-//       const post = await res.json();
-//       dispatch(addPostToSubreddit(post));
-//     }
-// };
 
 
 

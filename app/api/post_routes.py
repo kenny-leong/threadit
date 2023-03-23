@@ -25,7 +25,7 @@ def create_post():
     subreddit = Subreddit.query.get(subreddit_id)
     if not subreddit:
         return jsonify(message='Invalid subreddit'), 400
-    post = Post(title=data['title'], content=data['content'], subreddit=subreddit, author=current_user)
+    post = Post(title=data['title'], content=data['content'], image_url=data['image_url'],subreddit=subreddit, author=current_user)
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
@@ -66,6 +66,7 @@ def update_post(id):
     data = request.get_json()
     post.title = data['title']
     post.content = data['content']
+    post.image_url = data['image_url']
     db.session.commit()
     return post.to_dict()
 
