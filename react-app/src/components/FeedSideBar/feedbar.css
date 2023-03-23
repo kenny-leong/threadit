@@ -118,7 +118,7 @@
 }
 
 .join-threadit-div {
-    margin-top: 30px;
+    margin-top: 120px;
     padding-left: 25px;
     border-top: 1px solid rgb(36, 36, 36);
     display: flex;
@@ -155,4 +155,11 @@
 
 .join-now-btn button:hover {
     background-color: rgb(0, 57, 136);
+}
+
+.join-div {
+    position: fixed;
+    bottom: 0;
+    width: 270px;
+    padding-bottom: 20px;
 }
