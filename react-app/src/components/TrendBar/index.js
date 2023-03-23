@@ -5,7 +5,7 @@ import './MainFeed.css'
 
 
 
-function MainFeed() {
+function TrendBar() {
 
 
     return (
@@ -49,4 +49,4 @@ function MainFeed() {
 
 
 
-export default MainFeed;
+export default TrendBar;

@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
-import MainFeed from "./components/MainFeed";
+import TrendBar from "./components/TrendBar";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/">
           <NavBar />
           <FeedSideBar />
-          <MainFeed />
+          <TrendBar />
         </Route>
       </Switch>
     </>

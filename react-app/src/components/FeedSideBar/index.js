@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import SignupFormPage from '../SignupFormPage';
+import SignupForm from '../SignupForm';
 import OpenModalButton from '../OpenModalButton'
 import './feedbar.css'
 
@@ -63,7 +63,7 @@ function FeedSideBar() {
                 <div className='join-now-btn'>
                     <OpenModalButton
                         buttonText={<span className='join-now-text'>Join Threadit</span>}
-                        modalComponent={<SignupFormPage />}
+                        modalComponent={<SignupForm />}
                     />
                 </div>
             </div>
