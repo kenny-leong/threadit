@@ -19,7 +19,7 @@ function FeedSideBar() {
                     <span className='home-channel-text'>Home</span>
                 </div>
                 <div className='popular-channel-div'>
-                    <span><i class="fa-regular fa-fire"></i></span>
+                    <span><i class="fa-solid fa-arrow-trend-up"></i></span>
                     <span className='popular-channel-text'>Popular</span>
                 </div>
             </div>
