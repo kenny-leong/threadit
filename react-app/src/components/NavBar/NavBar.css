@@ -88,3 +88,8 @@
 .logo {
     cursor: pointer;
 }
+
+.login-signup-divs {
+    display: flex;
+    flex-direction: row;
+}

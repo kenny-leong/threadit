@@ -24,17 +24,19 @@ function NavBar() {
 				placeholder='Search Threadit'
 				required
 			/>
-			<div className='signup-btn-div'>
-				<OpenModalButton
-				buttonText={<span className='signup-text'>Sign Up</span>}
-				modalComponent={<SignupFormPage />}
-				/>
-			</div>
-			<div className='login-btn-div'>
-				<OpenModalButton
-				buttonText={<span className='login-text'>Log In</span>}
-				modalComponent={<LoginFormPage />}
-				/>
+			<div className='login-signup-divs'>
+				<div className='signup-btn-div'>
+					<OpenModalButton
+					buttonText={<span className='signup-text'>Sign Up</span>}
+					modalComponent={<SignupFormPage />}
+					/>
+				</div>
+				<div className='login-btn-div'>
+					<OpenModalButton
+					buttonText={<span className='login-text'>Log In</span>}
+					modalComponent={<LoginFormPage />}
+					/>
+				</div>
 			</div>
 		</div>
 	);
