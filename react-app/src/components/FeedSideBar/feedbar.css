@@ -59,7 +59,6 @@
     background-color: rgba(51, 51, 51, 0.462);
 }
 
-
 .home-channel-div .fa-house {
     color: rgb(184, 184, 184);
     font-size: 18px;
@@ -118,7 +117,6 @@
 }
 
 .join-threadit-div {
-    margin-top: 120px;
     padding-left: 25px;
     border-top: 1px solid rgb(36, 36, 36);
     display: flex;
