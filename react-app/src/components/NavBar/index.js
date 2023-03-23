@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'
 import logo from '../../static/threadit.png'
-import LoginFormPage from '../LoginFormPage';
-import SignupFormPage from '../SignupFormPage';
+import LoginForm from '../LoginForm';
+import SignupForm from '../SignupForm';
 import './NavBar.css';
 
 function NavBar() {
@@ -28,13 +28,13 @@ function NavBar() {
 				<div className='signup-btn-div'>
 					<OpenModalButton
 					buttonText={<span className='signup-text'>Sign Up</span>}
-					modalComponent={<SignupFormPage />}
+					modalComponent={<SignupForm />}
 					/>
 				</div>
 				<div className='login-btn-div'>
 					<OpenModalButton
 					buttonText={<span className='login-text'>Log In</span>}
-					modalComponent={<LoginFormPage />}
+					modalComponent={<LoginForm />}
 					/>
 				</div>
 			</div>

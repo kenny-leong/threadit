@@ -1,0 +1,51 @@
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.signup-div {
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(21, 21, 21);
+    border-radius: 10px;
+}
+
+.signup-headings {
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.signup-header {
+    font-family: 'Threadit';
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: rgb(214, 214, 214);
+}
+
+.signup-tos {
+    font-family: 'Helvetica';
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: rgb(194, 194, 194);
+}
+
+.tos-link {
+    font-family: 'Helvetica';
+    font-size: 13px;
+    color: rgb(0, 213, 255);
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
