@@ -19,7 +19,7 @@
 .signup-headings {
     display: flex;
     flex-direction: column;
-    margin-top: 120px;
+    margin-top: 90px;
     margin-left: 60px;
     margin-right: 60px;
 }
@@ -48,4 +48,46 @@
 .signup-form {
     display: flex;
     flex-direction: column;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.signup-form input {
+    border: none;
+    border-radius: 20px;
+    height: 45px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-family: 'Threadit';
+    padding-left: 15px;
+    color: rgb(102, 102, 102);
+    background-color: rgb(12, 12, 12);
+}
+
+.signup-submit-btn {
+    border: none;
+    margin-top: 15px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #0079D3;
+    font-family: 'Threadit';
+    font-size: 15px;
+    color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+
+.login-redirect-text {
+    font-family: 'Helvetica';
+    font-size: 13px;
+    margin-top: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: rgb(194, 194, 194);
+}
+
+.login-redirect {
+    font-family: 'Helvetica';
+    color: #0079D3;
+    text-decoration: underline;
+    cursor: pointer;
 }

@@ -62,7 +62,8 @@ function SignupForm() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="signup-submit-btn">Continue</button>
+        <span className="login-redirect-text">Already a threaditor? <span className="login-redirect">Log In</span></span>
       </form>
     </div>
   );
