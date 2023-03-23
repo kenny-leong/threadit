@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
 import TrendBar from "./components/TrendBar";
+import PostFeed from "./components/PostFeed";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <NavBar />
           <FeedSideBar />
           <TrendBar />
+          <PostFeed />
         </Route>
       </Switch>
     </>
