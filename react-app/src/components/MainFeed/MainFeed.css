@@ -41,7 +41,10 @@
     font-family: Helvetica;
     border-radius: 10px;
     cursor: pointer;
+    margin-right: 5px;
 }
+
+
 
 .trend-box.one {
     background-image: url('../../static/chonky-cat.jpeg');
@@ -94,4 +97,14 @@
     color: whitesmoke;
     margin-bottom: 10px;
     font-weight: 100;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .trend-box {
+        flex-wrap: wrap;
+        height: auto;
+        width: auto;
+    }
 }

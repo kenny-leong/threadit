@@ -163,3 +163,11 @@
     width: 270px;
     padding-bottom: 20px;
 }
+
+
+
+@media screen and (max-height: 728px) {
+    .join-div {
+        display: none;
+    }
+}
