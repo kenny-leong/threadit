@@ -11,6 +11,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('threadit_users.id')), nullable=False)
     subreddit_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('subreddits.id')), nullable=False)
@@ -34,6 +35,7 @@ class Post(db.Model):
             "created_at": self.created_at.isoformat(),
             "author_id": self.author_id,
             "subreddit_id": self.subreddit_id,
+            "image_url": self.image_url,
             "upvotes": self.upvotes,
             "downvotes": self.downvotes
         }
