@@ -10,15 +10,14 @@
 .post-feed-div {
     width: 70%;
     margin-top: 50px;
-    overflow-y: auto;
     margin-left: 30px;
-    overflow-y: auto;
 }
 
 
 .post-box {
     border: 2px purple solid;
     min-height: 200px;
+    margin-bottom: 20px;
 }
 
 .vote-bar {
