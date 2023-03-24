@@ -14,8 +14,8 @@ function PostFeed() {
 
 
     const allPosts = useSelector(state => state.post.allPosts);
-    const allSubreddits = useSelector(state => state.subreddit.allSubreddits)
-    const allUsers = useSelector(state => state.session.allUsers)
+    let allSubreddits = useSelector(state => state.subreddit.allSubreddits)
+    let allUsers = useSelector(state => state.session.allUsers)
 
     const [postArr, setPostArr] = useState([]);
 
@@ -28,7 +28,7 @@ function PostFeed() {
 
     useEffect(() => {
         if (allPosts) setPostArr(Object.values(allPosts))
-    }, [allPosts])
+    }, [allPosts, allSubreddits, allUsers])
 
 
     if (!allPosts || !allSubreddits || !allUsers) return null;
