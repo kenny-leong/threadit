@@ -1,16 +1,25 @@
 import React, {useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'
 import logo from '../../static/threadit.png'
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
+import { logout } from '../../store/session';
 import './NavBar.css';
 
 function NavBar({ isLoaded }) {
-
+	const dispatch = useDispatch();
+	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
 
+	const handleLogout = async (e) => {
+		e.preventDefault();
+		await dispatch(logout())
+        .then(() => {
+            history.push('/');
+        });
+	};
 
 	return (
 		<div className='nav-bar-container'>
@@ -42,7 +51,7 @@ function NavBar({ isLoaded }) {
 				</div>
 			)}
 			{sessionUser && (
-				<div className='profile-btn'>
+				<div className='profile-btn' onClick={handleLogout}>
 					<i className="fas fa-bars" />
 					<i className="fas fa-user-circle" />
 				</div>

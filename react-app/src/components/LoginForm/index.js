@@ -13,20 +13,23 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
+  const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-			await dispatch(login(email, password));
-		} catch (err) {
-			setErrors([err.message]);
-		}
+    const data = await dispatch(login(email, password))
+    if (data) {
+      setErrors('Invalid Username or Password.')
+    } else {
+      closeModal();
+    }
 
   };
 
   const handleDemoLogin = async (e) => {
 		e.preventDefault();
 		await dispatch(login('demo@aa.io', 'password'))
+      .then(closeModal)
 			.catch(
 				async (res) => {
 					const errData = await res.json();
