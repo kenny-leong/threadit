@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import LoginForm from "../LoginForm";
 import OpenModalButton from "../OpenModalButton";
+import { useModal } from "../../context/Modal";
 import './SignupForm.css';
 
 function SignupForm() {
@@ -14,6 +15,7 @@ function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState('');
+  const { closeModal } = useModal();
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -24,7 +26,7 @@ function SignupForm() {
       return setErrors('Please enter a valid email.')
     }
 
-    if (!username.length < 5) {
+    if (username.length < 5) {
       return setErrors('Username must be at least 5 characters.')
     }
 
@@ -32,7 +34,12 @@ function SignupForm() {
       return setErrors('Passwords do not match.');
     }
 
-    await dispatch(signUp(username, email, password));
+    const data = await dispatch(signUp(username, email, password));
+    if (data) {
+      setErrors('Unable to sign in. Please try again.');
+    } else {
+      closeModal();
+    }
   };
 
   return (
