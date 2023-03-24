@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
 import TrendBar from "./components/TrendBar";
 import PostFeed from "./components/PostFeed";
+import CommunitySection from "./components/CommunitySection";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <FeedSideBar />
           <TrendBar />
           <PostFeed />
+          <CommunitySection />
         </Route>
       </Switch>
       {isLoaded && (
@@ -36,6 +38,7 @@ function App() {
               <FeedSideBar />
               <TrendBar />
               <PostFeed />
+              <CommunitySection />
             </Route>
           </Switch>
         </>
