@@ -15,20 +15,125 @@
 
 
 .post-box {
-    border: 2px purple solid;
-    min-height: 200px;
+    min-height: 120px;
     margin-bottom: 20px;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid rgb(71, 71, 71);
+    padding: 5px;
+    background-color: rgb(20, 20, 20);
 }
 
 .vote-bar {
-    border: 1px solid green;
     width: 50px;
-    min-height: 200px;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(18, 18, 18);
 }
 
 .total-votes {
-    color: white;
+    color: rgb(214, 214, 214);
+    font-family: 'Threadit';
+    font-size: 14;
+    font-weight: 100;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.vote-bar .fa-angles-up, .vote-bar .fa-angles-down {
+    color: rgb(173, 173, 173);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vote-bar .fa-angles-up {
+    margin-top: 15px;
+}
+
+.post-content-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(20, 20, 20);
+}
+
+.subreddit-for-post {
+    color: rgb(195, 195, 195);
+    font-family: Helvetica;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+.post-header-info {
+    padding-top: 10px;
+}
+
+.post-header-info .fa-circle {
+    font-size: 2px;
+    color: rgb(143, 143, 143);
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.posted-by {
+    color: rgb(143, 143, 143);
+    font-size: 12px;
+    font-family: Helvetica;
+    font-weight: 500;
+}
+
+.feed-post-title {
+    margin-left: 6px;
+    font-size: 20px;
+    font-family: Helvetica;
+    margin-top: 15px;
+    color: rgb(209, 209, 209);
+}
+
+.feed-post-div {
+    display: flex;
+    justify-content: center;
+}
+
+.feed-post-img {
+    max-height: 500px;
+    max-width: 600px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.feed-post-comment-bar {
+    display: flex;
+    align-items: center;
+}
+
+.feed-post-comment-bar .fa-comments {
+    color: #6E7071;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+}
+
+.comments-and-text-div, .repeat-and-text-div {
+    margin-right: 7px;
+}
+
+.feed-post-comment-bar .fa-repeat, .feed-post-comment-bar .fa-bookmark {
+    color: #6E7071;
+    font-size: 19px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-right: 8px;
+}
+
+
+
+.comment-div-text {
+    color: #6E7071;
+    font-family: 'Threadit';
+    font-size: 14px;
 }

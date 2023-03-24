@@ -5,7 +5,6 @@ from app.models import Subreddit, Post, db
 subreddit_routes = Blueprint('subreddits', __name__)
 
 @subreddit_routes.route('')
-@login_required
 def subreddits():
     """
     Query for all subreddits and returns them in a list of subreddit dictionaries
@@ -35,7 +34,6 @@ def create_subreddit():
 
 
 @subreddit_routes.route('/<int:id>')
-@login_required
 def subreddit(id):
     """
     Query for a subreddit by id and returns that subreddit in a dictionary
@@ -85,7 +83,6 @@ def delete_subreddit(id):
 
 
 @subreddit_routes.route('/<int:id>/posts')
-@login_required
 def subreddit_posts(id):
     """
     Query for all posts in a subreddit and returns them in a list of post dictionaries

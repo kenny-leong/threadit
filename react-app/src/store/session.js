@@ -1,4 +1,5 @@
-// constants
+// ----------------------------------- action creators ----------------------------------------
+
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 
@@ -11,7 +12,24 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
+const loadUsers = (users) => ({
+    type: 'LOAD_USERS',
+    users
+});
 
+// -------------------------------------- thunk action creators -----------------------------------
+
+
+
+// GET ALL USERS
+export const getAllUsers = () => async (dispatch) => {
+    const res = await fetch('/api/users');
+
+    if (res.ok) {
+        const allUsers = await res.json();
+        dispatch(loadUsers(allUsers));
+    }
+};
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -95,6 +113,9 @@ export const signUp = (username, email, password) => async (dispatch) => {
 };
 
 
+// ---------------------------------------- user reducer ----------------------------------------
+
+
 
 const initialState = { user: null };
 
@@ -104,6 +125,16 @@ export default function sessionReducer(state = initialState, action) {
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case 'LOAD_USERS':
+			const allUsers = {};
+			const userArr = action.users.users;
+			userArr.forEach(user => {
+				allUsers[user.id] = user
+			});
+			return {
+				...state,
+				allUsers: allUsers
+			}
 		default:
 			return state;
 	}

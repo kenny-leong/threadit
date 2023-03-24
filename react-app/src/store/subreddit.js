@@ -136,7 +136,7 @@ const subredditReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOAD_SUBREDDITS':
             const allSubreddits = {};
-            const subredditArr = action.subreddits;
+            const subredditArr = action.subreddits.subreddits;
             subredditArr.forEach(subreddit => {
                 allSubreddits[subreddit.id] = subreddit
             });

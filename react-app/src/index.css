@@ -28,4 +28,5 @@ body {
     margin-left: 270px;
     background-color:#000000;
     overflow-y: auto;
+    border: transparent 1px solid;
 }
