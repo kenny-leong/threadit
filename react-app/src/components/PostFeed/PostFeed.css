@@ -97,6 +97,7 @@
     font-family: Helvetica;
     margin-top: 15px;
     color: rgb(209, 209, 209);
+    margin-bottom: 20px;
 }
 
 .feed-post-div {
@@ -109,6 +110,8 @@
     max-width: 600px;
     margin-top: 15px;
     margin-bottom: 20px;
+    min-width: 500px;
+    min-height: 400px;
 }
 
 .feed-post-comment-bar {
@@ -135,8 +138,6 @@
     margin-bottom: 15px;
     margin-right: 8px;
 }
-
-
 
 .comment-div-text {
     color: #6E7071;

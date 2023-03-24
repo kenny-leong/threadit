@@ -64,9 +64,11 @@ function PostFeed() {
                             <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
                         </div>
                         <span className='feed-post-title'>{post.title}</span>
-                        <div className='feed-post-div'>
-                            <img className='feed-post-img' src={post.image_url} />
-                        </div>
+                        {(post.image_url) && (
+                            <div className='feed-post-div'>
+                                <img className='feed-post-img' src={post.image_url} />
+                            </div>
+                        )}
                         <div className='feed-post-comment-bar'>
                             <div className='comments-and-text-div'>
                                 <i class="fa-solid fa-comments"></i>
