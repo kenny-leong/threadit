@@ -21,6 +21,17 @@ function LoginForm() {
     }
   };
 
+  const handleDemoLogin = async (e) => {
+		e.preventDefault();
+		await dispatch(login('demo@aa.io', 'password'))
+			.catch(
+				async (res) => {
+					const errData = await res.json();
+					console.log(errData)
+				}
+			)
+	};
+
   return (
     <div className="login-div">
       <div className="login-headings">
@@ -43,7 +54,7 @@ function LoginForm() {
           required
         />
         <button type="submit" className="login-submit-btn">Log In</button>
-        <button className="demo-user-btn">Sign in as Guest</button>
+        <button className="demo-user-btn" onClick={handleDemoLogin}>Sign in as Guest</button>
         <span className="signup-redirect-text">New to Threadit? <span className="signup-redirect">Sign up</span></span>
       </form>
     </div>
