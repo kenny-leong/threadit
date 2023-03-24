@@ -16,6 +16,7 @@
     height: 285px;
     border: 1px solid #343536;
     border-radius: 2px;
+    z-index: -999;
 }
 
 
@@ -52,6 +53,7 @@
     right: 40px;
     top: 715px;
     width: 300px;
+    z-index: -999;
 }
 
 .line-div {
@@ -101,4 +103,5 @@
     font-family: Helvetica;
     font-weight: 200;
     font-size: 14px;
+    z-index: -999;
 }
