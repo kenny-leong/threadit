@@ -15,7 +15,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    subreddits = db.relationship('Subreddit', backref='creator')
+    subreddit_memberships = db.relationship('SubredditMember', backref='user', cascade='all, delete-orphan')
+    owned_subreddits = db.relationship('Subreddit', backref='creator')
     posts = db.relationship('Post', backref='author')
     comments = db.relationship('Comment', backref='author')
     votes = db.relationship('Vote', backref='user')
@@ -35,5 +36,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'owned_subreddits': [subreddit.to_dict() for subreddit in self.owned_subreddits],
+            'subreddit_memberships': [membership.subreddit.to_dict() for membership in self.subreddit_memberships]
         }
