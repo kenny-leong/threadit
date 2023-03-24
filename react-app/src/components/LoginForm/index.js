@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import SignupForm from "../SignupForm";
 import OpenModalButton from "../OpenModalButton";
+import { useModal } from "../../context/Modal";
 import './LoginForm.css';
 
 function LoginForm() {
@@ -13,16 +14,14 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
 
-  if (sessionUser) return <Redirect to="/" />;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors("Invalid Username or Password.")
-    } else {
-      setErrors("Invalid Username or Password.")
-    }
+    try {
+			await dispatch(login(email, password));
+		} catch (err) {
+			setErrors([err.message]);
+		}
+
   };
 
   const handleDemoLogin = async (e) => {
@@ -31,10 +30,11 @@ function LoginForm() {
 			.catch(
 				async (res) => {
 					const errData = await res.json();
-					console.log(errData)
 				}
 			)
 	};
+
+  if (sessionUser) return <Redirect to="/home" />;
 
   return (
     <div className="login-div">

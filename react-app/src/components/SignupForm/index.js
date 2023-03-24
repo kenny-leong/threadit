@@ -32,7 +32,7 @@ function SignupForm() {
       return setErrors('Passwords do not match.');
     }
 
-    dispatch(signUp(username, email, password));
+    await dispatch(signUp(username, email, password));
   };
 
   return (

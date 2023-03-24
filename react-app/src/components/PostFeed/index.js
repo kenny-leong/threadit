@@ -46,7 +46,6 @@ function PostFeed() {
 
 
     let postArr = Object.values(allPosts)
-    console.log(allPosts)
 
     return (
         <div className='post-feed-div'>
