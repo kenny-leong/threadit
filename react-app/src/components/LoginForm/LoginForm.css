@@ -1,0 +1,99 @@
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.login-div {
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(21, 21, 21);
+    border-radius: 10px;
+}
+
+.login-headings {
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+
+.login-header {
+    font-family: 'Threadit';
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: rgb(214, 214, 214);
+}
+
+.login-tos {
+    font-family: 'Helvetica';
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: rgb(194, 194, 194);
+}
+
+.tos-link {
+    font-family: 'Helvetica';
+    font-size: 13px;
+    color: rgb(0, 213, 255);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.login-form input {
+    border: none;
+    border-radius: 20px;
+    height: 45px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-family: 'Threadit';
+    padding-left: 15px;
+    color: rgb(102, 102, 102);
+    background-color: rgb(12, 12, 12);
+}
+
+.login-form input:focus {
+    outline: none;
+}
+
+
+.login-submit-btn {
+    border: none;
+    margin-top: 15px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #0079D3;
+    font-family: 'Threadit';
+    font-size: 15px;
+    color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+
+.signup-redirect-text {
+    font-family: 'Helvetica';
+    font-size: 13px;
+    margin-top: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: rgb(194, 194, 194);
+}
+
+.signup-redirect {
+    font-family: 'Helvetica';
+    color: #0079D3;
+    text-decoration: underline;
+    cursor: pointer;
+}

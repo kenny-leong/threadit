@@ -22,35 +22,30 @@ function LoginForm() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
+    <div className="login-div">
+      <div className="login-headings">
+        <span className="login-header">Log In</span>
+        <span class="login-tos">By continuing, you are setting up a Threadit account and agree to our <span class="tos-link">User Agreement</span> and <span class="tos-link">Privacy Policy</span>.</span>
+      </div>
+      <form onSubmit={handleSubmit} className='login-form'>
+        <input
+          type="text"
+          value={email}
+          placeholder='Email'
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          placeholder='Password'
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit" className="login-submit-btn">Log In</button>
+        <span className="signup-redirect-text">New to Threadit? <span className="signup-redirect">Sign up</span></span>
       </form>
-    </>
+    </div>
   );
 }
 
