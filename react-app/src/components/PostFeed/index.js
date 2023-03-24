@@ -56,8 +56,8 @@ function PostFeed() {
 
     return (
         <div className='post-feed-div'>
-            {postArr.map(post => (
-                <div className='post-box'>
+            {postArr.map((post, index) => (
+                <div className='post-box' key={index}>
                     <div className='vote-bar'>
                         <i class="fa-solid fa-angles-up"></i>
                         <span className='total-votes'>{post.upvotes - post.downvotes}</span>

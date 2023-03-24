@@ -6,6 +6,7 @@ import logo from '../../static/threadit.png'
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
 import { logout } from '../../store/session';
+import CreateSubreddit from '../CreateSubreddit';
 import './NavBar.css';
 
 function NavBar() {
@@ -63,8 +64,25 @@ function NavBar() {
 						<div className='dropdown-menu'>
 							<ul>
 								<li className='welcome-text'>{`Welcome back, ${sessionUser.username}`}</li>
-								<li ><button onClick={handleLogout} className='logout-btn'>Log out</button></li>
+								<li className='create-sr-btn-li'>
+									<OpenModalButton
+										buttonText={<span className='create-subreddit-text'>Create a Community</span>}
+										modalComponent={<CreateSubreddit />}
+										className='create-subreddit-btn'
+									/>
+								</li>
+								<li className='owned-subreddit-li'>
+									<Link to='/owned-subreddits'>
+										<span className='owned-subreddit-span'>Owned Subreddits</span>
+									</Link>
+								</li>
+								<li className='my-com-li'>
+									<Link to='/my-communities'>
+										<span className='my-com-span'>My Communities</span>
+									</Link>
+								</li>
 							</ul>
+							<button onClick={handleLogout} className='logout-btn'>Log out</button>
 						</div>
 					)}
 				</div>

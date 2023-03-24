@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupForm from "./components/SignupForm";
-import LoginForm from "./components/LoginForm";
 import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
@@ -39,6 +37,14 @@ function App() {
               <TrendBar />
               <PostFeed />
               <CommunitySection />
+            </Route>
+            <Route path='/owned-subreddits'>
+              <NavBar />
+              <FeedSideBar />
+            </Route>
+            <Route path='/my-communities'>
+              <NavBar />
+              <FeedSideBar />
             </Route>
           </Switch>
         </>

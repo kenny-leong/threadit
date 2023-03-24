@@ -124,28 +124,62 @@
     border-radius: 10px;
     background-color: rgb(22, 22, 22);
     cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dropdown-menu ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-.dropdown-menu li {
+.owned-subreddit-li, .my-com-li, .welcome-text {
     margin-right: 30px;
     font-family: 'Threadit';
     font-size: 15px;
-    margin-bottom: 15px;
     color: rgb(214, 214, 214);
-
 }
 
 .welcome-text {
     cursor: text;
     padding-right: 10px;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: rgb(141, 141, 141);
+    margin-left: 6px;
+}
+
+
+.create-sr-btn-li button {
+    background-color: transparent;
+    border: none;
+    font-family: 'Threadit';
+    font-size: 15px;
+    color: rgb(141, 141, 141);
+    margin-bottom: 13px;
+}
+
+.owned-subreddit-li {
+    margin-bottom: 13px;
+    margin-left: 5px;
+}
+
+.my-com-li {
+    margin-left: 15px;
+}
+
+.create-subreddit-btn:hover {
+    text-decoration: underline;
+}
+
+.dropdown-menu a:hover {
+    text-decoration: underline;
 }
 
 .logout-btn {
@@ -157,6 +191,7 @@
     font-family: 'Threadit';
     border: none;
     cursor: pointer;
+    margin-bottom: 25px;
 }
 
 .logout-btn:hover {
