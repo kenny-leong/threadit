@@ -105,3 +105,31 @@
 .profile-btn .fa-user-circle {
     margin-left: 5px;
 }
+
+
+.dropdown-menu {
+    position: fixed;
+    right: 0px;
+    top: 85px;
+    border: green solid 1px;
+    border-radius: 10px;
+    background-color: rgb(22, 22, 22);
+
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu li {
+    margin-right: 30px;
+    font-family: 'Threadit';
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: rgb(214, 214, 214);
+    padding-right: 10px;
+}

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'
@@ -12,6 +12,7 @@ function NavBar({ isLoaded }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
+	const [showDropdown, setShowDropdown] = useState(false);
 
 	const handleLogout = async (e) => {
 		e.preventDefault();
@@ -19,6 +20,10 @@ function NavBar({ isLoaded }) {
         .then(() => {
             history.push('/');
         });
+	};
+
+	const toggleDropdown = () => {
+		setShowDropdown(!showDropdown);
 	};
 
 	return (
@@ -51,9 +56,17 @@ function NavBar({ isLoaded }) {
 				</div>
 			)}
 			{sessionUser && (
-				<div className='profile-btn' onClick={handleLogout}>
+				<div className='profile-btn' onClick={toggleDropdown}>
 					<i className="fas fa-bars" />
 					<i className="fas fa-user-circle" />
+					{showDropdown && (
+						<div className='dropdown-menu'>
+							<ul>
+								<li>{`Welcome back, ${sessionUser.username}`}</li>
+								<li onClick={handleLogout}>Log Out</li>
+							</ul>
+						</div>
+					)}
 				</div>
 			)}
 		</div>
