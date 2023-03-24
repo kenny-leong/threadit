@@ -8,7 +8,7 @@ import SignupForm from '../SignupForm';
 import { logout } from '../../store/session';
 import './NavBar.css';
 
-function NavBar({ isLoaded }) {
+function NavBar() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);

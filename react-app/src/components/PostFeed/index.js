@@ -17,11 +17,18 @@ function PostFeed() {
     const allSubreddits = useSelector(state => state.subreddit.allSubreddits)
     const allUsers = useSelector(state => state.session.allUsers)
 
+    const [postArr, setPostArr] = useState([]);
+
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getAllSR())
         dispatch(getAllUsers())
     }, [dispatch])
+
+
+    useEffect(() => {
+        if (allPosts) setPostArr(Object.values(allPosts))
+    }, [allPosts])
 
 
     if (!allPosts || !allSubreddits || !allUsers) return null;
@@ -43,9 +50,6 @@ function PostFeed() {
           return `${timeDiffInMinutes} minutes`;
         }
     }
-
-
-    let postArr = Object.values(allPosts)
 
     return (
         <div className='post-feed-div'>

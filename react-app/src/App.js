@@ -22,7 +22,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/">
-          <NavBar isLoaded={isLoaded}/>
+          <NavBar />
           <FeedSideBar />
           <TrendBar />
           <PostFeed />
@@ -32,7 +32,7 @@ function App() {
         <>
           <Switch>
             <Route path='/home'>
-              <NavBar isLoaded={isLoaded}/>
+              <NavBar />
               <FeedSideBar />
               <TrendBar />
               <PostFeed />
