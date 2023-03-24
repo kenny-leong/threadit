@@ -73,6 +73,11 @@
     margin-left: 6px;
 }
 
+.subreddit-for-post:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .post-header-info {
     padding-top: 10px;
 }
@@ -98,6 +103,7 @@
     margin-top: 15px;
     color: rgb(209, 209, 209);
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .feed-post-div {
@@ -122,8 +128,6 @@
 .feed-post-comment-bar .fa-comments {
     color: #6E7071;
     font-size: 20px;
-    margin-left: 15px;
-    margin-bottom: 15px;
     margin-right: 5px;
 }
 
@@ -134,8 +138,6 @@
 .feed-post-comment-bar .fa-repeat, .feed-post-comment-bar .fa-bookmark {
     color: #6E7071;
     font-size: 19px;
-    margin-left: 15px;
-    margin-bottom: 15px;
     margin-right: 8px;
 }
 
@@ -143,4 +145,23 @@
     color: #6E7071;
     font-family: 'Threadit';
     font-size: 14px;
+}
+
+.comments-and-text-div {
+    margin-left: 10px;
+}
+
+.comments-and-text-div,
+.repeat-and-text-div,
+.bookmark-and-text-div {
+    margin-right: 30px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comments-and-text-div:hover,
+.repeat-and-text-div:hover,
+.bookmark-and-text-div:hover {
+    background-color: #252525;
 }

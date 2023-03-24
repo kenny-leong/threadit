@@ -78,7 +78,7 @@ function PostFeed() {
                                 <i class="fa-solid fa-repeat"></i>
                                 <span className='comment-div-text'>Share</span>
                             </div>
-                            <div>
+                            <div className='bookmark-and-text-div'>
                                 <i class="fa-regular fa-bookmark"></i>
                                 <span className='comment-div-text'>Save</span>
                             </div>
