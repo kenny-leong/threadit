@@ -82,6 +82,10 @@
     cursor: pointer;
 }
 
+.login-submit-btn:hover {
+    background-color: #027ede;
+}
+
 .signup-redirect-text {
     font-family: 'Helvetica';
     font-size: 13px;
