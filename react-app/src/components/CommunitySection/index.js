@@ -38,13 +38,15 @@ function CommunitySection() {
                 </div>
             </div>
             <div className='right-bar-links'>
-                <div className='ua-and-pp'>
-                    <span>User Agreement</span>
-                    <span>Privacy Policy</span>
-                </div>
-                <div className='cp-and-mcc'>
-                    <span>Content Policy</span>
-                    <span>Moderator Code of Conduct</span>
+                <div className='line-div'>
+                    <div className='ua-and-pp'>
+                        <span>User Agreement</span>
+                        <span>Privacy Policy</span>
+                    </div>
+                    <div className='cp-and-mcc'>
+                        <span>Content Policy</span>
+                        <span>Moderator Code of Conduct</span>
+                    </div>
                 </div>
             </div>
             <span className='trademark'>Threadit Inc © 2023. All rights reserved</span>

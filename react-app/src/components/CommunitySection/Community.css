@@ -21,7 +21,7 @@
 
 
 @media screen and (max-width: 1400px) {
-    .popular-box-container, .right-bar-links {
+    .popular-box-container, .right-bar-links span, .trademark, .right-bar-links, .line-div {
         display: none;
     }
 }
@@ -52,10 +52,13 @@
     right: 40px;
     top: 715px;
     width: 300px;
+}
+
+.line-div {
+    border-bottom: 1px solid gray;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px rgb(187, 187, 187) solid;
 }
 
 
@@ -77,6 +80,7 @@
     font-family: Helvetica;
     font-weight: 200;
     font-size: 14px;
+
 }
 
 .ua-and-pp span, .cp-and-mcc span {
@@ -90,7 +94,7 @@
 
 .trademark {
     position: absolute;
-    right: 40px;
+    right: 15px;
     top: 795px;
     width: 300px;
     color: #b6b6b6;
