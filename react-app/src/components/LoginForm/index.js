@@ -43,6 +43,7 @@ function LoginForm() {
           required
         />
         <button type="submit" className="login-submit-btn">Log In</button>
+        <button className="demo-user-btn">Sign in as Guest</button>
         <span className="signup-redirect-text">New to Threadit? <span className="signup-redirect">Sign up</span></span>
       </form>
     </div>

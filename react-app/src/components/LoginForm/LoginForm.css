@@ -70,7 +70,7 @@
 }
 
 
-.login-submit-btn {
+.login-submit-btn, .demo-user-btn {
     border: none;
     margin-top: 15px;
     border-radius: 20px;
