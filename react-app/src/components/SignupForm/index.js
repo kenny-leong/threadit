@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
+import LoginForm from "../LoginForm";
+import OpenModalButton from "../OpenModalButton";
 import './SignupForm.css';
 
 function SignupForm() {
@@ -11,7 +13,7 @@ function SignupForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState('');
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -23,7 +25,7 @@ function SignupForm() {
           setErrors(data)
         }
     } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+        setErrors('Passwords do not match.');
     }
   };
 
@@ -34,6 +36,11 @@ function SignupForm() {
         <span class="signup-tos">By continuing, you are setting up a Threadit account and agree to our <span class="tos-link">User Agreement</span> and <span class="tos-link">Privacy Policy</span>.</span>
       </div>
       <form onSubmit={handleSubmit} className='signup-form'>
+        {(errors) && (
+          <div className="signup-error-div">
+            <span className="signup-errors">{errors}</span>
+          </div>
+        )}
         <input
           type="text"
           value={email}
@@ -63,7 +70,14 @@ function SignupForm() {
           required
         />
         <button type="submit" className="signup-submit-btn">Continue</button>
-        <span className="login-redirect-text">Already a threaditor? <span className="login-redirect">Log In</span></span>
+        <div className="login-redirect-div">
+          <span className="login-redirect-text">Already a threaditor?</span>
+          <OpenModalButton
+            buttonText={<span className='login-text'>Log In</span>}
+            modalComponent={<LoginForm />}
+            className='login-redirect'
+            />
+        </div>
       </form>
     </div>
   );
