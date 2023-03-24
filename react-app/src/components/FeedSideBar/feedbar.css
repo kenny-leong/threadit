@@ -11,8 +11,9 @@
 .feed-bar-div {
     position: fixed;
     left: 0px;
+    bottom: 0px;
     top: 86px;
-    height: 100vh;
+    height: 100%;
     width: 270px;
     background-color: rgb(24, 24, 24);
 }
