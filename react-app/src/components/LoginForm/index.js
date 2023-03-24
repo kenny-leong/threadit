@@ -23,7 +23,6 @@ function LoginForm() {
     } else {
       closeModal();
     }
-
   };
 
   const handleDemoLogin = async (e) => {
