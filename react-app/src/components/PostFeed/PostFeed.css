@@ -80,6 +80,8 @@
 
 .post-header-info {
     padding-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .post-header-info .fa-circle {
