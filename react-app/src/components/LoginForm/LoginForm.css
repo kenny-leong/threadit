@@ -109,3 +109,16 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
+.login-error-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.login-error-text {
+    color: rgba(141, 0, 0, 0.761);
+    font-size: 15px;
+    font-family: 'Threadit';
+}

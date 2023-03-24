@@ -11,7 +11,7 @@ function LoginForm() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -19,7 +19,9 @@ function LoginForm() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      setErrors("Invalid Username or Password.")
+    } else {
+      setErrors("Invalid Username or Password.")
     }
   };
 
@@ -41,6 +43,11 @@ function LoginForm() {
         <span class="login-tos">By continuing, you are setting up a Threadit account and agree to our <span class="tos-link">User Agreement</span> and <span class="tos-link">Privacy Policy</span>.</span>
       </div>
       <form onSubmit={handleSubmit} className='login-form'>
+        {(errors && (
+          <div className="login-error-div">
+            <span className="login-error-text">{errors}</span>
+          </div>
+        ))}
         <input
           type="text"
           value={email}

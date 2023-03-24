@@ -19,14 +19,20 @@ function SignupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
-        if (data) {
-          setErrors(data)
-        }
-    } else {
-        setErrors('Passwords do not match.');
+
+    if ((!email.includes('@')) || email.length < 5) {
+      return setErrors('Please enter a valid email.')
     }
+
+    if (!username.length < 5) {
+      return setErrors('Username must be at least 5 characters.')
+    }
+
+    if (password !== confirmPassword) {
+      return setErrors('Passwords do not match.');
+    }
+
+    dispatch(signUp(username, email, password));
   };
 
   return (
