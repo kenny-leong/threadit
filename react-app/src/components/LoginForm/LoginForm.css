@@ -89,9 +89,7 @@
 .signup-redirect-text {
     font-family: 'Helvetica';
     font-size: 13px;
-    margin-top: 15px;
     line-height: 1.5;
-    margin-bottom: 20px;
     color: rgb(194, 194, 194);
 }
 
@@ -100,4 +98,14 @@
     color: #0079D3;
     text-decoration: underline;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.signup-redirect-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

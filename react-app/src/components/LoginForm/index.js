@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import SignupForm from "../SignupForm";
+import OpenModalButton from "../OpenModalButton";
 import './LoginForm.css';
 
 function LoginForm() {
@@ -55,7 +57,14 @@ function LoginForm() {
         />
         <button type="submit" className="login-submit-btn">Log In</button>
         <button className="demo-user-btn" onClick={handleDemoLogin}>Sign in as Guest</button>
-        <span className="signup-redirect-text">New to Threadit? <span className="signup-redirect">Sign up</span></span>
+        <div className="signup-redirect-div">
+          <span className="signup-redirect-text">New to Threadit?</span>
+          <OpenModalButton
+            buttonText={<span className='login-text'>Sign up</span>}
+            modalComponent={<SignupForm />}
+            className='signup-redirect'
+            />
+        </div>
       </form>
     </div>
   );
