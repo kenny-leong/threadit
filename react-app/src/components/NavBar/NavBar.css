@@ -1,3 +1,11 @@
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .nav-bar-container {
     height: 80px;
     position: fixed;
@@ -111,10 +119,10 @@
     position: fixed;
     right: 0px;
     top: 85px;
-    border: green solid 1px;
+    border: black solid 1px;
     border-radius: 10px;
     background-color: rgb(22, 22, 22);
-
+    cursor: default;
 }
 
 .dropdown-menu ul {
@@ -131,5 +139,25 @@
     font-size: 15px;
     margin-bottom: 15px;
     color: rgb(214, 214, 214);
+
+}
+
+.welcome-text {
+    cursor: text;
     padding-right: 10px;
+}
+
+.logout-btn {
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(0, 110, 188);
+    color: rgb(225, 225, 225);
+    font-family: 'Threadit';
+    border: none;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: rgba(0, 110, 188, 0.669);
 }

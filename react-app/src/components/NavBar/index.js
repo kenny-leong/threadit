@@ -62,8 +62,8 @@ function NavBar({ isLoaded }) {
 					{showDropdown && (
 						<div className='dropdown-menu'>
 							<ul>
-								<li>{`Welcome back, ${sessionUser.username}`}</li>
-								<li onClick={handleLogout}>Log Out</li>
+								<li className='welcome-text'>{`Welcome back, ${sessionUser.username}`}</li>
+								<li ><button onClick={handleLogout} className='logout-btn'>Log out</button></li>
 							</ul>
 						</div>
 					)}
