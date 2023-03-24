@@ -43,9 +43,12 @@ function PostFeed() {
         const timeDiffInMinutes = Math.floor(timeDiffInMs / 60000);
         const timeDiffInHours = Math.floor(timeDiffInMinutes / 60);
 
+        // Get absolute value of timeDiffInHours
+        const absTimeDiffInHours = Math.abs(timeDiffInHours);
+
         // Return formatted time string
-        if (timeDiffInHours > 0) {
-          return `${timeDiffInHours} hours`;
+        if (absTimeDiffInHours > 0) {
+          return `${absTimeDiffInHours} hours`;
         } else {
           return `${timeDiffInMinutes} minutes`;
         }
