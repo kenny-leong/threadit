@@ -26,8 +26,8 @@ function CreateSubreddit() {
 
         const data = await dispatch(createSubreddit(name, description))
             .then(() => {
-                dispatch(authenticate())
                 dispatch(getAllSR())
+                dispatch(authenticate())
                 closeModal()
             })
 
