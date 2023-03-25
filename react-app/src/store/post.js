@@ -162,7 +162,7 @@ const postReducer = (state = initialState, action) => {
             }
         case 'LOAD_SUBREDDIT_POSTS':
             const subredditPosts = {};
-            const subPostArr = action.posts;
+            const subPostArr = action.posts.posts;
             subPostArr.forEach(post => {
                 subredditPosts[post.id] = post
             });

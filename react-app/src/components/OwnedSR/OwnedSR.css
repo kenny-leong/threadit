@@ -85,10 +85,14 @@
     margin-bottom: 10px;
 }
 
+.box-section-sr a {
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
 .owned-sr-name {
     color: whitesmoke;
     font-family: 'Threadit';
-    margin-bottom: 5px;
     font-size: 18px;
     color: rgb(197, 197, 197);
     cursor: pointer;

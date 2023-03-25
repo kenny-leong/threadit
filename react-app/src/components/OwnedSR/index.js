@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from 'react-router-dom';
 import { deleteSubreddit, getAllSR } from "../../store/subreddit";
 import { authenticate } from "../../store/session";
 import ghibli from '../../static/transparent-ghibli.png'
@@ -40,7 +41,9 @@ function OwnedSR() {
                     <div className="owned-subreddit-box">
                         <div className="box-section-sr">
                             <img className="owned-sr-profile-pic" src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />
-                            <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
+                            <Link to={`/subreddits/${subreddit.id}`}>
+                                <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
+                            </Link>
                             <span className="owned-sr-desc">{subreddit.description}</span>
                         </div>
                         <div className="owned-sr-edit-delete-div">

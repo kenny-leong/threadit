@@ -8,6 +8,7 @@ import TrendBar from "./components/TrendBar";
 import PostFeed from "./components/PostFeed";
 import CommunitySection from "./components/CommunitySection";
 import OwnedSR from "./components/OwnedSR";
+import SubredditDetails from "./components/SubredditDetails";
 
 
 function App() {
@@ -47,6 +48,11 @@ function App() {
             <Route path='/my-communities'>
               <NavBar />
               <FeedSideBar />
+            </Route>
+            <Route path='/subreddits/:subredditId'>
+              <NavBar />
+              <FeedSideBar />
+              <SubredditDetails />
             </Route>
           </Switch>
         </>

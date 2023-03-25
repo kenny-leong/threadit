@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.subreddit-details-div {
+    width: 100%;
+    margin-left: 2px;
+    border: 1px green solid;
+}
+
+
+.banner-img {
+    height: 200px;
+    width: 100%;
+    display: block;
+}
+
+.profile-pic-sr-img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 240px;
+    left: 350px;
+    z-index: 3;
+}
+
+.gray-bg {
+    width: 100%;
+    height: 100px;
+    background-color: #1A1A1B;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: row;
+}
+
+.sr-details-title {
+    color: #D7DADC;
+    font-family: Helvetica;
+    font-size: 30px;
+}
+
+.span-container {
+    margin-left: 190px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sr-details-subtitle {
+    margin-top: 5px;
+    color: #818384;
+    font-family: Helvetica;
+}
+
+.join-sr-btn-div {
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.join-sr-btn {
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 25px;
+    font-family: 'Threadit';
+    font-size: 15px;
+    background-color: #005791;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.join-sr-btn:hover {
+    background-color: #0066aa;
+}
+
+.create-post-div {
+    border: 1px rgb(57, 57, 57) solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin-left: 30px;
+    height: 60px;
+    align-items: center;
+}
+
+.posting-profile-pic-img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.create-post-sr {
+    height: 40px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1A1A1B;
+    font-family: Helvetica;
+    font-size: 16px;
+    padding-left: 20px;
+    width: 480px;
+    border: 0.5px solid rgb(43, 43, 43);
+}
+
+.create-post-sr:hover {
+    border: 1px solid rgb(118, 118, 118);
+}
+
+.create-post-sr:focus {
+    outline: none;
+}
+
+.create-post-div .fa-solid {
+    color: #6a6a6a;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.img-create-post {
+    margin-left: 15px;
+}
+
+.img-create-post, .link-create-post {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.img-create-post:hover, .link-create-post:hover {
+    background-color: #1A1A1B;
+}
