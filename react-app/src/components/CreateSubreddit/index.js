@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal"
 import { createSubreddit, getAllSR } from '../../store/subreddit';
+import { authenticate } from '../../store/session';
 import './CreateSubreddit.css'
 
 
@@ -24,13 +25,15 @@ function CreateSubreddit() {
         e.preventDefault();
 
         const data = await dispatch(createSubreddit(name))
-            .then(closeModal)
+            .then(() => {
+                dispatch(authenticate())
+                dispatch(getAllSR())
+                closeModal()
+            })
 
     }
 
-    function handleCheckChange() {
-        setIsChecked(!isChecked);
-    }
+
 
     return (
         <div className='create-sr-div'>

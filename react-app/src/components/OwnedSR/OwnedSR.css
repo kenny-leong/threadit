@@ -7,7 +7,6 @@
 
 .owned-div {
     position: absolute;
-    border: green solid 1px;
     top: 100px;
     left: 300px;
     display: flex;
