@@ -12,7 +12,6 @@ function CreateSubreddit() {
 
     const [name, setName] = useState("");
     const [charactersLeft, setCharactersLeft] = useState(16);
-    const [isChecked, setIsChecked] = useState(false);
     const { closeModal } = useModal();
     const dispatch = useDispatch();
 
@@ -52,6 +51,7 @@ function CreateSubreddit() {
                     placeholder='Name'
                     className='sr-input-name'
                     onChange={(e) => setName(e.target.value)}
+                    maxLength={16}
                     required
                 />
                 <div className='char-left-div'>
