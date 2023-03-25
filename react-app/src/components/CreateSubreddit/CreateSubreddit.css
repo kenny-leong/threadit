@@ -7,7 +7,7 @@
 }
 
 .create-sr-div {
-    height: 500px;
+    height: 710px;
     width: 550px;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
 
 .width-adjustment-div {
     width: 510px;
-    height: 440px;
+    margin-bottom: 20px;
 }
 
 .create-sr-heading {
@@ -89,6 +89,23 @@
     font-family: 'Threadit';
     color: rgb(124, 124, 124);
     font-size: 14px;
+}
+
+.sr-textarea-desc {
+    border: 1px black solid;
+    border-radius: 5px;
+    width: 484px;
+    font-family: Helvetica;
+    font-size: 16px;
+    color: gray;
+    background-color: #0d0d0d;
+    height: 100px;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+.sr-textarea-desc:focus {
+    outline: none;
 }
 
 .create-sr-type {
@@ -211,4 +228,9 @@
     cursor: pointer;
     color: whitesmoke;
     background-color: rgb(0, 52, 136);
+}
+
+.create-sr-btn:disabled {
+    background-color: rgba(0, 52, 136, 0.135);;
+    cursor: not-allowed;
 }

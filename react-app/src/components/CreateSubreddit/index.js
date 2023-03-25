@@ -11,6 +11,7 @@ import './CreateSubreddit.css'
 function CreateSubreddit() {
 
     const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [charactersLeft, setCharactersLeft] = useState(16);
     const { closeModal } = useModal();
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function CreateSubreddit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = await dispatch(createSubreddit(name))
+        const data = await dispatch(createSubreddit(name, description))
             .then(() => {
                 dispatch(authenticate())
                 dispatch(getAllSR())
@@ -57,6 +58,17 @@ function CreateSubreddit() {
                 <div className='char-left-div'>
                     <span className='characters-left-text'>{`${charactersLeft} characters left`}</span>
                 </div>
+                <div className='create-sr-name-div'>
+                    <span className='create-sr-name'>Short Description</span>
+                    <span className='name-tos'>Include a short description of your new community. (Optional)</span>
+                </div>
+                <textarea
+                    value={description}
+                    placeholder='Please type here....'
+                    className='sr-textarea-desc'
+                    onChange={(e) => setDescription(e.target.value)}
+                    maxLength={100}
+                />
                 <p className='create-sr-type'>Community Type</p>
                 <div className="radio-buttons-container">
                     <input type="radio" id="text" name="channel-type" value="text" checked/>
