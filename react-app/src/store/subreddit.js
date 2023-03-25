@@ -56,7 +56,7 @@ export const getSingleSR = (subredditId) => async (dispatch) => {
 
 
 // CREATE A NEW SUBREDDIT
-export const createSubreddit = ({ name, description, profile_picture, banner_image }) => async dispatch => {
+export const createSubreddit = (name, description, profile_picture, banner_image) => async dispatch => {
     const res = await fetch('/api/subreddits', {
         method: 'POST',
         headers: {
@@ -66,9 +66,11 @@ export const createSubreddit = ({ name, description, profile_picture, banner_ima
             name,
             description,
             profile_picture,
-            banner_image,
+            banner_image
         })
     });
+
+
 
     if (res.ok) {
         const newSubreddit = await res.json();
@@ -78,7 +80,7 @@ export const createSubreddit = ({ name, description, profile_picture, banner_ima
         const data = await res.json();
         if (data.errors) return data.errors
     } else {
-        return ['An error occurred. Please try again.']
+        console.log(res)
     }
 };
 

@@ -22,6 +22,7 @@ function CreateSubreddit() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const data = await dispatch(createSubreddit(name));
         console.log(data)
 
@@ -90,9 +91,8 @@ function CreateSubreddit() {
                 <div className='checkbox-div'>
                     <input
                         type="checkbox"
-                        checked={isChecked}
-                        onChange={handleCheckChange}
                         className='checkbox-ele'
+                        readOnly
                     />
                     <div className='nsfw-div'>
                         <span className='nsfw'>NSFW</span>

@@ -22,13 +22,21 @@ def create_subreddit():
     data = request.get_json()
     subreddit = Subreddit(
         name=data['name'],
-        description=data['description'],
-        profile_picture=data['profile_picture'],
-        banner_image=data['banner_image'],
         creator=current_user
     )
+
+    if 'description' in data:
+        subreddit.description = data['description']
+
+    if 'profile_picture' in data:
+        subreddit.profile_picture = data['profile_picture']
+
+    if 'banner_image' in data:
+        subreddit.banner_image = data['banner_image']
+
     db.session.add(subreddit)
     db.session.commit()
+
     return subreddit.to_dict()
 
 
