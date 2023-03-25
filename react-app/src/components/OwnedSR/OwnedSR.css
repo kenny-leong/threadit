@@ -44,6 +44,7 @@
     padding-right: 25px;
     border-radius: 15px;
     margin-bottom: 20px;
+    justify-content: space-between;
 }
 
 .owned-sr-profile-pic {
@@ -82,7 +83,7 @@
     width: 80px;
     border: 1px solid black;
     border-radius: 10px;
-    color: rgb(0, 0, 0);
+    color: rgb(12, 12, 12);
     font-family: 'Threadit';
     cursor: pointer;
 }
