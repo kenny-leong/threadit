@@ -108,10 +108,21 @@
     margin-right: 10px;
 }
 
-.radio-button .fa-user {
+.radio-button .fa-solid {
     color: gray;
     margin-right: 10px;
 }
+
+.radio-button .fa-user {
+    margin-right: 14px;
+    margin-left: 3px;
+}
+
+.radio-button .fa-lock {
+    margin-right: 14px;
+    margin-left: 3px;
+}
+
 
 .text-radio {
     color: rgb(155, 155, 155);

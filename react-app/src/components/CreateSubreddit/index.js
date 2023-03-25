@@ -69,7 +69,7 @@ function CreateSubreddit() {
                 <div className="radio-buttons-container">
                     <input type="radio" id="text" name="channel-type" value="text" disabled/>
                     <div className="radio-button">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-eye-low-vision"></i>
                         <span className="text-radio">Restricted</span>
                         <span className="text-radio-desc">Anyone can view this community, but only approved users can post</span>
                     </div>
@@ -77,7 +77,7 @@ function CreateSubreddit() {
                 <div className="radio-buttons-container">
                     <input type="radio" id="text" name="channel-type" value="text" disabled/>
                     <div className="radio-button">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-lock"></i>
                         <span className="text-radio">Private</span>
                         <span className="text-radio-desc">Only approved users can view and submit to this community</span>
                     </div>
