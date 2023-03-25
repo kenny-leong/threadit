@@ -66,7 +66,9 @@ function PostFeed() {
                     </div>
                     <div className='post-content-area'>
                         <div className='post-header-info'>
-                            <span className='subreddit-for-post'>{`r/${allSubreddits[post.subreddit_id].name}`}</span>
+                            <Link to={`subreddits/${post.subreddit_id}`}>
+                                <span className='subreddit-for-post'>{`r/${allSubreddits[post.subreddit_id].name}`}</span>
+                            </Link>
                             <i class="fa-solid fa-circle"></i>
                             <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
                         </div>

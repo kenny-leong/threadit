@@ -110,7 +110,7 @@ function SubredditDetails() {
                 </div>
             </div>
             <img className='profile-pic-sr-img' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
-            {subredditPostArr.length === 0 && (
+            {(subredditPostArr.length === 0 || subredditPostArr === undefined) && (
                 <div className='no-post-msg-div'>
                     <span className='no-post-msg'>No existing posts. Be the first to post!</span>
                 </div>

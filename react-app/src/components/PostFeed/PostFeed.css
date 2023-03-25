@@ -73,6 +73,10 @@
     margin-left: 6px;
 }
 
+.post-header-info a {
+    text-decoration: none;
+}
+
 .subreddit-for-post:hover {
     text-decoration: underline;
     cursor: pointer;
