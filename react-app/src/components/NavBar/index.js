@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'
@@ -14,6 +14,26 @@ function NavBar() {
 	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
 	const [showDropdown, setShowDropdown] = useState(false);
+	const dropdownRef = useRef(null);
+
+
+	useEffect(() => {
+		if (!showDropdown) return;
+
+		const closeMenu = (event) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+				setShowDropdown(false);
+			}
+		};
+
+		document.addEventListener('click', closeMenu);
+
+		return () => {
+		  document.removeEventListener('click', closeMenu);
+		};
+	  }, [showDropdown]);
+
+
 
 	const handleLogout = async (e) => {
 		e.preventDefault();
@@ -61,7 +81,7 @@ function NavBar() {
 					<i className="fas fa-bars" />
 					<i className="fas fa-user-circle" />
 					{showDropdown && (
-						<div className='dropdown-menu'>
+						<div className='dropdown-menu' ref={dropdownRef}>
 							<ul>
 								<li className='welcome-text'>{`Welcome back, ${sessionUser.username}`}</li>
 								<li className='create-sr-btn-li'>
