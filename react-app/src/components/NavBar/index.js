@@ -17,6 +17,7 @@ function NavBar() {
 	const dropdownRef = useRef(null);
 
 
+	// closes dropdown menu by clicking anywhere on screen
 	useEffect(() => {
 		if (!showDropdown) return;
 
@@ -29,12 +30,12 @@ function NavBar() {
 		document.addEventListener('click', closeMenu);
 
 		return () => {
-		  document.removeEventListener('click', closeMenu);
+			document.removeEventListener('click', closeMenu);
 		};
-	  }, [showDropdown]);
+	}, [showDropdown]);
 
 
-
+	//function to handle logging out
 	const handleLogout = async (e) => {
 		e.preventDefault();
 		await dispatch(logout())
@@ -43,6 +44,7 @@ function NavBar() {
         });
 	};
 
+	//function to toggle the dropdown menu
 	const toggleDropdown = () => {
 		setShowDropdown(!showDropdown);
 	};
