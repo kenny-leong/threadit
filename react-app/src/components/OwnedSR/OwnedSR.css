@@ -8,10 +8,10 @@
 .owned-div {
     position: absolute;
     height: 600px;
-    width: 750px;
+    width: 850px;
     border: green solid 1px;
     top: 100px;
-    right: 30px;
+    left: 300px;
     display: flex;
     flex-direction: column;
 }

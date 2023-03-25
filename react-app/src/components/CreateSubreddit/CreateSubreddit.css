@@ -1,0 +1,127 @@
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+.create-sr-div {
+    height: 500px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(21, 21, 21);
+    border-radius: 10px;
+    border: 1px solid pink;
+    padding: 5px;
+}
+
+.width-adjustment-div {
+    width: 510px;
+    height: 460px;
+    border: 1px solid green;
+}
+
+.create-sr-heading {
+    font-family: 'Threadit';
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: rgb(197, 197, 197);
+}
+
+.create-sr-heading-div {
+    border-bottom: 1px solid gray;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+.create-sr-name-div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.create-sr-name {
+    color: rgb(201, 201, 201);
+    font-family: 'Threadit';
+    font-size: 16px;
+}
+
+.name-tos {
+    margin-top: 4px;
+    font-family: Helvetica;
+    font-size: 13px;
+    color: rgb(119, 119, 119);
+    margin-bottom: 20px;
+}
+
+.sr-input-name {
+    width: 474px;
+    border: 1px solid black;
+    height: 35px;
+    border-radius: 5px;
+    background-color: rgb(14, 14, 14);
+    padding-left: 30px;
+    font-size: 18px;
+    color: rgb(124, 124, 124);
+    margin-bottom: 15px;
+}
+
+.sr-input-name:focus {
+    outline: none;
+}
+
+.placeholder-text {
+    font-size: 20px;
+    color: rgb(124, 124, 124);
+    position: fixed;
+    margin-top: 6px;
+    margin-left: 10px;
+    font-family: 'Threadit';
+}
+
+.char-left-div {
+    margin-bottom: 20px;
+}
+
+.characters-left-text {
+    font-family: 'Threadit';
+    color: rgb(124, 124, 124);
+    font-size: 14px;
+}
+
+.create-sr-type {
+    color: rgb(201, 201, 201);
+    font-family: 'Threadit';
+    font-size: 16px;
+}
+
+.radio-buttons-container  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.radio-button .fa-user {
+    color: gray;
+    margin-right: 10px;
+}
+
+.text-radio {
+    color: rgb(155, 155, 155);
+    font-family: 'Threadit';
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.text-radio-desc {
+    color: rgb(155, 155, 155);
+    font-family: 'Threadit';
+    font-size: 12px;
+}
