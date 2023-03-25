@@ -21,7 +21,7 @@
 .owned-sr-title {
     font-family: 'Threadit';
     font-size: 45px;
-    color: rgb(224, 224, 224);
+    color: rgb(199, 199, 199);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -53,10 +53,7 @@
     align-items: center;
     margin-right: 20px;
     background-color: rgb(16, 16, 16);
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 25px;
     border-radius: 15px;
     margin-bottom: 20px;
     justify-content: space-between;
@@ -89,6 +86,8 @@
     font-size: 14px;
     margin-bottom: 15px;
     width: 180px;
+    display: flex;
+    justify-content: center;
     word-wrap: break-word;
 }
 
