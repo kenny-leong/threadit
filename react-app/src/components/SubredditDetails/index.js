@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getSubredditPosts } from '../../store/post';
 import { getSingleSR } from '../../store/subreddit';
 import { getAllUsers } from '../../store/session';
-import { getAllSR } from '../../store/subreddit';
 import bannerImg from '../../static/placeholder-banner.png'
 import { useModal } from "../../context/Modal";
 import CreateSubreddit from '../CreateSubreddit';
@@ -71,7 +70,6 @@ function SubredditDetails() {
 
 
 
-
     return (
         <div className='subreddit-details-div'>
             <div className='banner-img-div'>
@@ -112,6 +110,11 @@ function SubredditDetails() {
                 </div>
             </div>
             <img className='profile-pic-sr-img' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
+            {subredditPostArr.length === 0 && (
+                <div className='no-post-msg-div'>
+                    <span className='no-post-msg'>No existing posts. Be the first to post!</span>
+                </div>
+            )}
             <div className='post-feed-div'>
                 {subredditPosts && subredditPostArr.map((post, index) => (
                     <div className='post-box' key={index}>
@@ -122,9 +125,7 @@ function SubredditDetails() {
                         </div>
                         <div className='post-content-area'>
                             <div className='post-header-info'>
-                                <span className='subreddit-for-post'>{`r/${subredditDetails.name}`}</span>
-                                <i class="fa-solid fa-circle"></i>
-                                <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
+                                <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
                             </div>
                             <span className='feed-post-title'>{post.title}</span>
                             {(post.image_url) && (

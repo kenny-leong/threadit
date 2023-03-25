@@ -134,3 +134,25 @@
 .img-create-post:hover, .link-create-post:hover {
     background-color: #1A1A1B;
 }
+
+.no-post-msg-div {
+    border: gray 1px solid;
+    width: 65%;
+    margin-left: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1A1A1B;
+}
+
+.no-post-msg {
+    color: rgb(156, 156, 156);
+    font-family: Helvetica;
+    margin-left: 20px;
+}
+
+.posted-by.subreddit {
+    margin-left: 10px;
+}
