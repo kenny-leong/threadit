@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from 'react-router-dom';
+import { useModal } from "../../context/Modal"
+import { createSubreddit, getAllSR } from '../../store/subreddit';
 import './CreateSubreddit.css'
 
 
@@ -9,10 +12,26 @@ function CreateSubreddit() {
     const [name, setName] = useState("");
     const [charactersLeft, setCharactersLeft] = useState(16);
     const [isChecked, setIsChecked] = useState(false);
+    const { closeModal } = useModal();
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         setCharactersLeft(16 - name.length);
     }, [name]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = await dispatch(createSubreddit(name));
+        console.log(data)
+
+        // if (data) {
+        //     setErrors(data);
+        // } else {
+        //     closeModal();
+        //     dispatch(getAllSR());
+        // }
+    }
 
     function handleCheckChange() {
         setIsChecked(!isChecked);
@@ -80,6 +99,10 @@ function CreateSubreddit() {
                     </div>
                     <span className='nsfw-num'>18+ year old community</span>
                 </div>
+            </div>
+            <div className='create-sr-btn-div'>
+                <button className='cancel-sr-btn' onClick={closeModal}>Cancel</button>
+                <button className='create-sr-btn' onClick={handleSubmit} disabled={!name}>Create Community</button>
             </div>
         </div>
     )
