@@ -53,16 +53,20 @@ function SubredditDetails() {
         // Convert time difference from milliseconds to minutes and hours
         const timeDiffInMinutes = Math.floor(timeDiffInMs / 60000);
         const timeDiffInHours = Math.floor(timeDiffInMinutes / 60);
+        const timeDiffInDays = Math.floor(timeDiffInHours / 24);
 
-        // Get absolute value of timeDiffInHours
+        // Get absolute values
+        const absTimeDiffInDays = Math.abs(timeDiffInDays)
         const absTimeDiffInHours = Math.abs(timeDiffInHours);
 
         // Return formatted time string
-        if (absTimeDiffInHours > 0) {
-          return `${absTimeDiffInHours} hours`;
-        } else {
-          return `${timeDiffInMinutes} minutes`;
+        if (absTimeDiffInDays > 0) {
+            return `${absTimeDiffInDays} days`
+        } else if (absTimeDiffInHours > 0) {
+            return `${absTimeDiffInHours} hours`;
         }
+
+        return `${timeDiffInMinutes} minutes`;
     }
 
 
