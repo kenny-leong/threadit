@@ -131,3 +131,40 @@
     font-size: 12px;
     font-weight: 300;
 }
+
+.adult-div {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.checkbox-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.checkbox-div input[type="checkbox"]{
+    background-color: rgb(19, 19, 19);
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+.nsfw-div {
+    background-color: rgb(189, 0, 0);
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.nsfw {
+    font-family: 'Threadit';
+    color: whitesmoke;
+}
+
+.nsfw-num {
+    color: rgb(155, 155, 155);
+    font-family: 'Threadit';
+    font-size: 15px;
+    margin-right: 10px;
+}

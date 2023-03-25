@@ -8,10 +8,15 @@ function CreateSubreddit() {
 
     const [name, setName] = useState("");
     const [charactersLeft, setCharactersLeft] = useState(16);
+    const [isChecked, setIsChecked] = useState(false);
 
     useEffect(() => {
         setCharactersLeft(16 - name.length);
     }, [name]);
+
+    function handleCheckChange() {
+        setIsChecked(!isChecked);
+    }
 
     return (
         <div className='create-sr-div'>
@@ -59,6 +64,21 @@ function CreateSubreddit() {
                         <span className="text-radio">Private</span>
                         <span className="text-radio-desc">Only approved users can view and submit to this community</span>
                     </div>
+                </div>
+                <div className='adult-div'>
+                    <span className='create-sr-type adult'>Adult Content</span>
+                </div>
+                <div className='checkbox-div'>
+                    <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={handleCheckChange}
+                        className='checkbox-ele'
+                    />
+                    <div className='nsfw-div'>
+                        <span className='nsfw'>NSFW</span>
+                    </div>
+                    <span className='nsfw-num'>18+ year old community</span>
                 </div>
             </div>
         </div>
