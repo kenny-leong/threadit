@@ -7,6 +7,7 @@ import FeedSideBar from "./components/FeedSideBar";
 import TrendBar from "./components/TrendBar";
 import PostFeed from "./components/PostFeed";
 import CommunitySection from "./components/CommunitySection";
+import OwnedSR from "./components/OwnedSR";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path='/owned-subreddits'>
               <NavBar />
               <FeedSideBar />
+              <OwnedSR />
             </Route>
             <Route path='/my-communities'>
               <NavBar />
