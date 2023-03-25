@@ -64,11 +64,11 @@
     border-radius: 15px;
     margin-bottom: 20px;
     justify-content: space-between;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 .owned-subreddit-box:hover {
-    transform: scale(1.01);
+    transform: scale(1.03);
     border: 1px solid gray;
 }
 
@@ -91,6 +91,11 @@
     margin-bottom: 5px;
     font-size: 18px;
     color: rgb(197, 197, 197);
+    cursor: pointer;
+}
+
+.owned-sr-name:hover {
+    text-decoration: underline;
 }
 
 .owned-sr-desc {
