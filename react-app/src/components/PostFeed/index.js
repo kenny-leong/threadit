@@ -14,10 +14,11 @@ function PostFeed() {
 
 
     const allPosts = useSelector(state => state.post.allPosts);
-    let allSubreddits = useSelector(state => state.subreddit.allSubreddits)
-    let allUsers = useSelector(state => state.session.allUsers)
+    const allSubreddits = useSelector(state => state.subreddit.allSubreddits)
+    const allUsers = useSelector(state => state.session.allUsers)
 
     const [postArr, setPostArr] = useState([]);
+
 
     useEffect(() => {
         dispatch(getAllPosts());
@@ -28,10 +29,10 @@ function PostFeed() {
 
     useEffect(() => {
         if (allPosts) setPostArr(Object.values(allPosts))
-    }, [allPosts, allSubreddits, allUsers])
+    }, [dispatch, allPosts, allSubreddits, allUsers])
 
 
-    if (!allPosts || !allSubreddits || !allUsers) return null;
+    if (!postArr || !allSubreddits || !allUsers) return null;
 
 
     function getTimeSincePostCreation(createdAt) {
