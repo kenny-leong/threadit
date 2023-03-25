@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteSubreddit, getAllSR } from "../../store/subreddit";
+import { authenticate } from "../../store/session";
 import './OwnedSR.css'
 
 
@@ -17,6 +19,14 @@ function OwnedSR() {
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
+    const handleDelete = async (subredditId) => {
+        await dispatch(deleteSubreddit(subredditId))
+            .then(() => {
+                dispatch(getAllSR())
+                dispatch(authenticate())
+            })
+    };
+
 
     return (
         <div className="owned-div">
@@ -31,7 +41,7 @@ function OwnedSR() {
                         <span className="owned-sr-desc">{subreddit.description}</span>
                         <div className="owned-sr-edit-delete-div">
                             <button className="update-owned-sr">Update</button>
-                            <button className="delete-owned-sr">Delete</button>
+                            <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
                         </div>
                     </div>
                 ))}
