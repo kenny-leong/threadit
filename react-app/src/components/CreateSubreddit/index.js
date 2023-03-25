@@ -23,15 +23,9 @@ function CreateSubreddit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = await dispatch(createSubreddit(name));
-        console.log(data)
+        const data = await dispatch(createSubreddit(name))
+            .then(closeModal)
 
-        // if (data) {
-        //     setErrors(data);
-        // } else {
-        //     closeModal();
-        //     dispatch(getAllSR());
-        // }
     }
 
     function handleCheckChange() {
