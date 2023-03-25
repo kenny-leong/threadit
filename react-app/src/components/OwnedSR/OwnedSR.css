@@ -6,23 +6,38 @@
 }
 
 .owned-div {
-    position: absolute;
-    top: 100px;
-    left: 300px;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 
 .owned-sr-heading-div {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+    margin-top: 30px;
 }
 
 .owned-sr-title {
     font-family: 'Threadit';
-    font-size: 40px;
+    font-size: 45px;
     color: rgb(224, 224, 224);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: rgb(17, 17, 17);
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+.ghibli-img {
+    height: 200px;
+    width: 280px;
+    position: absolute;
+    left: 460px;
+    top: 115px;
 }
 
 .sr-box-container {
@@ -45,6 +60,12 @@
     border-radius: 15px;
     margin-bottom: 20px;
     justify-content: space-between;
+}
+
+.box-section-sr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .owned-sr-profile-pic {

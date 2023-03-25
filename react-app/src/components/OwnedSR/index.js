@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSubreddit, getAllSR } from "../../store/subreddit";
 import { authenticate } from "../../store/session";
+import ghibli from '../../static/transparent-ghibli.png'
 import './OwnedSR.css'
 
 
@@ -33,12 +34,15 @@ function OwnedSR() {
             <div className="owned-sr-heading-div">
                 <span className="owned-sr-title">Owned Subreddits</span>
             </div>
+            <img src={ghibli} className='ghibli-img'/>
             <div className="sr-box-container">
                 {sessionUser && sessionUser.owned_subreddits.map((subreddit, index) => (
                     <div className="owned-subreddit-box">
-                        <img className="owned-sr-profile-pic" src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />
-                        <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
-                        <span className="owned-sr-desc">{subreddit.description}</span>
+                        <div className="box-section-sr">
+                            <img className="owned-sr-profile-pic" src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />
+                            <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
+                            <span className="owned-sr-desc">{subreddit.description}</span>
+                        </div>
                         <div className="owned-sr-edit-delete-div">
                             <button className="update-owned-sr">Update</button>
                             <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
