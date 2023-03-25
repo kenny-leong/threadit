@@ -76,3 +76,29 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.update-owned-sr, .delete-owned-sr {
+    height: 30px;
+    width: 80px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-family: 'Threadit';
+    cursor: pointer;
+}
+
+.update-owned-sr {
+    background-color: rgb(0, 162, 78);
+}
+
+.update-owned-sr:hover {
+    background-color: rgb(0, 192, 93);
+}
+
+.delete-owned-sr {
+    background-color: rgb(165, 0, 0);
+}
+
+.delete-owned-sr:hover {
+    background-color: rgb(205, 0, 0);
+}
