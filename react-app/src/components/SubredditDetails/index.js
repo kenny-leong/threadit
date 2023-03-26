@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSubredditPosts } from '../../store/post';
@@ -75,7 +75,7 @@ function SubredditDetails() {
     return (
         <div className='subreddit-details-div'>
             <div className='banner-img-div'>
-                <img className='banner-img' src={subredditDetails.banner_image ? subredditDetails.banner_image : bannerImg}/>
+                <img className='banner-img' alt='banner' src={subredditDetails.banner_image ? subredditDetails.banner_image : bannerImg}/>
                 <div className='gray-bg'>
                     <div className='span-container'>
                         <span className='sr-details-title'>{subredditDetails.name}</span>
@@ -87,7 +87,7 @@ function SubredditDetails() {
                 </div>
             </div>
             <div className='create-post-div'>
-                <img className='posting-profile-pic-img' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
+                <img className='posting-profile-pic-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
                 <input
                 type="text"
                 placeholder='Create Post'
@@ -101,7 +101,7 @@ function SubredditDetails() {
                     <i class="fa-solid fa-link"></i>
                 </div>
             </div>
-            <img className='profile-pic-sr-img' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
+            <img className='profile-pic-sr-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
             {(subredditPostArr === undefined) && (
                 <div className='no-post-msg-div'>
                     <span className='no-post-msg'>No existing posts. Be the first to post!</span>
@@ -123,7 +123,7 @@ function SubredditDetails() {
                                 <span className='feed-post-title'>{post.title}</span>
                                 {(post.image_url) && (
                                     <div className='feed-post-div'>
-                                        <img className='feed-post-img' src={post.image_url} />
+                                        <img className='feed-post-img' alt='post-img' src={post.image_url} />
                                     </div>
                                 )}
                                 <div className='feed-post-comment-bar'>

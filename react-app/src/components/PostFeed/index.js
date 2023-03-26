@@ -75,7 +75,7 @@ function PostFeed() {
                         <span className='feed-post-title'>{post.title}</span>
                         {(post.image_url) && (
                             <div className='feed-post-div'>
-                                <img className='feed-post-img' src={post.image_url} />
+                                <img className='feed-post-img' alt='post-img' src={post.image_url} />
                             </div>
                         )}
                         <div className='feed-post-comment-bar'>

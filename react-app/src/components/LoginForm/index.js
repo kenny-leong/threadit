@@ -32,6 +32,7 @@ function LoginForm() {
 			.catch(
 				async (res) => {
 					const errData = await res.json();
+          setErrors(errData)
 				}
 			)
 	};

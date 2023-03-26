@@ -87,8 +87,6 @@ export const createSubreddit = (name, description, profile_picture, banner_image
         })
     });
 
-    const errObj = {};
-
     if (res.ok) {
         const newSubreddit = await res.json();
         dispatch(addSubreddit(newSubreddit));

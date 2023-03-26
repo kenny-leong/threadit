@@ -34,7 +34,7 @@ function UpdateSubreddit() {
         e.preventDefault();
 
 
-        const data = await dispatch(editSubreddit(subredditId, name, description, profilePic, bannerURL))
+        await dispatch(editSubreddit(subredditId, name, description, profilePic, bannerURL))
         .then(() => {
             dispatch(getSingleSR(subredditId))
             dispatch(getOwnedSubreddits(sessionUser.id))

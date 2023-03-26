@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { deleteSubreddit, getAllSR, getOwnedSubreddits } from "../../store/subreddit";
 import { authenticate } from "../../store/session";
 import ghibli from '../../static/transparent-ghibli.png'
@@ -53,12 +53,12 @@ function OwnedSR() {
             <div className="owned-sr-heading-div">
                 <span className="owned-sr-title">threadit for owners.</span>
             </div>
-            <img src={ghibli} className='ghibli-img'/>
+            <img src={ghibli} className='ghibli-img' alt='ghibli-img'/>
             <div className="sr-box-container">
                 {ownedSRArr.map((subreddit, index) => (
-                    <div className="owned-subreddit-box">
+                    <div className="owned-subreddit-box" key={index}>
                         <div className="box-section-sr">
-                            <img className="owned-sr-profile-pic" src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />
+                            <img className="owned-sr-profile-pic" alt='profile-pic' src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />
                             <Link to={`/subreddits/${subreddit.id}`}>
                                 <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
                             </Link>
