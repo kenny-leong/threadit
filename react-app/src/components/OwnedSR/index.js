@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { deleteSubreddit, getAllSR, getOwnedSubreddits } from "../../store/subreddit";
 import { authenticate } from "../../store/session";
-import ghibli from '../../static/transparent-ghibli.png'
-import './OwnedSR.css'
+import ghibli from '../../static/transparent-ghibli.png';
+import UpdateSubreddit from '../UpdateSubreddit';
+import OpenModalButton from '../OpenModalButton';
+import './OwnedSR.css';
 
 
 
@@ -65,7 +67,11 @@ function OwnedSR() {
                             <span className="owned-sr-desc">{subreddit.description}</span>
                         </div>
                         <div className="owned-sr-edit-delete-div">
-                            <button className="update-owned-sr">Update</button>
+                            <OpenModalButton
+                                buttonText={<span className='update-sr-owned'>Update</span>}
+                                modalComponent={<UpdateSubreddit />}
+                                className='update-sr-btn-owned'
+                            />
                             <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
                         </div>
                     </div>
