@@ -35,7 +35,7 @@
 .ghibli-img {
     height: 200px;
     width: 280px;
-    position: fixed;
+    position: absolute;
     left: 460px;
     top: 115px;
 }
