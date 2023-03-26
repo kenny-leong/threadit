@@ -16,7 +16,7 @@ import './SubredditDetails.css';
 function SubredditDetails() {
     const dispatch = useDispatch();
     const { subredditId } = useParams();
-    const { closeModal, setModalContent } = useModal();
+    const { setModalContent } = useModal();
 
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
     const subredditPosts = useSelector(state => state.post.subredditPosts);
