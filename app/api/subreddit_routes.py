@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, session
 from flask_login import login_required, current_user
-from app.models import Subreddit, Post, db
+from app.models import Subreddit, SubredditMember, Post, db
 
 subreddit_routes = Blueprint('subreddits', __name__)
 
@@ -35,6 +35,14 @@ def create_subreddit():
         subreddit.banner_image = data['banner_image']
 
     db.session.add(subreddit)
+
+    subreddit_member = SubredditMember(
+        user = current_user,
+        subreddit = subreddit
+    )
+
+    db.session.add(subreddit_member)
+
     db.session.commit()
 
     return subreddit.to_dict()

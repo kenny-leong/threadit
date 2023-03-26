@@ -1,6 +1,6 @@
 from .db import db
 from .user import User
-from .subreddit import Subreddit
+from .subreddit import Subreddit, SubredditMember
 from .post import Post
 from .comment import Comment
 from .vote import Vote
