@@ -33,7 +33,7 @@ function OwnedSR() {
     return (
         <div className="owned-div">
             <div className="owned-sr-heading-div">
-                <span className="owned-sr-title">Owned Subreddits</span>
+                <span className="owned-sr-title">threadit for owners.</span>
             </div>
             <img src={ghibli} className='ghibli-img'/>
             <div className="sr-box-container">

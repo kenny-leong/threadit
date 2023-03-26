@@ -133,37 +133,55 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-}
-
-.owned-subreddit-li, .my-com-li, .welcome-text {
-    margin-right: 30px;
-    font-family: 'Threadit';
-    font-size: 15px;
-    color: rgb(214, 214, 214);
+    justify-content: center;
 }
 
 .welcome-text {
+    font-family: 'Threadit';
+    color: rgb(214, 214, 214);
+    font-size: 17px;
+    margin-right: 40px;
     cursor: text;
-    padding-right: 10px;
     border-bottom: 1px solid white;
     margin-bottom: 15px;
 }
 
-.dropdown-menu a {
-    text-decoration: none;
-    color: rgb(141, 141, 141);
-    margin-left: 6px;
-}
-
-
-.create-sr-btn-li button {
+.create-subreddit-btn {
     background-color: transparent;
     border: none;
     font-family: 'Threadit';
     font-size: 15px;
     color: rgb(141, 141, 141);
     margin-bottom: 13px;
+
+    width: fit-content;
 }
+
+.owned-subreddit-li {
+    font-family: 'Threadit';
+    font-size: 15px;
+    color: rgb(214, 214, 214);
+
+    width: fit-content;
+}
+
+.my-com-li {
+    margin-right: 30px;
+    font-family: 'Threadit';
+    font-size: 15px;
+    color: rgb(214, 214, 214);
+
+    width: fit-content;
+}
+
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: rgb(141, 141, 141);
+}
+
+
+
 
 .owned-subreddit-li {
     margin-bottom: 13px;

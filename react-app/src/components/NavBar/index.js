@@ -95,7 +95,7 @@ function NavBar() {
 								</li>
 								<li className='owned-subreddit-li'>
 									<Link to='/owned-subreddits'>
-										<span className='owned-subreddit-span'>Owned Subreddits</span>
+										<span className='owned-subreddit-span'>Owned Subthreadits</span>
 									</Link>
 								</li>
 								<li className='my-com-li'>
