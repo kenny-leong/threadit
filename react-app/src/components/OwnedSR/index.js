@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from 'react-router-dom';
-import { deleteSubreddit, getAllSR } from "../../store/subreddit";
+import { deleteSubreddit, getAllSR, getOwnedSubreddits } from "../../store/subreddit";
 import { authenticate } from "../../store/session";
 import ghibli from '../../static/transparent-ghibli.png'
 import './OwnedSR.css'
@@ -17,9 +17,26 @@ function OwnedSR() {
 
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const ownedSubreddits = useSelector(state => state.subreddit.ownedSubreddits);
 
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+
+
+
+    useEffect(() => {
+        dispatch(getOwnedSubreddits(sessionUser.id))
+    }, [dispatch, sessionUser])
+
+
+
+    let ownedSRArr;
+
+    if (ownedSubreddits) {
+        ownedSRArr = Object.values(ownedSubreddits)
+    }
+
+    if (ownedSRArr === undefined) return null;
 
     const handleDelete = async (subredditId) => {
         await dispatch(deleteSubreddit(subredditId))
@@ -30,6 +47,7 @@ function OwnedSR() {
     };
 
 
+
     return (
         <div className="owned-div">
             <div className="owned-sr-heading-div">
@@ -37,7 +55,7 @@ function OwnedSR() {
             </div>
             <img src={ghibli} className='ghibli-img'/>
             <div className="sr-box-container">
-                {sessionUser && sessionUser.owned_subreddits.map((subreddit, index) => (
+                {ownedSRArr.map((subreddit, index) => (
                     <div className="owned-subreddit-box">
                         <div className="box-section-sr">
                             <img className="owned-sr-profile-pic" src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />

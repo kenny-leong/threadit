@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
 import { editSubreddit } from '../../store/subreddit';
-import { getSingleSR } from '../../store/subreddit';
+import { getSingleSR, getOwnedSubreddits } from '../../store/subreddit';
 import './UpdateSubreddit.css'
 
 
@@ -18,7 +18,7 @@ function UpdateSubreddit() {
     const dispatch = useDispatch();
 
 
-
+    const sessionUser = useSelector(state => state.session.user);
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
 
 
@@ -33,10 +33,11 @@ function UpdateSubreddit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(subredditId, name, description, profilePic, bannerURL)
+
         const data = await dispatch(editSubreddit(subredditId, name, description, profilePic, bannerURL))
         .then(() => {
             dispatch(getSingleSR(subredditId))
+            dispatch(getOwnedSubreddits(sessionUser.id))
             closeModal()
         })
     }

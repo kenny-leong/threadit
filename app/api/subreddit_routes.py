@@ -125,3 +125,13 @@ def create_post_in_subreddit(id):
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
+
+
+@subreddit_routes.route('/creator/<int:user_id>')
+@login_required
+def subreddits_by_creator(user_id):
+    """
+    Query for all subreddits created by a specific user id and return them in a list of subreddit dictionaries
+    """
+    subreddits = Subreddit.query.filter_by(creator_id=user_id).all()
+    return {'subreddits': [subreddit.to_dict() for subreddit in subreddits]}

@@ -12,6 +12,11 @@ const loadSingleSR = (subreddit) => ({
     subreddit
 });
 
+const loadOwnedSubreddits = (subreddits) => ({
+    type: 'LOAD_OWNED_SR',
+    subreddits
+})
+
 const addSubreddit = (subreddit) => ({
     type: 'ADD_SUBREDDIT',
     subreddit
@@ -26,6 +31,8 @@ const updateSubreddit = (subreddit) => ({
     type: 'UPDATE_SUBREDDIT',
     subreddit
 });
+
+
 
 
 
@@ -53,6 +60,16 @@ export const getSingleSR = (subredditId) => async (dispatch) => {
     }
 };
 
+
+// GET ALL SUBREDDITS OWNED BY A SPECIFIC USER ID
+export const getOwnedSubreddits = (creatorId) => async (dispatch) => {
+    const res = await fetch(`/api/subreddits/creator/${creatorId}`);
+
+    if (res.ok) {
+        const subreddits = await res.json()
+        dispatch(loadOwnedSubreddits(subreddits));
+    }
+};
 
 
 // CREATE A NEW SUBREDDIT
@@ -109,6 +126,7 @@ export const editSubreddit = (id, name, description, profile_picture, banner_ima
 };
 
 
+
 // DELETE A SUBREDDIT
 export const deleteSubreddit = (subredditId) => async (dispatch) => {
     const res = await fetch(`/api/subreddits/${subredditId}`, {
@@ -119,6 +137,12 @@ export const deleteSubreddit = (subredditId) => async (dispatch) => {
       dispatch(removeSubreddit(subredditId));
     }
 };
+
+
+
+
+
+
 
 
 
@@ -141,6 +165,16 @@ const subredditReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allSubreddits: allSubreddits
+            }
+        case 'LOAD_OWNED_SR':
+            const ownedSubreddits = {};
+            const ownedSRArr = action.subreddits.subreddits;
+            ownedSRArr.forEach(subreddit => {
+                ownedSubreddits[subreddit.id] = subreddit
+            });
+            return {
+                ...state,
+                ownedSubreddits: ownedSubreddits
             }
         case 'LOAD_SINGLE_SR':
             const oneSubreddit = action.subreddit;
