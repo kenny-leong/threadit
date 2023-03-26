@@ -29,7 +29,7 @@ function PostFeed() {
 
     useEffect(() => {
         if (allPosts) setPostArr(Object.values(allPosts))
-    }, [dispatch, allPosts, allSubreddits, allUsers])
+    }, [dispatch, allPosts])
 
 
     if (!postArr || !allSubreddits || !allUsers) return null;

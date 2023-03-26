@@ -36,7 +36,5 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email,
-            'owned_subreddits': [subreddit.to_dict() for subreddit in self.owned_subreddits],
-            'subreddit_memberships': [membership.subreddit.to_dict() for membership in self.subreddit_memberships]
+            'email': self.email
         }

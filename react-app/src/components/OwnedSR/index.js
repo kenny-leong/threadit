@@ -28,7 +28,7 @@ function OwnedSR() {
 
 
     useEffect(() => {
-        dispatch(getOwnedSubreddits(sessionUser.id))
+        if (sessionUser) dispatch(getOwnedSubreddits(sessionUser.id))
     }, [dispatch, sessionUser])
 
 
