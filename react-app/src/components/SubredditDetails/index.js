@@ -6,9 +6,8 @@ import { getSingleSR } from '../../store/subreddit';
 import { getAllUsers } from '../../store/session';
 import bannerImg from '../../static/placeholder-banner.png';
 import { useModal } from "../../context/Modal";
-import CreateSubreddit from '../CreateSubreddit';
 import OpenModalButton from '../OpenModalButton';
-import LoginForm from '../LoginForm'
+import UpdateSubreddit from '../UpdateSubreddit';
 import './SubredditDetails.css';
 
 
@@ -17,10 +16,6 @@ import './SubredditDetails.css';
 function SubredditDetails() {
     const dispatch = useDispatch();
     const { subredditId } = useParams();
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [image_url, setImageUrl] = useState("");
-    const [inputFocused, setInputFocused] = useState(false);
     const { closeModal, setModalContent } = useModal();
 
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
@@ -43,7 +38,7 @@ function SubredditDetails() {
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
     const openModal = () => {
-        setModalContent(<CreateSubreddit />);
+        setModalContent(<UpdateSubreddit originName={subredditDetails.name} originDesc={subredditDetails.description} originProfilePic={subredditDetails.profile_picture} bannerImg={subredditDetails.banner_image}/>);
     };
 
     function getTimeSincePostCreation(createdAt) {
@@ -97,22 +92,12 @@ function SubredditDetails() {
                 type="text"
                 placeholder='Create Post'
                 className='create-post-sr'
-                onBlur={() => setInputFocused(false)}
-                onFocus={() => {
-                    setInputFocused(true);
-                    openModal();
-                }}
+                onFocus={() => {openModal()}}
                 />
-                <div className='img-create-post' onClick={() => {
-                    setInputFocused(true);
-                    openModal();
-                }}>
+                <div className='img-create-post' onClick={() => {openModal()}}>
                     <i class="fa-solid fa-image"></i>
                 </div>
-                <div className='link-create-post' onClick={() => {
-                    setInputFocused(true);
-                    openModal();
-                }}>
+                <div className='link-create-post' onClick={() => {openModal()}}>
                     <i class="fa-solid fa-link"></i>
                 </div>
             </div>
@@ -164,7 +149,7 @@ function SubredditDetails() {
                         <span className='about-community'>About Community</span>
                         <OpenModalButton
                             buttonText={<i class="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<LoginForm />}
+                            modalComponent={<UpdateSubreddit description={subredditDetails.description} profilePic={subredditDetails.profile_picture} bannerImg={subredditDetails.banner_image}/>}
                             className='update-sr-btn'
 						/>
                     </div>
