@@ -229,3 +229,12 @@
 .update-sr-btn:hover {
     color: #b5b5b5;
 }
+
+
+.join-sr-btn.joined {
+    background-color: rgb(0, 168, 176);
+}
+
+.join-sr-btn.joined .fa-check {
+    margin-right: 5px;
+}

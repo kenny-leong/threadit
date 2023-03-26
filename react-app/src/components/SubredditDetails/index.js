@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSubredditPosts } from '../../store/post';
-import { getSingleSR } from '../../store/subreddit';
+import { getSingleSR, getSubredditMembers } from '../../store/subreddit';
 import { getAllUsers } from '../../store/session';
 import bannerImg from '../../static/placeholder-banner.png';
 import { useModal } from "../../context/Modal";
@@ -22,11 +22,14 @@ function SubredditDetails() {
     const subredditPosts = useSelector(state => state.post.subredditPosts);
     const allUsers = useSelector(state => state.session.allUsers)
     const sessionUser = useSelector(state => state.session.user)
+    const subredditMembers = useSelector(state => state.subreddit.subredditMembers)
+
 
 
     useEffect(() => {
         dispatch(getSingleSR(subredditId))
         dispatch(getSubredditPosts(subredditId))
+        dispatch(getSubredditMembers(subredditId))
         dispatch(getAllUsers())
     }, [dispatch, subredditId])
 
@@ -35,6 +38,8 @@ function SubredditDetails() {
 
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
+
+
 
 
 
@@ -85,7 +90,12 @@ function SubredditDetails() {
                         <span className='sr-details-subtitle'>{`r/${subredditDetails.name}`}</span>
                     </div>
                     <div className='join-sr-btn-div'>
-                        <button className='join-sr-btn'>Join</button>
+                        {(!subredditMembers[sessionUser.id]) && (
+                            <button className='join-sr-btn'>Join</button>
+                        )}
+                        {(subredditMembers[sessionUser.id]) && (
+                            <button className='join-sr-btn joined'><i class="fa-solid fa-check"></i>Member</button>
+                        )}
                     </div>
                 </div>
             </div>
