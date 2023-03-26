@@ -21,6 +21,7 @@ function SubredditDetails() {
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
     const subredditPosts = useSelector(state => state.post.subredditPosts);
     const allUsers = useSelector(state => state.session.allUsers)
+    const sessionUser = useSelector(state => state.session.user)
 
 
     useEffect(() => {
@@ -147,11 +148,13 @@ function SubredditDetails() {
                 <div className='details-div'>
                     <div className='abt-com-div'>
                         <span className='about-community'>About Community</span>
-                        <OpenModalButton
-                            buttonText={<i class="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<UpdateSubreddit />}
-                            className='update-sr-btn'
-						/>
+                        {subredditDetails.creator_id === sessionUser.id && (
+                            <OpenModalButton
+                                buttonText={<i class="fa-solid fa-ellipsis"></i>}
+                                modalComponent={<UpdateSubreddit />}
+                                className='update-sr-btn'
+                            />
+                        )}
                     </div>
                     <div className='sr-details-desc-div'>
                         <span className='sr-details-desc'>{subredditDetails.description}</span>
