@@ -82,7 +82,7 @@ export const createSubreddit = (name, description, profile_picture, banner_image
 
 
 // UPDATE AN EXISTING SUBREDDIT
-export const editSubreddit = ({ id, name, description, profile_picture, banner_image }) => async dispatch => {
+export const editSubreddit = (id, name, description, profile_picture, banner_image) => async dispatch => {
     const res = await fetch(`/api/subreddits/${id}`, {
         method: 'PUT',
         headers: {

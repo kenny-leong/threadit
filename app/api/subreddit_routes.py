@@ -62,13 +62,19 @@ def update_subreddit(id):
         return jsonify(message='Invalid subreddit'), 400
 
     data = request.get_json()
-    subreddit.name = data.get('name', subreddit.name)
-    subreddit.description = data.get('description', subreddit.description)
-    subreddit.profile_picture = data.get('profile_picture', subreddit.profile_picture)
-    subreddit.banner_image = data.get('banner_image', subreddit.banner_image)
+
+    if 'description' in data:
+        subreddit.description = data['description']
+
+    if 'profile_picture' in data:
+        subreddit.profile_picture = data['profile_picture']
+
+    if 'banner_image' in data:
+        subreddit.banner_image = data['banner_image']
 
     db.session.commit()
     return subreddit.to_dict()
+
 
 
 

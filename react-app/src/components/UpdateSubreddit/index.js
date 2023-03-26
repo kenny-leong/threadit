@@ -1,36 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from "react-redux";
-import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
-import { createSubreddit, getAllSR } from '../../store/subreddit';
-import { authenticate } from '../../store/session';
+import { editSubreddit } from '../../store/subreddit';
+import { getSingleSR } from '../../store/subreddit';
 import './UpdateSubreddit.css'
 
 
 
-function UpdateSubreddit({ originName, originDesc, originProfilePic, bannerImg }) {
+function UpdateSubreddit() {
 
-    const [name, setName] = useState(originName);
-    const [bannerURL, setBannerURL] = useState(bannerImg);
-    const [profilePic, setProfilePic] = useState(originProfilePic);
-    const [description, setDescription] = useState(originDesc);
+    const [name, setName] = useState("");
+    const [bannerURL, setBannerURL] = useState("");
+    const [profilePic, setProfilePic] = useState("");
+    const [description, setDescription] = useState("");
+    const [subredditId, setSubredditId] = useState(null);
     const { closeModal } = useModal();
     const dispatch = useDispatch();
 
 
 
+    const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
 
+
+    useEffect(() => {
+        if (subredditDetails) setName(subredditDetails.name)
+        if (subredditDetails) setBannerURL(subredditDetails.banner_image)
+        if (subredditDetails) setProfilePic(subredditDetails.profile_picture)
+        if (subredditDetails) setDescription(subredditDetails.description)
+        if (subredditDetails) setSubredditId(subredditDetails.id)
+    }, [dispatch, subredditDetails])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = await dispatch(createSubreddit(name, description))
-            .then(() => {
-                dispatch(getAllSR())
-                dispatch(authenticate())
-                closeModal()
-            })
-
+        console.log(subredditId, name, description, profilePic, bannerURL)
+        const data = await dispatch(editSubreddit(subredditId, name, description, profilePic, bannerURL))
+        .then(() => {
+            dispatch(getSingleSR(subredditId))
+            closeModal()
+        })
     }
 
 
@@ -41,17 +49,39 @@ function UpdateSubreddit({ originName, originDesc, originProfilePic, bannerImg }
                     <span className='create-sr-heading'>Update Subthreadit</span>
                 </div>
                 <div className='create-sr-name-div'>
-                    <span className='create-sr-name'>Banner Image URL</span>
-                    <span className='name-tos'>All banner images are subject to review by Threadit.</span>
+                    <span className='create-sr-name'>Name</span>
+                    <span className='name-tos'>Name may longer be edited after creation.</span>
                 </div>
+                <span className='placeholder-text'>r/</span>
                 <input
                     type="text"
                     value={name}
-                    placeholder='Name'
+                    placeholder='Type Banner URL....'
                     className='sr-input-name'
                     onChange={(e) => setName(e.target.value)}
-                    maxLength={16}
-                    required
+                    disabled
+                />
+                <div className='create-sr-name-div'>
+                    <span className='create-sr-name'>Banner Image URL</span>
+                    <span className='name-tos'>Let others see what you're all about with a banner image. (Optional)</span>
+                </div>
+                <input
+                    type="text"
+                    value={bannerURL}
+                    placeholder='Type Banner URL....'
+                    className='sr-input-name'
+                    onChange={(e) => setBannerURL(e.target.value)}
+                />
+                <div className='create-sr-name-div'>
+                    <span className='create-sr-name'>Profile Picture</span>
+                    <span className='name-tos'>Add some colors to your profile with a profile picture. (Optional)</span>
+                </div>
+                <input
+                    type="text"
+                    value={profilePic}
+                    placeholder='Enter Image URL....'
+                    className='sr-input-name'
+                    onChange={(e) => setProfilePic(e.target.value)}
                 />
                 <div className='create-sr-name-div'>
                     <span className='create-sr-name'>Short Description</span>
@@ -64,49 +94,10 @@ function UpdateSubreddit({ originName, originDesc, originProfilePic, bannerImg }
                     onChange={(e) => setDescription(e.target.value)}
                     maxLength={100}
                 />
-                <p className='create-sr-type'>Community Type</p>
-                <div className="radio-buttons-container">
-                    <input type="radio" id="text" name="channel-type" value="text" checked/>
-                    <div className="radio-button">
-                        <i class="fa-solid fa-user"></i>
-                        <span className="text-radio">Public</span>
-                        <span className="text-radio-desc">Anyone can view, post, and comment to this community</span>
-                    </div>
-                </div>
-                <div className="radio-buttons-container">
-                    <input type="radio" id="text" name="channel-type" value="text" disabled/>
-                    <div className="radio-button">
-                        <i class="fa-solid fa-eye-low-vision"></i>
-                        <span className="text-radio">Restricted</span>
-                        <span className="text-radio-desc">Anyone can view this community, but only approved users can post</span>
-                    </div>
-                </div>
-                <div className="radio-buttons-container">
-                    <input type="radio" id="text" name="channel-type" value="text" disabled/>
-                    <div className="radio-button">
-                        <i class="fa-solid fa-lock"></i>
-                        <span className="text-radio">Private</span>
-                        <span className="text-radio-desc">Only approved users can view and submit to this community</span>
-                    </div>
-                </div>
-                <div className='adult-div'>
-                    <span className='create-sr-type adult'>Adult Content</span>
-                </div>
-                <div className='checkbox-div'>
-                    <input
-                        type="checkbox"
-                        className='checkbox-ele'
-                        readOnly
-                    />
-                    <div className='nsfw-div'>
-                        <span className='nsfw'>NSFW</span>
-                    </div>
-                    <span className='nsfw-num'>18+ year old community</span>
-                </div>
             </div>
             <div className='create-sr-btn-div'>
                 <button className='cancel-sr-btn' onClick={closeModal}>Cancel</button>
-                <button className='create-sr-btn' onClick={handleSubmit} disabled={!name}>Create Community</button>
+                <button className='create-sr-btn' onClick={handleSubmit}>Update Threadit</button>
             </div>
         </div>
     )

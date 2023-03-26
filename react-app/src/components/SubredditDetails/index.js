@@ -38,7 +38,7 @@ function SubredditDetails() {
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
     const openModal = () => {
-        setModalContent(<UpdateSubreddit originName={subredditDetails.name} originDesc={subredditDetails.description} originProfilePic={subredditDetails.profile_picture} bannerImg={subredditDetails.banner_image}/>);
+        setModalContent(<UpdateSubreddit />);
     };
 
     function getTimeSincePostCreation(createdAt) {
@@ -149,7 +149,7 @@ function SubredditDetails() {
                         <span className='about-community'>About Community</span>
                         <OpenModalButton
                             buttonText={<i class="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<UpdateSubreddit description={subredditDetails.description} profilePic={subredditDetails.profile_picture} bannerImg={subredditDetails.banner_image}/>}
+                            modalComponent={<UpdateSubreddit />}
                             className='update-sr-btn'
 						/>
                     </div>
