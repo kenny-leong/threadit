@@ -179,7 +179,6 @@ function SubredditDetails() {
             </div>
         </div>
     )
-
 }
 
 

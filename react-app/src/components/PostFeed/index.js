@@ -43,16 +43,22 @@ function PostFeed() {
         // Convert time difference from milliseconds to minutes and hours
         const timeDiffInMinutes = Math.floor(timeDiffInMs / 60000);
         const timeDiffInHours = Math.floor(timeDiffInMinutes / 60);
+        const timeDiffInDays = Math.floor(timeDiffInHours / 24);
 
         // Get absolute value of timeDiffInHours
         const absTimeDiffInHours = Math.abs(timeDiffInHours);
+        const absTimeDiffInDays = Math.abs(timeDiffInDays)
+
 
         // Return formatted time string
-        if (absTimeDiffInHours > 0) {
-          return `${absTimeDiffInHours} hours`;
-        } else {
-          return `${timeDiffInMinutes} minutes`;
+        if (absTimeDiffInDays > 0) {
+            return `${absTimeDiffInDays} day${absTimeDiffInDays === 1 ? '' : 's'}`;
+        } else if (absTimeDiffInHours > 0) {
+            return `${absTimeDiffInHours} hour${absTimeDiffInHours === 1 ? '' : 's'}`;
         }
+
+        return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
+
     }
 
     return (
