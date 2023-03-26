@@ -27,9 +27,8 @@ const addSubreddit = (subreddit) => ({
     subreddit
 });
 
-const removeSubreddit = (subredditId) => ({
-    type: 'REMOVE_SUBREDDIT',
-    subredditId,
+const removeSubreddit = () => ({
+    type: 'REMOVE_SUBREDDIT'
   });
 
 const updateSubreddit = (subreddit) => ({
@@ -150,9 +149,26 @@ export const deleteSubreddit = (subredditId) => async (dispatch) => {
     });
 
     if (res.ok) {
-      dispatch(removeSubreddit(subredditId));
+      dispatch(removeSubreddit());
     }
 };
+
+//DELETE A SUBREDDIT MEMBER
+export const removeSubredditMember = (subredditId, memberId) => async (dispatch) => {
+    const res = await fetch(`/api/subreddits/${subredditId}/members/${memberId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(removeSubreddit());
+    }
+};
+
+
 
 
 
