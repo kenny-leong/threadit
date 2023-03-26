@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getSubredditPosts } from '../../store/post';
 import { getSingleSR } from '../../store/subreddit';
 import { getAllUsers } from '../../store/session';
-import bannerImg from '../../static/placeholder-banner.png'
+import bannerImg from '../../static/placeholder-banner.png';
 import { useModal } from "../../context/Modal";
 import CreateSubreddit from '../CreateSubreddit';
-import './SubredditDetails.css'
+import OpenModalButton from '../OpenModalButton';
+import LoginForm from '../LoginForm'
+import './SubredditDetails.css';
 
 
 
@@ -69,6 +71,11 @@ function SubredditDetails() {
     }
 
 
+    function formatDate(str) {
+        const date = new Date(str);
+        const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        return formattedDate
+    }
 
     return (
         <div className='subreddit-details-div'>
@@ -115,41 +122,60 @@ function SubredditDetails() {
                     <span className='no-post-msg'>No existing posts. Be the first to post!</span>
                 </div>
             )}
-            <div className='post-feed-div'>
-                {subredditPosts && subredditPostArr.map((post, index) => (
-                    <div className='post-box' key={index}>
-                        <div className='vote-bar'>
-                            <i class="fa-solid fa-angles-up"></i>
-                            <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                            <i class="fa-solid fa-angles-down"></i>
+            <div className='feed-and-details-div'>
+                <div className='post-feed-div'>
+                    {subredditPosts && subredditPostArr.map((post, index) => (
+                        <div className='post-box' key={index}>
+                            <div className='vote-bar'>
+                                <i class="fa-solid fa-angles-up"></i>
+                                <span className='total-votes'>{post.upvotes - post.downvotes}</span>
+                                <i class="fa-solid fa-angles-down"></i>
+                            </div>
+                            <div className='post-content-area'>
+                                <div className='post-header-info'>
+                                    <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
+                                </div>
+                                <span className='feed-post-title'>{post.title}</span>
+                                {(post.image_url) && (
+                                    <div className='feed-post-div'>
+                                        <img className='feed-post-img' src={post.image_url} />
+                                    </div>
+                                )}
+                                <div className='feed-post-comment-bar'>
+                                    <div className='comments-and-text-div'>
+                                        <i class="fa-solid fa-comments"></i>
+                                        <span className='comment-div-text'>5 Comments</span>
+                                    </div>
+                                    <div className='repeat-and-text-div'>
+                                        <i class="fa-solid fa-repeat"></i>
+                                        <span className='comment-div-text'>Share</span>
+                                    </div>
+                                    <div className='bookmark-and-text-div'>
+                                        <i class="fa-regular fa-bookmark"></i>
+                                        <span className='comment-div-text'>Save</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className='post-content-area'>
-                            <div className='post-header-info'>
-                                <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
-                            </div>
-                            <span className='feed-post-title'>{post.title}</span>
-                            {(post.image_url) && (
-                                <div className='feed-post-div'>
-                                    <img className='feed-post-img' src={post.image_url} />
-                                </div>
-                            )}
-                            <div className='feed-post-comment-bar'>
-                                <div className='comments-and-text-div'>
-                                    <i class="fa-solid fa-comments"></i>
-                                    <span className='comment-div-text'>5 Comments</span>
-                                </div>
-                                <div className='repeat-and-text-div'>
-                                    <i class="fa-solid fa-repeat"></i>
-                                    <span className='comment-div-text'>Share</span>
-                                </div>
-                                <div className='bookmark-and-text-div'>
-                                    <i class="fa-regular fa-bookmark"></i>
-                                    <span className='comment-div-text'>Save</span>
-                                </div>
-                            </div>
+                    ))}
+                </div>
+                <div className='details-div'>
+                    <div className='abt-com-div'>
+                        <span className='about-community'>About Community</span>
+                        <OpenModalButton
+                            buttonText={<i class="fa-solid fa-ellipsis"></i>}
+                            modalComponent={<LoginForm />}
+                            className='update-sr-btn'
+						/>
+                    </div>
+                    <div className='sr-details-desc-div'>
+                        <span className='sr-details-desc'>{subredditDetails.description}</span>
+                        <div className='created-at-sr'>
+                            <i class="fa-solid fa-cake-candles"></i>
+                            <span className='created-at-text'>{`Created ${formatDate(subredditDetails.created_at)}`}</span>
                         </div>
                     </div>
-                ))}
+                </div>
             </div>
         </div>
     )

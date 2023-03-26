@@ -156,3 +156,76 @@
 .posted-by.subreddit {
     margin-left: 10px;
 }
+
+.feed-and-details-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.details-div {
+    border: 1px solid rgb(71, 71, 71);
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 25px;
+    width: 300px;
+    background-color: #1A1A1B;
+    height: fit-content;
+    padding-bottom: 100px;
+}
+
+.abt-com-div {
+    margin-top: 15px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-community {
+    color: #818384;
+    font-family: 'Threadit';
+    font-size: 17px;
+    text-decoration: underline;
+}
+
+.sr-details-desc-div {
+    margin-left: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    width: 270px;
+    padding-bottom: 15px;
+}
+
+.sr-details-desc {
+    font-weight: 400;
+    margin-bottom: 30px;
+    font-family: Helvetica;
+    color: #D3D5D7;
+}
+
+.created-at-sr .fa-solid {
+    margin-right: 10px;
+    color: #9c9c9c;
+    font-size: 20px;
+}
+
+.created-at-text {
+    font-family: 'Threadit';
+    color: #6a6a6a;
+}
+
+.update-sr-btn {
+    margin-right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: #818384;
+    cursor: pointer;
+}
+
+.update-sr-btn:hover {
+    color: #b5b5b5;
+}
