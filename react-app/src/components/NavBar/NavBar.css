@@ -127,22 +127,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 250px;
 }
 
-.dropdown-menu ul {
-    list-style: none;
+.nav-dropdown-btns {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
+
 
 .welcome-text {
     font-family: 'Threadit';
     color: rgb(214, 214, 214);
     font-size: 17px;
-    margin-right: 40px;
-    cursor: text;
-    border-bottom: 1px solid white;
+    margin-top: 15px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 15px;
+}
+
+.create-com-div {
+    font-family: 'Threadit';
+    font-size: 15px;
+    color: rgb(214, 214, 214);
     margin-bottom: 15px;
 }
 
@@ -152,26 +159,15 @@
     font-family: 'Threadit';
     font-size: 15px;
     color: rgb(141, 141, 141);
-    margin-bottom: 13px;
-
-    width: fit-content;
 }
 
-.owned-subreddit-li {
+
+
+.owned-subreddit-div, .my-com-div {
     font-family: 'Threadit';
     font-size: 15px;
     color: rgb(214, 214, 214);
-
-    width: fit-content;
-}
-
-.my-com-li {
-    margin-right: 30px;
-    font-family: 'Threadit';
-    font-size: 15px;
-    color: rgb(214, 214, 214);
-
-    width: fit-content;
+    margin-bottom: 15px;
 }
 
 
@@ -180,25 +176,6 @@
     color: rgb(141, 141, 141);
 }
 
-
-
-
-.owned-subreddit-li {
-    margin-bottom: 13px;
-    margin-left: 5px;
-}
-
-.my-com-li {
-    margin-left: 15px;
-}
-
-.create-subreddit-btn:hover {
-    text-decoration: underline;
-}
-
-.dropdown-menu a:hover {
-    text-decoration: underline;
-}
 
 .logout-btn {
     width: 120px;

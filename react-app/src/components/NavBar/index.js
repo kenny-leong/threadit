@@ -84,26 +84,26 @@ function NavBar() {
 					<i className="fas fa-user-circle" />
 					{showDropdown && (
 						<div className='dropdown-menu' ref={dropdownRef}>
-							<ul>
-								<li className='welcome-text'>{`Welcome back, ${sessionUser.username}`}</li>
-								<li className='create-sr-btn-li'>
+							<div className='nav-dropdown-btns'>
+								<span className='welcome-text'>{`Welcome back, ${sessionUser.username}`}</span>
+								<div className='create-com-div'>
 									<OpenModalButton
 										buttonText={<span className='create-subreddit-text'>Create a Community</span>}
 										modalComponent={<CreateSubreddit />}
 										className='create-subreddit-btn'
 									/>
-								</li>
-								<li className='owned-subreddit-li'>
+								</div>
+								<div className='owned-subreddit-div'>
 									<Link to='/owned-subreddits'>
 										<span className='owned-subreddit-span'>Owned Subthreadits</span>
 									</Link>
-								</li>
-								<li className='my-com-li'>
+								</div>
+								<div className='my-com-div'>
 									<Link to='/my-communities'>
 										<span className='my-com-span'>My Communities</span>
 									</Link>
-								</li>
-							</ul>
+								</div>
+							</div>
 							<button onClick={handleLogout} className='logout-btn'>Log out</button>
 						</div>
 					)}
