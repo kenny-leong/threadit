@@ -70,8 +70,8 @@ export const getOwnedSubreddits = (creatorId) => async (dispatch) => {
     const res = await fetch(`/api/subreddits/creator/${creatorId}`);
 
     if (res.ok) {
-        const subredditMembers = await res.json()
-        dispatch(loadSubredditMembers(subredditMembers));
+        const subreddits = await res.json()
+        dispatch(loadOwnedSubreddits(subreddits));
     }
 };
 
@@ -81,11 +81,8 @@ export const getSubredditMembers = (subredditId) => async (dispatch) => {
 
     if (res.ok) {
       const subredditMembers = await res.json();
-      dispatch
+      dispatch(loadSubredditMembers(subredditMembers));
     }
-
-    const data = await res.json();
-    dispatch(loadSubredditMembers(data.subredditMembers));
   };
 
 
@@ -149,7 +146,7 @@ export const deleteSubreddit = (subredditId) => async (dispatch) => {
     });
 
     if (res.ok) {
-      dispatch(removeSubreddit());
+      dispatch(removeSubreddit);
     }
 };
 
@@ -164,7 +161,7 @@ export const removeSubredditMember = (subredditId, memberId) => async (dispatch)
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(removeSubreddit());
+        dispatch(removeSubreddit);
     }
 };
 
