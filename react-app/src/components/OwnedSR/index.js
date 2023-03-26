@@ -6,6 +6,7 @@ import { authenticate } from "../../store/session";
 import ghibli from '../../static/transparent-ghibli.png';
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
+import { getSingleSR } from '../../store/subreddit';
 import './OwnedSR.css';
 
 
@@ -31,14 +32,7 @@ function OwnedSR() {
     }, [dispatch, sessionUser])
 
 
-
-    let ownedSRArr;
-
-    if (ownedSubreddits) {
-        ownedSRArr = Object.values(ownedSubreddits)
-    }
-
-    if (ownedSRArr === undefined) return null;
+    if (ownedSubreddits === undefined) return null;
 
     const handleDelete = async (subredditId) => {
         await dispatch(deleteSubreddit(subredditId))
@@ -49,6 +43,7 @@ function OwnedSR() {
     };
 
 
+    const ownedSRArr = Object.values(ownedSubreddits)
 
     return (
         <div className="owned-div">
@@ -71,6 +66,7 @@ function OwnedSR() {
                                 buttonText={<span className='update-sr-owned'>Update</span>}
                                 modalComponent={<UpdateSubreddit />}
                                 className='update-sr-btn-owned'
+                                onButtonClick={() => dispatch(getSingleSR(subreddit.id))}
                             />
                             <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
                         </div>
