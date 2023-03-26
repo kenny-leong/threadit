@@ -159,9 +159,14 @@
     font-family: 'Threadit';
     font-size: 15px;
     color: rgb(141, 141, 141);
+    cursor: pointer;
 }
 
-
+.create-subreddit-btn:hover,
+.owned-subreddit-span:hover,
+.my-com-span:hover {
+    text-decoration: underline;
+}
 
 .owned-subreddit-div, .my-com-div {
     font-family: 'Threadit';
