@@ -143,3 +143,15 @@ def subreddits_by_creator(user_id):
     """
     subreddits = Subreddit.query.filter_by(creator_id=user_id).all()
     return {'subreddits': [subreddit.to_dict() for subreddit in subreddits]}
+
+
+
+
+@subreddit_routes.route('/<int:subredditId>/members')
+@login_required
+def get_subreddit_members(subredditId):
+    """
+    Query for all subreddit members by taking in a subredditId
+    """
+    subreddit_members = SubredditMember.query.filter_by(subreddit_id=subredditId).all()
+    return {'subreddit_members': [member.to_dict() for member in subreddit_members]}

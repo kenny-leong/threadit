@@ -15,7 +15,12 @@ const loadSingleSR = (subreddit) => ({
 const loadOwnedSubreddits = (subreddits) => ({
     type: 'LOAD_OWNED_SR',
     subreddits
-})
+});
+
+const loadSubredditMembers = (members) => ({
+    type: 'LOAD_MEMBERS',
+    members
+});
 
 const addSubreddit = (subreddit) => ({
     type: 'ADD_SUBREDDIT',
@@ -66,10 +71,23 @@ export const getOwnedSubreddits = (creatorId) => async (dispatch) => {
     const res = await fetch(`/api/subreddits/creator/${creatorId}`);
 
     if (res.ok) {
-        const subreddits = await res.json()
-        dispatch(loadOwnedSubreddits(subreddits));
+        const subredditMembers = await res.json()
+        dispatch(loadSubredditMembers(subredditMembers));
     }
 };
+
+// GET ALL SUBREDDIT MEMBERS THROUGH A SUBREDDIT ID
+export const getSubredditMembers = (subredditId) => async (dispatch) => {
+    const res = await fetch(`/api/subreddits/${subredditId}/members`);
+
+    if (res.ok) {
+      const subredditMembers = await res.json();
+      dispatch
+    }
+
+    const data = await res.json();
+    dispatch(loadSubredditMembers(data.subredditMembers));
+  };
 
 
 // CREATE A NEW SUBREDDIT
@@ -173,6 +191,16 @@ const subredditReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ownedSubreddits: ownedSubreddits
+            }
+        case 'LOAD_MEMBERS':
+            const subredditMembers = {};
+            const memberArr = action.members.subreddit_members;
+            memberArr.forEach(member => {
+                subredditMembers[member.id] = member
+            });
+            return {
+                ...state,
+                subredditMembers: subredditMembers
             }
         case 'LOAD_SINGLE_SR':
             const oneSubreddit = action.subreddit;
