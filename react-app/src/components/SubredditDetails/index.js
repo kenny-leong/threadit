@@ -36,6 +36,8 @@ function SubredditDetails() {
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
 
+
+
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
     const openModal = () => {
@@ -103,7 +105,7 @@ function SubredditDetails() {
                 </div>
             </div>
             <img className='profile-pic-sr-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
-            {(subredditPostArr === undefined) && (
+            {(subredditPostArr === undefined || subredditPostArr.length === 0) && (
                 <div className='no-post-msg-div'>
                     <span className='no-post-msg'>No existing posts. Be the first to post!</span>
                 </div>
