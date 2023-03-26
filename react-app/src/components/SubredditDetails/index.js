@@ -91,7 +91,7 @@ function SubredditDetails() {
                     </div>
                     <div className='join-sr-btn-div'>
                         {(!subredditMembers[sessionUser.id]) && (
-                            <button className='join-sr-btn'>Join</button>
+                            <button className='join-sr-btn'><i class="fa-solid fa-user-plus"></i>Join</button>
                         )}
                         {(subredditMembers[sessionUser.id]) && (
                             <button className='join-sr-btn joined'><i class="fa-solid fa-check"></i>Member</button>

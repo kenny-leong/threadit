@@ -230,6 +230,9 @@
     color: #b5b5b5;
 }
 
+.join-sr-btn .fa-user-plus {
+    margin-right: 7px;
+}
 
 .join-sr-btn.joined {
     background-color: rgb(0, 168, 176);
