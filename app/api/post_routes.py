@@ -20,14 +20,22 @@ def create_post():
     Create a new post with the current user as the author
     """
     data = request.get_json()
+    title = data.get('title')
+    if not title:
+        return jsonify(message='Title is required'), 400
     subreddit_id = data.get('subreddit_id')
     subreddit = Subreddit.query.get(subreddit_id)
     if not subreddit:
         return jsonify(message='Invalid subreddit'), 400
-    post = Post(title=data['title'], content=data['content'], image_url=data['image_url'],subreddit=subreddit, author=current_user)
+    post = Post(title=title, subreddit=subreddit, author=current_user)
+    if 'content' in data:
+        post.content = data['content']
+    if 'image_url' in data:
+        post.image_url = data['image_url']
     db.session.add(post)
     db.session.commit()
     return post.to_dict()
+
 
 @post_routes.route('/<int:id>/comments')
 def post_comments(id):

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal"
 import { createSubreddit, getAllSR } from '../../store/subreddit';
 import { authenticate } from '../../store/session';

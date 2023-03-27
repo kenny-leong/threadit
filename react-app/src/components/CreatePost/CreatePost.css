@@ -1,0 +1,116 @@
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.create-post-component {
+    max-height: 610px;
+    min-height: 550px;
+    width: 550px;
+    background-color: rgb(21, 21, 21);
+    border-radius: 10px;
+    border: green 1px solid;
+}
+
+.create-post-title {
+    font-family: 'Threadit';
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: rgb(180, 180, 180);
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.post-heading-title {
+    margin-left: 10px;
+}
+
+.typeof-post-div {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.typeof-post {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    flex-grow: 1;
+    height: 50px;
+    color: rgb(119, 119, 119);
+    cursor: pointer;
+}
+
+.typeof-post:hover {
+    background-color: rgb(26, 26, 26);;
+}
+
+.typeof-post .fa-comment-dots,
+.typeof-post .fa-image,
+.typeof-post .fa-link {
+    margin-right: 5px;
+}
+
+.typeof-heading {
+    font-family: 'Threadit';
+    font-size: 15px;
+}
+
+.create-post-sr.popup {
+    margin-top: 20px;
+    background-color: rgb(16, 16, 16);
+    color: gray;
+}
+
+.ta-div {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+.sr-textarea-desc.popup {
+    font-size: 14px;
+    height: 210px;
+}
+
+.create-post-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.create-post-btn {
+    margin-right: 25px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Threadit';
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.create-post-btn.cancel {
+    background-color: rgb(51, 51, 51);
+    color: whitesmoke;
+}
+
+.create-post-btn.cancel:hover {
+    background-color: rgba(51, 51, 51, 0.691);
+}
+
+.create-post-btn.post {
+    background-color: rgb(0, 93, 214);
+    color: whitesmoke;
+}
+
+.create-post-btn.post:hover {
+    background-color: rgba(0, 93, 214, 0.801);
+}

@@ -8,6 +8,7 @@ import bannerImg from '../../static/placeholder-banner.png';
 import { useModal } from "../../context/Modal";
 import OpenModalButton from '../OpenModalButton';
 import UpdateSubreddit from '../UpdateSubreddit';
+import CreatePost from '../CreatePost';
 import './SubredditDetails.css';
 
 
@@ -54,7 +55,7 @@ function SubredditDetails() {
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
     const openModal = () => {
-        setModalContent(<UpdateSubreddit />);
+        setModalContent(<CreatePost />);
     };
 
     function getTimeSincePostCreation(createdAt) {
@@ -81,7 +82,7 @@ function SubredditDetails() {
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
-    console.log(subredditMembers)
+
 
     function formatDate(str) {
         const date = new Date(str);
