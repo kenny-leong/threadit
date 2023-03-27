@@ -41,7 +41,7 @@ function SubredditDetails() {
 
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
-    subredditPostArr.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    if (subredditPostArr) subredditPostArr.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
 
     let subredditMemberArr;
@@ -61,6 +61,7 @@ function SubredditDetails() {
 
     function getTimeSincePostCreation(createdAt) {
         const postCreatedAt = new Date(createdAt);
+        postCreatedAt.setHours(postCreatedAt.getHours() - 4);
         const now = new Date();
         const timeDiffInMs = now.getTime() - postCreatedAt.getTime();
 

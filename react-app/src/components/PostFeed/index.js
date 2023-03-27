@@ -38,6 +38,7 @@ function PostFeed() {
 
     function getTimeSincePostCreation(createdAt) {
         const postCreatedAt = new Date(createdAt);
+        postCreatedAt.setHours(postCreatedAt.getHours() - 4);
         const now = new Date();
         const timeDiffInMs = now.getTime() - postCreatedAt.getTime();
 
@@ -46,13 +47,13 @@ function PostFeed() {
         const timeDiffInHours = Math.floor(timeDiffInMinutes / 60);
         const timeDiffInDays = Math.floor(timeDiffInHours / 24);
 
+
         // Get absolute value of timeDiffInHours
         const absTimeDiffInHours = Math.abs(timeDiffInHours);
         const absTimeDiffInDays = Math.abs(timeDiffInDays)
 
-
         // Return formatted time string
-        if (absTimeDiffInDays > 0) {
+        if (absTimeDiffInDays >= 1) {
             return `${absTimeDiffInDays} day${absTimeDiffInDays === 1 ? '' : 's'}`;
         } else if (absTimeDiffInHours > 0) {
             return `${absTimeDiffInHours} hour${absTimeDiffInHours === 1 ? '' : 's'}`;
