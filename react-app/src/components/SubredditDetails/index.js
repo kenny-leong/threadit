@@ -29,12 +29,15 @@ function SubredditDetails() {
     useEffect(() => {
         dispatch(getSingleSR(subredditId))
         dispatch(getSubredditPosts(subredditId))
-        dispatch(getSubredditMembers(subredditId))
+        if (sessionUser) dispatch(getSubredditMembers(subredditId))
         dispatch(getAllUsers())
     }, [dispatch, subredditId])
 
 
-    if (!subredditDetails || !allUsers || !subredditMembers) return null;
+    if (!subredditDetails || !allUsers) return null;
+
+    if ((sessionUser && (!subredditMembers))) return null
+
 
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);

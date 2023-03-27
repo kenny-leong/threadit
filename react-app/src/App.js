@@ -40,7 +40,7 @@ function App() {
         </Route>
       </Switch>
     )}
-      {isLoaded && (
+      {isLoaded && sessionUser && (
         <>
           <Switch>
             <Route path='/home'>
