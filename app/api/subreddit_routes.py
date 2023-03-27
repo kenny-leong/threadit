@@ -157,13 +157,13 @@ def get_subreddit_members(subredditId):
     return {'subreddit_members': [member.to_dict() for member in subreddit_members]}
 
 
-@subreddit_routes.route('/members/<int:id>', methods=['DELETE'])
+@subreddit_routes.route('/<int:subreddit_id>/members/<int:user_id>', methods=['DELETE'])
 @login_required
-def delete_subreddit_member(id):
+def delete_subreddit_member(subreddit_id, user_id):
     """
-    Delete a subreddit member by id
+    Delete a subreddit member by user_id and subreddit_id
     """
-    member = SubredditMember.query.get(id)
+    member = SubredditMember.query.filter_by(user_id=user_id, subreddit_id=subreddit_id).first()
     if not member:
         return jsonify(message='Subreddit member not found'), 404
     if member.user != current_user:

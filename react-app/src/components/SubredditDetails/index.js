@@ -65,12 +65,12 @@ function SubredditDetails() {
 
         // Return formatted time string
         if (absTimeDiffInDays > 0) {
-            return `${absTimeDiffInDays} days`
+            return `${absTimeDiffInDays} day${absTimeDiffInDays === 1 ? '' : 's'}`;
         } else if (absTimeDiffInHours > 0) {
-            return `${absTimeDiffInHours} hours`;
+            return `${absTimeDiffInHours} hour${absTimeDiffInHours === 1 ? '' : 's'}`;
         }
 
-        return `${timeDiffInMinutes} minutes`;
+        return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
 
