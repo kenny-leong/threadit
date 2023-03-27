@@ -14,8 +14,6 @@ import SubredditDetails from "./components/SubredditDetails";
 function App() {
 
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
-
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,6 +22,7 @@ function App() {
 
   return (
     <>
+    {(!isLoaded) && (
       <Switch>
         <Route exact path="/">
           <NavBar />
@@ -38,6 +37,7 @@ function App() {
           <SubredditDetails />
         </Route>
       </Switch>
+    )}
       {isLoaded && (
         <>
           <Switch>
