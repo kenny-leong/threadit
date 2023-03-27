@@ -72,7 +72,7 @@ function PostFeed() {
                         <i class="fa-solid fa-angles-down"></i>
                     </div>
                     <div className='post-content-area'>
-                        <div className='post-header-info'>
+                        <div className='post-header-information'>
                             <Link to={`subreddits/${post.subreddit_id}`}>
                                 <span className='subreddit-for-post'>{`r/${allSubreddits[post.subreddit_id].name}`}</span>
                             </Link>

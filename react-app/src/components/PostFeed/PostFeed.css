@@ -73,7 +73,7 @@
     margin-left: 6px;
 }
 
-.post-header-info a {
+.post-header-information a {
     text-decoration: none;
 }
 
@@ -82,13 +82,13 @@
     cursor: pointer;
 }
 
-.post-header-info {
+.post-header-information {
     padding-top: 10px;
     display: flex;
     align-items: center;
 }
 
-.post-header-info .fa-circle {
+.post-header-information .fa-circle {
     font-size: 2px;
     color: rgb(143, 143, 143);
     margin-left: 4px;
