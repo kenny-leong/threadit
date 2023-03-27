@@ -51,9 +51,16 @@ function NavBar() {
 
 	return (
 		<div className='nav-bar-container'>
-			<Link to='/'>
-				<img className='logo' src={logo} alt='logo' />
-			</Link>
+			{sessionUser && (
+				<Link to='/home'>
+					<img className='logo' src={logo} alt='logo' />
+				</Link>
+			)}
+			{(!sessionUser) && (
+				<Link to='/'>
+					<img className='logo' src={logo} alt='logo' />
+				</Link>
+			)}
 			<input
 				className="nav-search-bar"
 				type="text"

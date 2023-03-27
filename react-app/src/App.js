@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
@@ -12,25 +12,31 @@ import SubredditDetails from "./components/SubredditDetails";
 
 
 function App() {
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
+
+
 
   return (
     <>
-      <Switch>
-        <Route exact path="/">
-          <NavBar />
-          <FeedSideBar />
-          <TrendBar />
-          <PostFeed />
-          <CommunitySection />
-        </Route>
-      </Switch>
-      {isLoaded && (
+      {(!sessionUser) && (
+        <Switch>
+          <Route exact path="/">
+            <NavBar />
+            <FeedSideBar />
+            <TrendBar />
+            <PostFeed />
+            <CommunitySection />
+          </Route>
+          <Route path='/subreddits/:subredditId'>
+            <NavBar />
+            <FeedSideBar />
+            <SubredditDetails />
+          </Route>
+        </Switch>
+      )}
+      {sessionUser && (
         <>
           <Switch>
             <Route path='/home'>

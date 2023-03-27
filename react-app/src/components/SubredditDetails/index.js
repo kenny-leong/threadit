@@ -90,10 +90,10 @@ function SubredditDetails() {
                         <span className='sr-details-subtitle'>{`r/${subredditDetails.name}`}</span>
                     </div>
                     <div className='join-sr-btn-div'>
-                        {(!subredditMembers[sessionUser.id]) && (
+                        {(sessionUser) && (!subredditMembers[sessionUser.id]) && (
                             <button className='join-sr-btn'><i class="fa-solid fa-user-plus"></i>Join</button>
                         )}
-                        {(subredditMembers[sessionUser.id]) && (
+                        {(sessionUser) && (subredditMembers[sessionUser.id]) && (
                             <button className='join-sr-btn joined'><i class="fa-solid fa-check"></i>Member</button>
                         )}
                     </div>
@@ -160,7 +160,7 @@ function SubredditDetails() {
                 <div className='details-div'>
                     <div className='abt-com-div'>
                         <span className='about-community'>About Community</span>
-                        {subredditDetails.creator_id === sessionUser.id && (
+                        {(sessionUser) && (subredditDetails.creator_id === sessionUser.id) && (
                             <OpenModalButton
                                 buttonText={<i class="fa-solid fa-ellipsis"></i>}
                                 modalComponent={<UpdateSubreddit />}
