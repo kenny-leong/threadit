@@ -114,3 +114,7 @@
 .create-post-btn.post:hover {
     background-color: rgba(0, 93, 214, 0.801);
 }
+
+.typeof-post.post {
+    background-color: rgba(110, 110, 110, 0.193);
+}
