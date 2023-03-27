@@ -79,7 +79,7 @@
 .placeholder-text {
     font-size: 20px;
     color: rgb(124, 124, 124);
-    position: fixed;
+    position: absolute;
     margin-top: 6px;
     margin-left: 10px;
     font-family: 'Threadit';
