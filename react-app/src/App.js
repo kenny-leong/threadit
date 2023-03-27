@@ -15,6 +15,8 @@ function App() {
 
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector(state => state.session.user)
+
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
@@ -22,7 +24,7 @@ function App() {
 
   return (
     <>
-    {(!isLoaded) && (
+    {(!sessionUser) && (
       <Switch>
         <Route exact path="/">
           <NavBar />
