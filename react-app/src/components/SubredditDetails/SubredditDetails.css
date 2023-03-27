@@ -279,7 +279,6 @@
 }
 
 .post-header-info {
-    border: 1px solid green;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -298,7 +297,7 @@
 
 .edit-post-btn-container,
 .delete-post-btn-container {
-    margin-right: 15px;
+    margin-right: 10px;
     color: #6a6a6a;
     padding: 5px;
     border-radius: 10px;

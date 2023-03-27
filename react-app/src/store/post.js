@@ -21,9 +21,8 @@ const editPost = (post) => ({
     post
 });
 
-const deletePost = (postId) => ({
-    type: 'DELETE_POST',
-    postId
+const removePost = (postId) => ({
+    type: 'DELETE_POST'
 });
 
 
@@ -105,7 +104,7 @@ export const editExistingPost = (postId, title, content, image_url) => async (di
 
 
 // DELETE AN EXISTING POST
-export const deleteExistingPost = (postId) => async (dispatch) => {
+export const deletePost = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${postId}`, {
       method: 'DELETE',
       headers: {
@@ -115,13 +114,8 @@ export const deleteExistingPost = (postId) => async (dispatch) => {
 
     if (res.ok) {
       const message = await res.json();
-      dispatch(deletePost(postId));
+      dispatch(removePost(postId));
       return message;
-    } else if (res.status < 500) {
-      const data = await res.json();
-      if (data.errors) return data.errors;
-    } else {
-      return ['An error occurred. Please try again.'];
     }
 };
 

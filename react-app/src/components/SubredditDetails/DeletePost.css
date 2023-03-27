@@ -1,0 +1,54 @@
+
+@font-face {
+    font-family: 'Threadit';
+    src: url('../../static/rocko-flf.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.delete-post-modal {
+    height: 180px;
+    width: 550px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(21, 21, 21);
+    border-radius: 10px;
+    border: black 1px solid;
+}
+
+
+.confirm-delete-post {
+    color: aliceblue;
+    font-family: 'Threadit';
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.cancel-delete.popup {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.cancel-delete.popup button {
+    border: none;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    font-family: 'Threadit';
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+.post-cancel-button-popup {
+    background-color: gray;
+}
+
+.delete-btn-post.popup {
+    background-color: rgb(106, 0, 0);
+}

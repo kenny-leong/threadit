@@ -9,6 +9,7 @@ import { useModal } from "../../context/Modal";
 import OpenModalButton from '../OpenModalButton';
 import UpdateSubreddit from '../UpdateSubreddit';
 import CreatePost from '../CreatePost';
+import DeletePost from './DeletePost';
 import './SubredditDetails.css';
 
 
@@ -17,7 +18,7 @@ import './SubredditDetails.css';
 function SubredditDetails() {
     const dispatch = useDispatch();
     const { subredditId } = useParams();
-    const { setModalContent } = useModal();
+    const { setModalContent, closeModal } = useModal();
 
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
     const subredditPosts = useSelector(state => state.post.subredditPosts);
@@ -87,13 +88,24 @@ function SubredditDetails() {
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
-
-
     function formatDate(str) {
         const date = new Date(str);
         const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
         return formattedDate
     }
+
+
+    const openDeleteModal = (postId) => {
+        setModalContent(<DeletePost postId={postId}/>);
+    };
+
+
+
+
+
+
+
+
 
     return (
         <div className='subreddit-details-div'>
@@ -117,7 +129,7 @@ function SubredditDetails() {
                     </div>
                 </div>
             </div>
-            {(subredditMembers[sessionUser.id]) && (
+            {sessionUser && (subredditMembers[sessionUser.id]) && (
                 <div className='create-post-div'>
                     <img className='posting-profile-pic-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
                     <input
@@ -152,14 +164,16 @@ function SubredditDetails() {
                             <div className='post-content-area'>
                                 <div className='post-header-info'>
                                     <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
-                                    <div className='edit-delete-divs-post'>
-                                        <div className='edit-post-btn-container'>
-                                            <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
+                                    {post.author_id === sessionUser.id && (
+                                        <div className='edit-delete-divs-post'>
+                                            <div className='edit-post-btn-container'>
+                                                <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
+                                            </div>
+                                            <div className='delete-post-btn-container' onClick={() => openDeleteModal(post.id)}>
+                                                <span><i class="fa-solid fa-trash-can"></i></span>
+                                            </div>
                                         </div>
-                                        <div className='delete-post-btn-container'>
-                                            <span><i class="fa-solid fa-trash-can"></i></span>
-                                        </div>
-                                    </div>
+                                    )}
                                 </div>
                                 <span className='feed-post-title'>{post.title}</span>
                                 {(post.image_url) && (

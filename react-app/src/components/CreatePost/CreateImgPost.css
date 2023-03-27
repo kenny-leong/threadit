@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-.create-post-component {
+.create-post-component.img {
     max-height: 610px;
     min-height: 350px;
     width: 550px;
