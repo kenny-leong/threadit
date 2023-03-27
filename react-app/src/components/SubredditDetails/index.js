@@ -22,7 +22,7 @@ function SubredditDetails() {
     const subredditPosts = useSelector(state => state.post.subredditPosts);
     const allUsers = useSelector(state => state.session.allUsers)
     const sessionUser = useSelector(state => state.session.user)
-    const subredditMembers = useSelector(state => state.subreddit.subredditMembers)
+    let subredditMembers = useSelector(state => state.subreddit.subredditMembers)
 
 
 
@@ -43,6 +43,13 @@ function SubredditDetails() {
 
     let subredditMemberArr;
     if (subredditMembers) subredditMemberArr = Object.values(subredditMembers);
+    subredditMembers = {};
+
+    subredditMemberArr.forEach(member => {
+        subredditMembers[member.user_id] = member
+    });
+
+
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
@@ -74,7 +81,7 @@ function SubredditDetails() {
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
-    console.log(allUsers[subredditDetails.creator_id])
+    console.log(subredditMembers)
 
     function formatDate(str) {
         const date = new Date(str);
