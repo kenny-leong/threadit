@@ -152,6 +152,14 @@ function SubredditDetails() {
                             <div className='post-content-area'>
                                 <div className='post-header-info'>
                                     <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
+                                    <div className='edit-delete-divs-post'>
+                                        <div className='edit-post-btn-container'>
+                                            <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
+                                        </div>
+                                        <div className='delete-post-btn-container'>
+                                            <span><i class="fa-solid fa-trash-can"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <span className='feed-post-title'>{post.title}</span>
                                 {(post.image_url) && (

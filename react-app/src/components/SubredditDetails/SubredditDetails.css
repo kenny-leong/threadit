@@ -277,3 +277,36 @@
     font-family: 'Threadit';
     font-size: 14px;
 }
+
+.post-header-info {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.edit-delete-divs-post,
+.edit-post-btn-container,
+.delete-post-btn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-post-btn-container,
+.delete-post-btn-container {
+    margin-right: 15px;
+    color: #6a6a6a;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.edit-post-btn-container:hover,
+.delete-post-btn-container:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}

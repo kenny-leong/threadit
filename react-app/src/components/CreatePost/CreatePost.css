@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-.create-post-component {
+.create-post-component.text {
     height: 550px;
     width: 550px;
     background-color: rgb(21, 21, 21);
