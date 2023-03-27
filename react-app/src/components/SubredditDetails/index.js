@@ -35,16 +35,14 @@ function SubredditDetails() {
 
 
     if (!subredditDetails || !allUsers) return null;
-
     if ((sessionUser && (!subredditMembers))) return null
 
 
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
 
-
-
-
+    let subredditMemberArr;
+    if (subredditMembers) subredditMemberArr = Object.values(subredditMembers);
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
@@ -76,6 +74,7 @@ function SubredditDetails() {
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
+    console.log(allUsers[subredditDetails.creator_id])
 
     function formatDate(str) {
         const date = new Date(str);
@@ -180,6 +179,12 @@ function SubredditDetails() {
                             <i class="fa-solid fa-cake-candles"></i>
                             <span className='created-at-text'>{`Created ${formatDate(subredditDetails.created_at)}`}</span>
                         </div>
+                    </div>
+                    <div className='sr-member-div'>
+                        <span className='members-text'>{subredditMemberArr.length === 1 ? `${subredditMemberArr.length} Member` : `${subredditMemberArr.length} Members`}</span>
+                    </div>
+                    <div className='moderated-by-div'>
+                        <span className='moderator-text'>{`Moderated by r/${allUsers[subredditDetails.creator_id].username}`}</span>
                     </div>
                 </div>
             </div>
