@@ -75,6 +75,15 @@
     background-color: #0066aa;
 }
 
+.join-sr-btn.creator {
+    background-color: rgba(0, 44, 147, 0.892);
+}
+
+.join-sr-btn-div .fa-award {
+    color: #fee100;
+    margin-right: 5px;
+}
+
 .create-post-div {
     border: 1px rgb(57, 57, 57) solid;
     border-radius: 10px;

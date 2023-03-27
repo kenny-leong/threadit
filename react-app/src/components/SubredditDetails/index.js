@@ -93,8 +93,11 @@ function SubredditDetails() {
                         {(sessionUser) && (!subredditMembers[sessionUser.id]) && (
                             <button className='join-sr-btn'><i class="fa-solid fa-user-plus"></i>Join</button>
                         )}
-                        {(sessionUser) && (subredditMembers[sessionUser.id]) && (
+                        {(sessionUser) && (subredditDetails.creator_id !== sessionUser.id) && (subredditMembers[sessionUser.id]) && (
                             <button className='join-sr-btn joined'><i class="fa-solid fa-check"></i>Member</button>
+                        )}
+                        {(sessionUser) && (subredditDetails.creator_id === sessionUser.id) && (
+                            <button className='join-sr-btn creator'><i class="fa-solid fa-award"></i>Owner</button>
                         )}
                     </div>
                 </div>
