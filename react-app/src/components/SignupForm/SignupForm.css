@@ -14,6 +14,9 @@
     flex-direction: column;
     background-color: rgb(21, 21, 21);
     border-radius: 10px;
+    position: fixed;
+    left: 35%;
+    top: 120px;
 }
 
 .signup-headings {
