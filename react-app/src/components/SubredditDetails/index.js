@@ -41,6 +41,8 @@ function SubredditDetails() {
 
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
+    subredditPostArr.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
 
     let subredditMemberArr;
     if (subredditMembers) subredditMemberArr = Object.values(subredditMembers);
@@ -49,7 +51,6 @@ function SubredditDetails() {
     subredditMemberArr.forEach(member => {
         subredditMembers[member.user_id] = member
     });
-
 
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
