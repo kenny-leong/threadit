@@ -16,27 +16,29 @@ function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  useEffect(() => {
+    dispatch(authenticate()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
   return (
     <>
-      {(!sessionUser) && (
-        <Switch>
-          <Route exact path="/">
-            <NavBar />
-            <FeedSideBar />
-            <TrendBar />
-            <PostFeed />
-            <CommunitySection />
-          </Route>
-          <Route path='/subreddits/:subredditId'>
-            <NavBar />
-            <FeedSideBar />
-            <SubredditDetails />
-          </Route>
-        </Switch>
-      )}
-      {sessionUser && (
+      <Switch>
+        <Route exact path="/">
+          <NavBar />
+          <FeedSideBar />
+          <TrendBar />
+          <PostFeed />
+          <CommunitySection />
+        </Route>
+        <Route path='/subreddits/:subredditId'>
+          <NavBar />
+          <FeedSideBar />
+          <SubredditDetails />
+        </Route>
+      </Switch>
+      {isLoaded && (
         <>
           <Switch>
             <Route path='/home'>

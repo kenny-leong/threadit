@@ -34,7 +34,7 @@ function SubredditDetails() {
     }, [dispatch, subredditId])
 
 
-    if (!subredditDetails || !allUsers) return null;
+    if (!subredditDetails || !allUsers || !subredditMembers) return null;
 
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
