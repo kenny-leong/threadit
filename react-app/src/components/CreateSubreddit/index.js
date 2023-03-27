@@ -50,7 +50,7 @@ function CreateSubreddit() {
                     type="text"
                     value={name}
                     placeholder='Name'
-                    className='sr-input-name'
+                    className='sr-input-name name'
                     onChange={(e) => setName(e.target.value)}
                     maxLength={16}
                     required
