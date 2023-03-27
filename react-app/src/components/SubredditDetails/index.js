@@ -117,21 +117,23 @@ function SubredditDetails() {
                     </div>
                 </div>
             </div>
-            <div className='create-post-div'>
-                <img className='posting-profile-pic-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
-                <input
-                type="text"
-                placeholder='Create Post'
-                className='create-post-sr'
-                onFocus={() => {openModal()}}
-                />
-                <div className='img-create-post' onClick={() => {openModal()}}>
-                    <i class="fa-solid fa-image"></i>
+            {(subredditMembers[sessionUser.id]) && (
+                <div className='create-post-div'>
+                    <img className='posting-profile-pic-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
+                    <input
+                    type="text"
+                    placeholder='Create Post'
+                    className='create-post-sr'
+                    onFocus={() => {openModal()}}
+                    />
+                    <div className='img-create-post' onClick={() => {openModal()}}>
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div className='link-create-post' onClick={() => {openModal()}}>
+                        <i class="fa-solid fa-link"></i>
+                    </div>
                 </div>
-                <div className='link-create-post' onClick={() => {openModal()}}>
-                    <i class="fa-solid fa-link"></i>
-                </div>
-            </div>
+            )}
             <img className='profile-pic-sr-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
             {(subredditPostArr === undefined || subredditPostArr.length === 0) && (
                 <div className='no-post-msg-div'>
