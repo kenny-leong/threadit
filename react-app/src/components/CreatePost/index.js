@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { getSingleSR } from '../../store/subreddit';
-import { createPost } from '../../store/post';
+import { createPost, getSubredditPosts } from '../../store/post';
 import './CreatePost.css';
 
 
@@ -24,7 +23,7 @@ function CreatePost() {
 
         await dispatch(createPost(title, textContent, subredditDetails.id, imageURL))
         .then(() => {
-            dispatch(getSingleSR(subredditDetails.id));
+            dispatch(getSubredditPosts(subredditDetails.id));
             closeModal();
         })
     }
