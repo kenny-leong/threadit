@@ -28,7 +28,6 @@ function PostFeed() {
 
 
     if (!allPosts || !allSubreddits || !allUsers) {
-        console.log('hit null statement')
         return null
     }
 
