@@ -53,7 +53,7 @@ function UpdateSubreddit() {
                     <span className='create-sr-name'>Name</span>
                     <span className='name-tos'>Name may longer be edited after creation.</span>
                 </div>
-                <span className='placeholder-text'>r/</span>
+                <span className='placeholder-update'>r/</span>
                 <input
                     type="text"
                     value={name}

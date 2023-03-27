@@ -7,7 +7,7 @@
 }
 
 .update-sr-div {
-    height: 710px;
+    max-height: 610px;
     width: 550px;
     display: flex;
     flex-direction: column;
@@ -15,4 +15,18 @@
     background-color: rgb(21, 21, 21);
     border-radius: 10px;
     border: black 1px solid;
+    position: fixed;
+    left: 430px;
+    top: 100px;
+    overflow-y: auto;
+}
+
+
+.placeholder-update {
+    font-size: 20px;
+    color: rgb(124, 124, 124);
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 10px;
+    font-family: 'Threadit';
 }
