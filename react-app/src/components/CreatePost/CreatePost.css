@@ -119,3 +119,12 @@
     background-color: rgba(110, 110, 110, 0.193);
     border-bottom: 2px white solid;
 }
+
+.typeof-post.link {
+    cursor: not-allowed;
+}
+
+.create-post-btn.post:disabled {
+    background-color: rgb(57, 57, 57);
+    cursor: not-allowed;
+}

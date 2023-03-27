@@ -7,8 +7,9 @@
 }
 
 .create-post-component {
+    max-height: 610px;
+    min-height: 350px;
     width: 550px;
-    height: 400px;
     background-color: rgb(21, 21, 21);
     border-radius: 10px;
     border: green 1px solid;
@@ -117,4 +118,13 @@
 .typeof-post.image {
     background-color: rgba(110, 110, 110, 0.193);
     border-bottom: 2px white solid;
+}
+
+.typeof-post.link {
+    cursor: not-allowed;
+}
+
+.create-post-btn.post:disabled {
+    background-color: rgb(40, 40, 40);
+    cursor: not-allowed;
 }

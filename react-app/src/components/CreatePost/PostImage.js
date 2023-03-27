@@ -72,7 +72,7 @@ function CreatePostImage() {
             />
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0 || imageURL.length === 0}>Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0 || imageURL.length < 8}>Post</button>
             </div>
         </div>
     )
