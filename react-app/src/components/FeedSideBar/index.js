@@ -15,12 +15,22 @@ function FeedSideBar() {
         <div className='feed-bar-div'>
             <div className='feed-margin-div'>
                 <span className='feeds-text'>FEEDS</span>
-                <Link to='/home'>
-                    <div className='home-channel-div'>
-                        <span><i class="fa-solid fa-house"></i></span>
-                        <span className='home-channel-text'>Home</span>
-                    </div>
-                </Link>
+                {sessionUser && (
+                    <Link to='/home'>
+                        <div className='home-channel-div'>
+                            <span><i class="fa-solid fa-house"></i></span>
+                            <span className='home-channel-text'>Home</span>
+                        </div>
+                    </Link>
+                )}
+                {(!sessionUser) && (
+                    <Link to='/'>
+                        <div className='home-channel-div'>
+                            <span><i class="fa-solid fa-house"></i></span>
+                            <span className='home-channel-text'>Home</span>
+                        </div>
+                    </Link>
+                )}
                 <div className='popular-channel-div'>
                     <span><i class="fa-solid fa-arrow-trend-up"></i></span>
                     <span className='popular-channel-text'>Popular</span>
