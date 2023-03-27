@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 45f5a90fa776
-Revises: 
+Revises:
 Create Date: 2023-03-27 15:26:11.499272
 
 """
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '45f5a90fa776'
+revision = '215504afa223'
 down_revision = None
 branch_labels = None
 depends_on = None

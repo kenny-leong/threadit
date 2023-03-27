@@ -36,14 +36,14 @@ function CreatePostImage() {
 
 
     return (
-        <div className='create-post-component'>
+        <div className='create-post-component img'>
             <div className='create-post-title'>
                 <span className='post-heading-title'>Create a Post</span>
             </div>
             <div className='typeof-post-div'>
                 <div className='typeof-post' onClick={openModal}>
                     <i class="fa-solid fa-comment-dots"></i>
-                    <span className='typeof-heading'>Post</span>
+                    <span className='typeof-heading'>Text</span>
                 </div>
                 <div className='typeof-post image'>
                     <i class="fa-solid fa-image"></i>
