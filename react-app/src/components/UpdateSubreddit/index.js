@@ -58,7 +58,7 @@ function UpdateSubreddit() {
                     type="text"
                     value={name}
                     placeholder='Type Banner URL....'
-                    className='sr-input-name'
+                    className='sr-input-name name'
                     onChange={(e) => setName(e.target.value)}
                     disabled
                 />

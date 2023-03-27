@@ -60,13 +60,25 @@
     margin-bottom: 20px;
 }
 
-.sr-input-name {
+.sr-input-name.name {
     width: 474px;
     border: 1px solid black;
     height: 35px;
     border-radius: 5px;
     background-color: rgb(14, 14, 14);
     padding-left: 30px;
+    font-size: 18px;
+    color: rgb(124, 124, 124);
+    margin-bottom: 15px;
+}
+
+.sr-input-name {
+    width: 474px;
+    border: 1px solid black;
+    height: 35px;
+    border-radius: 5px;
+    background-color: rgb(14, 14, 14);
+    padding-left: 15px;
     font-size: 18px;
     color: rgb(124, 124, 124);
     margin-bottom: 15px;
