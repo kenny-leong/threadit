@@ -72,7 +72,7 @@ function CreatePost() {
             </div>
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleSubmit}>Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0}>Post</button>
             </div>
         </div>
     )
