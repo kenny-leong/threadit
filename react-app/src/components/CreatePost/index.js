@@ -35,7 +35,6 @@ function CreatePost() {
     };
 
 
-
     return (
         <div className='create-post-component'>
             <div className='create-post-title'>
@@ -46,7 +45,7 @@ function CreatePost() {
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Post</span>
                 </div>
-                <div className='typeof-post image' onClick={openModal}>
+                <div className='typeof-post' onClick={openModal}>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
@@ -61,6 +60,7 @@ function CreatePost() {
                 placeholder='Title'
                 onChange={(e) => setTitle(e.target.value)}
                 className='create-post-sr popup'
+                required
             />
             <div className='ta-div'>
                 <textarea

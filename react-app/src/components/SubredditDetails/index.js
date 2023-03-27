@@ -45,12 +45,15 @@ function SubredditDetails() {
 
 
     let subredditMemberArr;
-    if (subredditMembers) subredditMemberArr = Object.values(subredditMembers);
-    subredditMembers = {};
+    if (subredditMembers) {
+        subredditMemberArr = Object.values(subredditMembers);
 
-    subredditMemberArr.forEach(member => {
-        subredditMembers[member.user_id] = member
-    });
+        subredditMembers = {};
+
+        subredditMemberArr.forEach(member => {
+            subredditMembers[member.user_id] = member
+        });
+    }
 
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'

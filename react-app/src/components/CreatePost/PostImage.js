@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CreatePost from '.';
 import { useModal } from "../../context/Modal";
 import { createPost, getSubredditPosts } from '../../store/post';
-import './CreatePost.css';
+import './CreateImgPost.css';
 
 
 
@@ -41,7 +41,7 @@ function CreatePostImage() {
                 <span className='post-heading-title'>Create a Post</span>
             </div>
             <div className='typeof-post-div'>
-                <div className='typeof-post post' onClick={openModal}>
+                <div className='typeof-post' onClick={openModal}>
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Post</span>
                 </div>
@@ -60,10 +60,19 @@ function CreatePostImage() {
                 placeholder='Title'
                 onChange={(e) => setTitle(e.target.value)}
                 className='create-post-sr popup'
+                required
+            />
+            <input
+                type="text"
+                value={imageURL}
+                placeholder='Image URL'
+                onChange={(e) => setImageURL(e.target.value)}
+                className='create-post-sr popup'
+                required
             />
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleSubmit}>Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length > 0 && imageURL.length > 0}>Post</button>
             </div>
         </div>
     )
