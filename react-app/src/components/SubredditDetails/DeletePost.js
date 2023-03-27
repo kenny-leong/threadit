@@ -31,7 +31,7 @@ function DeletePost({ postId }) {
         <div className='delete-post-modal'>
             <span className='confirm-delete-post'>Are you sure you want to delete this post?</span>
             <div className='cancel-delete popup'>
-                <button className='post-cancel-button-popup'>Cancel</button>
+                <button className='post-cancel-button-popup' onClick={closeModal}>Cancel</button>
                 <button className='delete-btn-post popup' onClick={handleDeletePost}>Delete</button>
             </div>
         </div>

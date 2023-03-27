@@ -47,8 +47,10 @@
 
 .post-cancel-button-popup {
     background-color: gray;
+    cursor: pointer;
 }
 
 .delete-btn-post.popup {
     background-color: rgb(106, 0, 0);
+    cursor: pointer;
 }
