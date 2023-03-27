@@ -29,6 +29,10 @@
     margin-left: 25px;
 }
 
+.feed-margin-div a {
+    text-decoration: none;
+}
+
 .home-channel-div, .gaming-channel-div {
     margin-top: 15px;
     height: 40px;
