@@ -1,4 +1,4 @@
-from app.models import db, User, Subreddit, environment, SCHEMA
+from app.models import db, User, Subreddit, SubredditMember, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -17,10 +17,16 @@ def seed_subreddits():
     # Assign a creator to each subreddit
     users = User.query.all()
     for i in range(len(subreddits)):
-        subreddits[i].creator_id = users[i % len(users)].id
-        subreddits[i].created_at = datetime.utcnow()
+        subreddit = subreddits[i]
+        creator = users[i % len(users)]
+        subreddit.creator_id = creator.id
+        subreddit.created_at = datetime.utcnow()
+        db.session.add(subreddit)
+        db.session.flush()
 
-    db.session.add_all(subreddits)
+        member = SubredditMember(user_id=creator.id, subreddit_id=subreddit.id)
+        db.session.add(member)
+
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the subreddits table. SQLAlchemy doesn't
@@ -31,8 +37,10 @@ def seed_subreddits():
 # it will reset the primary keys for you as well.
 def undo_subreddits():
     if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.subreddit_members RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.subreddits RESTART IDENTITY CASCADE;")
     else:
+        db.session.execute(text("DELETE FROM subreddit_members"))
         db.session.execute(text("DELETE FROM subreddits"))
 
     db.session.commit()
