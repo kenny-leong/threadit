@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import OpenModalButton from '../OpenModalButton'
 import logo from '../../static/threadit.png'
@@ -15,6 +15,7 @@ function NavBar() {
 	const sessionUser = useSelector(state => state.session.user);
 	const [showDropdown, setShowDropdown] = useState(false);
 	const dropdownRef = useRef(null);
+
 
 
 	// closes dropdown menu by clicking anywhere on screen

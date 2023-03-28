@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { authenticate } from "./store/session";
 import NavBar from "./components/NavBar";
 import FeedSideBar from "./components/FeedSideBar";
@@ -24,48 +24,50 @@ function App() {
 
   return (
     <>
-    {(!sessionUser) && (
-      <Switch>
-        <Route exact path="/">
-          <NavBar />
-          <FeedSideBar />
-          <TrendBar />
-          <PostFeed />
-          <CommunitySection />
-        </Route>
-        <Route path='/subreddits/:subredditId'>
-          <NavBar />
-          <FeedSideBar />
-          <SubredditDetails />
-        </Route>
-      </Switch>
-    )}
-      {isLoaded && sessionUser && (
-        <>
-          <Switch>
-            <Route path='/home'>
-              <NavBar />
-              <FeedSideBar />
-              <TrendBar />
-              <PostFeed />
-              <CommunitySection />
-            </Route>
-            <Route path='/owned-subreddits'>
-              <NavBar />
-              <FeedSideBar />
-              <OwnedSR />
-            </Route>
-            <Route path='/my-communities'>
-              <NavBar />
-              <FeedSideBar />
-            </Route>
-            <Route path='/subreddits/:subredditId'>
-              <NavBar />
-              <FeedSideBar />
-              <SubredditDetails />
-            </Route>
-          </Switch>
-        </>
+      {isLoaded && (
+        <Switch>
+          {sessionUser ? (
+            <>
+              <Redirect from="/" to="/home" exact />
+              <Route path="/home">
+                <NavBar />
+                <FeedSideBar />
+                <TrendBar />
+                <PostFeed />
+                <CommunitySection />
+              </Route>
+              <Route path="/owned-subreddits">
+                <NavBar />
+                <FeedSideBar />
+                <OwnedSR />
+              </Route>
+              <Route path="/my-communities">
+                <NavBar />
+                <FeedSideBar />
+              </Route>
+              <Route path="/subreddits/:subredditId">
+                <NavBar />
+                <FeedSideBar />
+                <SubredditDetails />
+              </Route>
+            </>
+          ) : (
+            <>
+              <Route exact path="/">
+                <NavBar />
+                <FeedSideBar />
+                <TrendBar />
+                <PostFeed />
+                <CommunitySection />
+              </Route>
+              <Route path="/subreddits/:subredditId">
+                <NavBar />
+                <FeedSideBar />
+                <SubredditDetails />
+              </Route>
+            </>
+          )}
+        </Switch>
       )}
     </>
   );
