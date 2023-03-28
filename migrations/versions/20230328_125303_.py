@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 45f5a90fa776
-Revises:
-Create Date: 2023-03-27 15:26:11.499272
+Revision ID: 12f7d36e73bb
+Revises: 
+Create Date: 2023-03-28 12:53:03.368537
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '215504afa223'
+revision = '12f7d36e73bb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,8 +31,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
-    sa.Column('profile_picture', sa.String(length=255), nullable=True),
-    sa.Column('banner_image', sa.String(length=255), nullable=True),
+    sa.Column('profile_picture', sa.Text(), nullable=True),
+    sa.Column('banner_image', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('creator_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['creator_id'], ['threadit_users.id'], ),
@@ -42,7 +42,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('content', sa.Text(), nullable=True),
-    sa.Column('image_url', sa.String(length=255), nullable=True),
+    sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('author_id', sa.Integer(), nullable=False),
     sa.Column('subreddit_id', sa.Integer(), nullable=False),
