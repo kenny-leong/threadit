@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
-import { createSubreddit, getAllSR } from '../../store/subreddit';
-import { authenticate } from '../../store/session';
+import { createSubreddit, getOwnedSubreddits } from '../../store/subreddit';
 import './CreateSubreddit.css'
 
 
@@ -13,6 +12,7 @@ function CreateSubreddit() {
     const [description, setDescription] = useState("");
     const [charactersLeft, setCharactersLeft] = useState(16);
     const { closeModal } = useModal();
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
 
@@ -23,11 +23,10 @@ function CreateSubreddit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(createSubreddit(name, description))
-            .then(() => {
-                dispatch(getAllSR())
-                dispatch(authenticate())
-                closeModal()
+        const newSubreddit = await dispatch(createSubreddit(name, description))
+            .then((res) => {
+                dispatch(getOwnedSubreddits(sessionUser.id));
+                closeModal();
             })
 
     }
