@@ -11,7 +11,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text)
-    image_url = db.Column(db.Text(length=10000))
+    image_url = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('threadit_users.id')), nullable=False)
     subreddit_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('subreddits.id')), nullable=False)

@@ -56,7 +56,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('content', sa.Text(), nullable=True),
-    sa.Column('image_url', sa.Text(length=10000), nullable=True),
+    sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('author_id', sa.Integer(), nullable=False),
     sa.Column('subreddit_id', sa.Integer(), nullable=False),
