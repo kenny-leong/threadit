@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllPosts } from '../../store/post';
 import { getAllUsers } from '../../store/session';
-import OpenModalButton from '../OpenModalButton'
 import { getAllSR } from '../../store/subreddit';
+import { useModal } from "../../context/Modal";
+import DeletePost from '../SubredditDetails/DeletePost';
+import EditPost from '../SubredditDetails/EditPost';
 import './PostFeed.css'
 
 
 
 function PostFeed() {
     const dispatch = useDispatch();
-
+    const { setModalContent } = useModal();
 
     const allPosts = useSelector(state => state.post.allPosts);
     const allSubreddits = useSelector(state => state.subreddit.allSubreddits)
     const allUsers = useSelector(state => state.session.allUsers)
-
+    const sessionUser = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getAllPosts());
@@ -59,8 +61,26 @@ function PostFeed() {
         }
 
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
-
     }
+
+
+        // opens the DeletePost component
+        const openDeleteModal = (postId) => {
+            setModalContent(<DeletePost postId={postId}/>);
+        };
+
+        //opens the update post component
+        const openEditModal = (post) => {
+            setModalContent(<EditPost post={post}/>)
+        };
+
+
+
+
+
+
+
+
 
     return (
         <div className='post-feed-div'>
@@ -72,12 +92,24 @@ function PostFeed() {
                         <i class="fa-solid fa-angles-down"></i>
                     </div>
                     <div className='post-content-area'>
-                        <div className='post-header-information'>
-                            <Link to={`subreddits/${post.subreddit_id}`}>
-                                <span className='subreddit-for-post'>{`r/${allSubreddits[post.subreddit_id].name}`}</span>
-                            </Link>
-                            <i class="fa-solid fa-circle"></i>
-                            <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
+                        <div className='post-feed-header-info'>
+                            <div className='post-header-information'>
+                                <Link to={`subreddits/${post.subreddit_id}`}>
+                                    <span className='subreddit-for-post'>{`r/${allSubreddits[post.subreddit_id].name}`}</span>
+                                </Link>
+                                <i class="fa-solid fa-circle"></i>
+                                <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
+                            </div>
+                            {post.author_id === sessionUser.id && (
+                                <div className='edit-delete-divs-post'>
+                                    <div className='edit-post-btn-container' onClick={() => openEditModal(post)}>
+                                        <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
+                                    </div>
+                                    <div className='delete-post-btn-container' onClick={() => openDeleteModal(post.id)}>
+                                        <span><i class="fa-solid fa-trash-can"></i></span>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                         <span className='feed-post-title'>{post.title}</span>
                         {(post.image_url) && (

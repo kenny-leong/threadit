@@ -96,8 +96,6 @@ function SubredditDetails() {
         return formattedDate
     }
 
-    console.log(subredditPosts)
-
 
     // opens the DeletePost component
     const openDeleteModal = (postId) => {
