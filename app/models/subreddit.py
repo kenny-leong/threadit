@@ -13,8 +13,8 @@ class Subreddit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(255))
-    profile_picture = db.Column(db.Text)
-    banner_image = db.Column(db.Text)
+    profile_picture = db.Column(db.Text(length=10000))
+    banner_image = db.Column(db.Text(length=10000))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('threadit_users.id')), nullable=False)
 
