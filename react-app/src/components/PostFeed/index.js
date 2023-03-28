@@ -112,6 +112,11 @@ function PostFeed() {
                             )}
                         </div>
                         <span className='feed-post-title'>{post.title}</span>
+                        {(post.content) && (
+                            <div className='feed-post-text-content'>
+                                <span className='post content'>{post.content}</span>
+                            </div>
+                        )}
                         {(post.image_url) && (
                             <div className='feed-post-div'>
                                 <img className='feed-post-img' alt='post-img' src={post.image_url} />
