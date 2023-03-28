@@ -16,8 +16,8 @@
     border-radius: 10px;
     border: black 1px solid;
     position: fixed;
-    left: 430px;
-    top: 100px;
+    left: 35%;
+    top: 15%;
     overflow-y: scroll;
 }
 
