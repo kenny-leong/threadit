@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import EditPost from './EditPost';
 import { useModal } from "../../context/Modal";
 import { updatePost, getSubredditPosts } from '../../store/post';
-import EditImgPost from './EditImgPost';
 
 
 
-function EditPost({ post }) {
+
+function EditImgPost({ post }) {
 
     const [title, setTitle] = useState(post.title);
-    const [textContent, setTextContent] = useState(post.content);
+    const [imageURL, setImageURL] = useState(post.image_url);
     const { closeModal, setModalContent } = useModal();
     const dispatch = useDispatch();
+
 
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
 
@@ -20,30 +22,29 @@ function EditPost({ post }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(updatePost(post.id, title, textContent, null))
+        await dispatch(updatePost(post.id, title, null, imageURL))
         .then(() => {
             dispatch(getSubredditPosts(subredditDetails.id));
             closeModal();
         })
     }
 
-
     const openModal = () => {
-        setModalContent(<EditImgPost post={post}/>);
+        setModalContent(<EditPost post={post}/>);
     };
 
 
     return (
-        <div className='create-post-component text'>
+        <div className='create-post-component img'>
             <div className='create-post-title'>
                 <span className='post-heading-title'>Update Post</span>
             </div>
             <div className='typeof-post-div'>
-                <div className='typeof-post post'>
+                <div className='typeof-post' onClick={openModal}>
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
-                <div className='typeof-post' onClick={openModal}>
+                <div className='typeof-post image'>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
@@ -60,17 +61,17 @@ function EditPost({ post }) {
                 className='create-post-sr popup'
                 required
             />
-            <div className='ta-div'>
-                <textarea
-                        value={textContent}
-                        placeholder='Text (optional)'
-                        className='sr-textarea-desc popup'
-                        onChange={(e) => setTextContent(e.target.value)}
-                />
-            </div>
+            <input
+                type="text"
+                value={imageURL}
+                placeholder='Image URL'
+                onChange={(e) => setImageURL(e.target.value)}
+                className='create-post-sr popup'
+                required
+            />
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0}>Edit Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={(title && title.length === 0) || (imageURL && imageURL.length < 8) || (!imageURL)}>Edit Post</button>
             </div>
         </div>
     )
@@ -78,4 +79,5 @@ function EditPost({ post }) {
 
 
 
-export default EditPost;
+
+export default EditImgPost;
