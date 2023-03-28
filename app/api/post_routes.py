@@ -69,11 +69,19 @@ def update_post(id):
     if post.author != current_user:
         return jsonify(message='You cannot edit this post'), 403
     data = request.get_json()
-    post.title = data['title']
-    post.content = data['content']
-    post.image_url = data['image_url']
+
+    if 'title' in data:
+        post.title = data['title']
+
+    if 'content' in data:
+        post.content = data['content']
+
+    if 'image_url' in data:
+        post.image_url = data['image_url']
+
     db.session.commit()
     return post.to_dict()
+
 
 @post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

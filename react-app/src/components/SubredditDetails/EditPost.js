@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { createPost, getSubredditPosts } from '../../store/post';
-import CreatePostImage from './PostImage';
-import './CreatePost.css';
+import { updatePost, getSubredditPosts } from '../../store/post';
+import CreatePostImage from '../CreatePost/PostImage';
+import './EditPost.css';
 
 
 
-function CreatePost() {
+function EditPost({ post }) {
 
-    const [title, setTitle] = useState("");
-    const [textContent, setTextContent] = useState("");
+    const [title, setTitle] = useState(post.title);
+    const [textContent, setTextContent] = useState(post.content);
     const { closeModal, setModalContent } = useModal();
     const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function CreatePost() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(createPost(title, textContent, subredditDetails.id))
+        await dispatch(updatePost(post.id, title, textContent, subredditDetails.id))
         .then(() => {
             dispatch(getSubredditPosts(subredditDetails.id));
             closeModal();
@@ -71,7 +71,7 @@ function CreatePost() {
             </div>
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0}>Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0}>Edit Post</button>
             </div>
         </div>
     )
@@ -79,4 +79,4 @@ function CreatePost() {
 
 
 
-export default CreatePost;
+export default EditPost;

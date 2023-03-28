@@ -11,6 +11,7 @@ import UpdateSubreddit from '../UpdateSubreddit';
 import CreatePost from '../CreatePost';
 import CreatePostImage from '../CreatePost/PostImage';
 import DeletePost from './DeletePost';
+import EditPost from './EditPost';
 import './SubredditDetails.css';
 
 
@@ -95,10 +96,17 @@ function SubredditDetails() {
         return formattedDate
     }
 
+    console.log(subredditPosts)
+
 
     // opens the DeletePost component
     const openDeleteModal = (postId) => {
         setModalContent(<DeletePost postId={postId}/>);
+    };
+
+    //opens the update post component
+    const openEditModal = (post) => {
+        setModalContent(<EditPost post={post}/>)
     };
 
     //opens the CreatePost component
@@ -195,7 +203,7 @@ function SubredditDetails() {
                                     <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
                                     {post.author_id === sessionUser.id && (
                                         <div className='edit-delete-divs-post'>
-                                            <div className='edit-post-btn-container'>
+                                            <div className='edit-post-btn-container' onClick={() => openEditModal(post)}>
                                                 <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
                                             </div>
                                             <div className='delete-post-btn-container' onClick={() => openDeleteModal(post.id)}>

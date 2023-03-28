@@ -77,7 +77,7 @@ export const createPost = (title, content, subreddit_id, image_url) => async (di
 };
 
 // EDIT AN EXISTING POST (NEED TO BE REFACTORED)
-export const editExistingPost = (postId, title, content, image_url) => async (dispatch) => {
+export const updatePost = (postId, title, content, image_url) => async (dispatch) => {
     const res = await fetch(`/api/posts/${postId}`, {
       method: 'PUT',
       headers: {
