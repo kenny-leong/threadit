@@ -37,37 +37,32 @@ function SubredditDetails() {
     }, [dispatch, subredditId])
 
 
+    // return null if this information isnt given
     if (!subredditDetails || !allUsers) return null;
     if ((sessionUser && (!subredditMembers))) return null
 
 
+    // sort the feed chronologically with the most recent posts on top
     let subredditPostArr;
     if (subredditPosts) subredditPostArr = Object.values(subredditPosts);
     if (subredditPostArr) subredditPostArr.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
 
+    // normalize the subreddit member object with user ids
     let subredditMemberArr;
     if (subredditMembers) {
         subredditMemberArr = Object.values(subredditMembers);
-
         subredditMembers = {};
-
         subredditMemberArr.forEach(member => {
             subredditMembers[member.user_id] = member
         });
     }
 
-
+    // default placeholder profile picture
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
-    const openTextModal = () => {
-        setModalContent(<CreatePost />);
-    };
 
-    const openImageModal = () => {
-        setModalContent(<CreatePostImage />);
-    };
-
+    // function to get how long ago user has posted
     function getTimeSincePostCreation(createdAt) {
         const postCreatedAt = new Date(createdAt);
         postCreatedAt.setHours(postCreatedAt.getHours() - 4);
@@ -93,6 +88,7 @@ function SubredditDetails() {
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
+    // returns date in more user friendly format
     function formatDate(str) {
         const date = new Date(str);
         const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -100,13 +96,23 @@ function SubredditDetails() {
     }
 
 
+    // opens the DeletePost component
     const openDeleteModal = (postId) => {
         setModalContent(<DeletePost postId={postId}/>);
     };
 
+    //opens the CreatePost component
+    const openTextModal = () => {
+        setModalContent(<CreatePost />);
+    };
+
+    //opens the Create Img Post component
+    const openImageModal = () => {
+        setModalContent(<CreatePostImage />);
+    };
 
 
-    //function to handle joining a server
+    //function to handle joining a subreddit
 	const handleJoin = async (e) => {
 		e.preventDefault();
 
@@ -118,6 +124,7 @@ function SubredditDetails() {
 	};
 
 
+    // handles leaving a subreddit
 	const handleLeave = async (e) => {
 		e.preventDefault();
 
