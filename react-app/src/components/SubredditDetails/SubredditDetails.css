@@ -161,9 +161,6 @@
     margin-left: 20px;
 }
 
-.posted-by.subreddit {
-    margin-left: 10px;
-}
 
 .feed-and-details-div {
     display: flex;
@@ -284,6 +281,25 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 5px;
+    margin-left: 10px;
+}
+
+.feed-post-title {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.feed-post-text-content {
+    margin-left: 10px;
+    width: 95%;
+    margin-bottom: 15px;
+}
+
+.post.content {
+    font-family: Helvetica;
+    font-size: 15px;
+    color: #6a6a6a;
+    line-height: 1.5;
 }
 
 
