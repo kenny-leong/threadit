@@ -9,6 +9,7 @@ import { useModal } from "../../context/Modal";
 import OpenModalButton from '../OpenModalButton';
 import UpdateSubreddit from '../UpdateSubreddit';
 import CreatePost from '../CreatePost';
+import CreatePostImage from '../CreatePost/PostImage';
 import DeletePost from './DeletePost';
 import './SubredditDetails.css';
 
@@ -59,8 +60,12 @@ function SubredditDetails() {
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
-    const openModal = () => {
+    const openTextModal = () => {
         setModalContent(<CreatePost />);
+    };
+
+    const openImageModal = () => {
+        setModalContent(<CreatePostImage />);
     };
 
     function getTimeSincePostCreation(createdAt) {
@@ -153,12 +158,12 @@ function SubredditDetails() {
                     type="text"
                     placeholder='Create Post'
                     className='create-post-sr'
-                    onFocus={() => {openModal()}}
+                    onFocus={() => {openTextModal()}}
                     />
-                    <div className='img-create-post' onClick={() => {openModal()}}>
+                    <div className='img-create-post' onClick={() => {openImageModal()}}>
                         <i class="fa-solid fa-image"></i>
                     </div>
-                    <div className='link-create-post' onClick={() => {openModal()}}>
+                    <div className='link-create-post' onClick={() => {openImageModal()}}>
                         <i class="fa-solid fa-link"></i>
                     </div>
                 </div>
