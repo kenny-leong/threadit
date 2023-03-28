@@ -1,19 +1,20 @@
 """empty message
 
-Revision ID: 215504afa223
+Revision ID: 28abfedfa18c
 Revises:
-Create Date: 2023-03-28 13:08:21.821835
+Create Date: 2023-03-28 14:47:24.420371
 
 """
 from alembic import op
 import sqlalchemy as sa
+
 
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '215504afa223'
+revision = '28abfedfa18c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,12 +35,13 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE threadit_users SET SCHEMA {SCHEMA};")
 
+
     op.create_table('subreddits',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
-    sa.Column('profile_picture', sa.Text(length=10000), nullable=True),
-    sa.Column('banner_image', sa.Text(length=10000), nullable=True),
+    sa.Column('profile_picture', sa.Text(), nullable=True),
+    sa.Column('banner_image', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('creator_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['creator_id'], ['threadit_users.id'], ),
@@ -48,6 +50,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE subreddits SET SCHEMA {SCHEMA};")
+
 
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -106,7 +109,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE votes SET SCHEMA {SCHEMA};")
-
 
     # ### end Alembic commands ###
 
