@@ -21,7 +21,7 @@ function EditPost({ post }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(updatePost(post.id, title, textContent, subredditDetails.id))
+        await dispatch(updatePost(post.id, title, textContent, null))
         .then(() => {
             dispatch(getSubredditPosts(subredditDetails.id));
             closeModal();
