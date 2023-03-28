@@ -21,7 +21,7 @@
 
 
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1320px) {
     .popular-box-container, .right-bar-links span, .trademark, .right-bar-links, .line-div {
         display: none;
     }
