@@ -173,3 +173,25 @@ def delete_subreddit_member(subreddit_id, user_id):
     db.session.commit()
 
     return jsonify(message='Subreddit member deleted'), 200
+
+
+@subreddit_routes.route('/<int:id>/join', methods=['POST'])
+@login_required
+def join_subreddit(id):
+    """
+    Join a subreddit with the current user as a member
+    """
+    subreddit = Subreddit.query.get(id)
+    if not subreddit:
+        return jsonify(message='Invalid subreddit'), 400
+
+    # Check if the user is already a member of the subreddit
+    if SubredditMember.query.filter_by(user_id=current_user.id, subreddit_id=id).first():
+        return jsonify(message='User is already a member of this subreddit'), 400
+
+    # Create a new SubredditMember object and add it to the database
+    member = SubredditMember(user_id=current_user.id, subreddit_id=id)
+    db.session.add(member)
+    db.session.commit()
+
+    return jsonify(message='Subreddit joined successfully'), 200

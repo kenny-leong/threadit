@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSubredditPosts } from '../../store/post';
-import { getSingleSR, getSubredditMembers } from '../../store/subreddit';
+import { getSingleSR, getSubredditMembers, addSubredditMember, removeSubredditMember } from '../../store/subreddit';
 import { getAllUsers } from '../../store/session';
 import bannerImg from '../../static/placeholder-banner.png';
 import { useModal } from "../../context/Modal";
@@ -101,10 +101,27 @@ function SubredditDetails() {
 
 
 
+    //function to handle joining a server
+	const handleJoin = async (e) => {
+		e.preventDefault();
+
+		await dispatch(addSubredditMember(subredditId))
+        .then(() => {
+            dispatch(getSubredditMembers(subredditId));
+            closeModal();
+        });
+	};
 
 
+	const handleLeave = async (e) => {
+		e.preventDefault();
 
-
+		await dispatch(removeSubredditMember(subredditId, sessionUser.id))
+        .then(() => {
+            dispatch(getSubredditMembers(subredditId));
+            closeModal();
+        });
+	};
 
 
     return (
@@ -118,10 +135,10 @@ function SubredditDetails() {
                     </div>
                     <div className='join-sr-btn-div'>
                         {(sessionUser) && (!subredditMembers[sessionUser.id]) && (
-                            <button className='join-sr-btn'><i class="fa-solid fa-user-plus"></i>Join</button>
+                            <button className='join-sr-btn' onClick={handleJoin}><i class="fa-solid fa-user-plus"></i>Join</button>
                         )}
                         {(sessionUser) && (subredditDetails.creator_id !== sessionUser.id) && (subredditMembers[sessionUser.id]) && (
-                            <button className='join-sr-btn joined'><i class="fa-solid fa-check"></i>Member</button>
+                            <button className='join-sr-btn joined' onClick={handleLeave}><i class="fa-solid fa-check"></i>Member</button>
                         )}
                         {(sessionUser) && (subredditDetails.creator_id === sessionUser.id) && (
                             <button className='join-sr-btn creator'><i class="fa-solid fa-award"></i>Owner</button>

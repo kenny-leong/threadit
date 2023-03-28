@@ -27,6 +27,10 @@ const addSubreddit = (subreddit) => ({
     subreddit
 });
 
+const addMember = () => ({
+    type: 'ADD_SUBREDDIT_MEMBER'
+});
+
 const removeSubreddit = () => ({
     type: 'REMOVE_SUBREDDIT'
   });
@@ -108,6 +112,24 @@ export const createSubreddit = (name, description, profile_picture, banner_image
         return 'Could not add new subthreadit.'
     }
 };
+
+// ADD A USER TO SUBREDDIT MEMBERS
+export const addSubredditMember = (subredditId) => async (dispatch) => {
+    const res = await fetch(`/api/subreddits/${subredditId}/join`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ subredditId }),
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addMember());
+    } else {
+        console.error('Failed to add subreddit member.');
+    }
+  };
+
 
 
 // UPDATE AN EXISTING SUBREDDIT
@@ -228,6 +250,9 @@ const subredditReducer = (state = initialState, action) => {
                     ...action.subreddit
                 }
             }
+        case 'ADD_SUBREDDIT_MEMBER':
+            const memberState = {...state};
+            return memberState;
         case 'UPDATE_SUBREDDIT':
             return {
                 ...state,
