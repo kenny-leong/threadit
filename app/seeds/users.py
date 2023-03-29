@@ -1,9 +1,16 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
+from faker import Faker
+
+
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+
+    fake = Faker()
+
+
     users = [
         User(username='Demo', email='demo@aa.io', password='password'),
         User(username='marnie', email='marnie@aa.io', password='password'),
@@ -11,8 +18,24 @@ def seed_users():
         User(username='Kenny', email='kennyleong@gmail.com', password='password'),
         User(username='JohnDoe', email='johndoe@example.com', password='password'),
         User(username='JaneDoe', email='janedoe@example.com', password='password'),
-        User(username='MarkSmith', email='marksmith@example.com', password='password')
+        User(username='MarkSmith', email='marksmith@example.com', password='password'),
+        User(username='ChrisL', email='chrisl@example.com', password='password'),
     ]
+
+    # Generate 100 unique usernames and emails
+    for i in range(100):
+        username = fake.user_name()
+        while User.query.filter_by(username=username).first() is not None:
+            username = fake.user_name()
+        email = fake.email()
+        while User.query.filter_by(email=email).first() is not None:
+            email = fake.email()
+        password = 'password'
+        users.append(User(username=username, email=email, password=password))
+
+
+
+
     db.session.add_all(users)
     db.session.commit()
 

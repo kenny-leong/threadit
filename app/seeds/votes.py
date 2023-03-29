@@ -1,45 +1,46 @@
 from app.models import db, User, Post, Comment, Vote, environment, SCHEMA
 from sqlalchemy.sql import text
-from datetime import datetime
+from random import choice
+from faker import Faker
 
-# Adds seed data for votes
+
 # Adds seed data for votes
 def seed_votes():
-    user1 = User.query.filter_by(username='Demo').first()
-    user2 = User.query.filter_by(username='marnie').first()
-    user3 = User.query.filter_by(username='bobbie').first()
+    users = User.query.all()
+    posts = Post.query.all()
+    fake = Faker()
 
-    post1 = Post.query.filter_by(title='Genshin Impact addiction— Gamer spends $40,000 on gacha characters').first()
-    post2 = Post.query.filter_by(title='How to optimize your code').first()
-    post3 = Post.query.filter_by(title='Interesting article about Python').first()
+    # Create dictionary to keep track of which posts each user has voted on
+    votes_by_user = {user.id: set() for user in users}
 
-    comment1 = Comment.query.filter_by(content='This is great news!').first()
-    comment2 = Comment.query.filter_by(content='Thanks for sharing').first()
-    comment3 = Comment.query.filter_by(content='I disagree with your point').first()
-    comment4 = Comment.query.filter_by(content='Can you clarify what you mean?').first()
-    comment5 = Comment.query.filter_by(content='I found this article really interesting').first()
-    comment6 = Comment.query.filter_by(content='This is a great resource for beginners').first()
+    # Seed votes for each post
+    for post in posts:
+        # Decide whether to seed more upvotes or downvotes for this post
+        more_upvotes = choice([True, False])
+        num_votes = fake.random_int(min=10, max=50)
 
-    votes = [
-        Vote(user=user1, post=post1, type='upvote'),
-        Vote(user=user2, post=post1, type='downvote'),
-        Vote(user=user3, post=post2, type='upvote'),
-        Vote(user=user1, post=post2, type='upvote'),
-        Vote(user=user2, post=post3, type='upvote'),
-        Vote(user=user3, post=post3, type='downvote'),
-        Vote(user=user1, comment=comment1, type='upvote'),
-        Vote(user=user2, comment=comment1, type='downvote'),
-        Vote(user=user3, comment=comment2, type='upvote'),
-        Vote(user=user1, comment=comment2, type='upvote'),
-        Vote(user=user2, comment=comment3, type='upvote'),
-        Vote(user=user3, comment=comment4, type='downvote'),
-        Vote(user=user1, comment=comment5, type='upvote'),
-        Vote(user=user2, comment=comment5, type='downvote'),
-        Vote(user=user3, comment=comment6, type='upvote')
-    ]
+        # Seed votes for this post
+        for i in range(num_votes):
+            # Choose a random user who hasn't voted on this post yet
+            user = choice(users)
+            while post.id in votes_by_user[user.id]:
+                user = choice(users)
 
-    db.session.add_all(votes)
+            # Decide whether to upvote or downvote
+            if more_upvotes:
+                vote_type = choice(['upvote', 'upvote', 'downvote'])
+            else:
+                vote_type = choice(['downvote', 'downvote', 'upvote'])
+
+            # Create the vote and add it to the session
+            vote = Vote(user=user, post=post, type=vote_type)
+            db.session.add(vote)
+
+            # Update the votes_by_user dictionary
+            votes_by_user[user.id].add(post.id)
+
     db.session.commit()
+
 
 
 

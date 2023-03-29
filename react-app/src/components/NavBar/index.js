@@ -54,11 +54,6 @@ function NavBar() {
 	}, [dispatch, searchQuery]);
 
 
-	console.log(searchResults)
-
-
-
-
 
 	//function to handle logging out
 	const handleLogout = async (e) => {
@@ -73,10 +68,6 @@ function NavBar() {
 	const toggleDropdown = () => {
 		setShowDropdown(!showDropdown);
 	};
-
-
-
-
 
 
 

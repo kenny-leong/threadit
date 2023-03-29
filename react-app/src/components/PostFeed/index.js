@@ -65,19 +65,15 @@ function PostFeed() {
     }
 
 
-        // opens the DeletePost component
-        const openDeleteModal = (postId) => {
-            setModalContent(<DeletePost postId={postId}/>);
-        };
+    // opens the DeletePost component
+    const openDeleteModal = (postId) => {
+        setModalContent(<DeletePost postId={postId}/>);
+    };
 
-        //opens the update post component
-        const openEditModal = (post) => {
-            setModalContent(<EditPost post={post}/>)
-        };
-
-
-
-
+    //opens the update post component
+    const openEditModal = (post) => {
+        setModalContent(<EditPost post={post}/>)
+    };
 
 
 
