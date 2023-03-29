@@ -29,27 +29,25 @@ function CreateLink() {
         })
     }
 
-
-    const openImage = () => {
-        setModalContent(<CreatePostImage />);
-    };
-
     const openText = () => {
         setModalContent(<CreatePost />);
     };
 
+    const openImage = () => {
+        setModalContent(<CreatePostImage />);
+    };
 
     return (
         <div className='create-post-component link'>
             <div className='create-post-title'>
                 <span className='post-heading-title'>Create a Post</span>
             </div>
-            <div className='typeof-post-div' onClick={openText}>
-                <div className='typeof-post'>
+            <div className='typeof-post-div' >
+                <div className='typeof-post text-modal' onClick={() => {openText()}}>
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
-                <div className='typeof-post' onClick={openImage}>
+                <div className='typeof-post image-modal' onClick={openImage}>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>

@@ -38,7 +38,6 @@ function CreatePost() {
         setModalContent(<CreateLink />)
     };
 
-
     return (
         <div className='create-post-component text'>
             <div className='create-post-title'>
@@ -49,11 +48,11 @@ function CreatePost() {
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
-                <div className='typeof-post' onClick={openImage}>
+                <div className='typeof-post image-modal' onClick={openImage}>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
-                <div className='typeof-post' onClick={openLink}>
+                <div className='typeof-post link-modal' onClick={openLink}>
                     <i class="fa-solid fa-link"></i>
                     <span className='typeof-heading'>Link</span>
                 </div>

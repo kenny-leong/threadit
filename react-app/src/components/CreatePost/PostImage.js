@@ -46,7 +46,7 @@ function CreatePostImage() {
                 <span className='post-heading-title'>Create a Post</span>
             </div>
             <div className='typeof-post-div'>
-                <div className='typeof-post' onClick={openText}>
+                <div className='typeof-post text-model' onClick={openText}>
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
@@ -54,7 +54,7 @@ function CreatePostImage() {
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
-                <div className='typeof-post' onClick={openLink}>
+                <div className='typeof-post link-model' onClick={openLink}>
                     <i class="fa-solid fa-link"></i>
                     <span className='typeof-heading'>Link</span>
                 </div>

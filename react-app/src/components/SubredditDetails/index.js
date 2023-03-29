@@ -10,6 +10,7 @@ import OpenModalButton from '../OpenModalButton';
 import UpdateSubreddit from '../UpdateSubreddit';
 import CreatePost from '../CreatePost';
 import CreatePostImage from '../CreatePost/PostImage';
+import CreateLink from '../CreatePost/CreateLinkPost';
 import DeletePost from './DeletePost';
 import EditPost from './EditPost';
 import './SubredditDetails.css';
@@ -119,7 +120,7 @@ function SubredditDetails() {
 
     //opens the Attachment Post component
     const openAttachmentModal = () => {
-        setModalContent(<CreatePostImage />);
+        setModalContent(<CreateLink />);
     };
 
 
