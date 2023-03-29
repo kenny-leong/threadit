@@ -7,6 +7,7 @@ import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
 import { getSingleSR } from '../../store/subreddit';
 import { useModal } from "../../context/Modal";
+import DeleteSubreddit from "../OwnedSR/DeleteSR";
 
 
 
@@ -20,7 +21,7 @@ function MySubreddits() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const subredditMemberships = useSelector(state => state.subreddit.memberSubreddits);
-    const { closeModal } = useModal();
+    const { closeModal, setModalContent } = useModal();
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
@@ -34,12 +35,11 @@ function MySubreddits() {
     if (subredditMemberships === undefined) return null;
 
 
-    const handleDelete = async (subredditId) => {
-        await dispatch(deleteSubreddit(subredditId))
-            .then(() => {
-                dispatch(getSubredditsByUser(sessionUser.id))
-            })
+    //opens the Delete Subreddit component
+    const openModal = (subredditId) => {
+        setModalContent(<DeleteSubreddit subredditId={subredditId}/>);
     };
+
 
     // handles leaving a subreddit
 	const handleLeave = async (subredditId) => {
@@ -83,7 +83,7 @@ function MySubreddits() {
                                     className='update-sr-btn-owned'
                                     onButtonClick={() => dispatch(getSingleSR(subreddit.id))}
                                 />
-                                <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
+                                <button className="delete-owned-sr" onClick={() => openModal(subreddit.id)}>Delete</button>
                             </div>
                         )}
                         {subreddit.creator_id !== sessionUser.id && (
