@@ -101,7 +101,7 @@ function PostFeed() {
                                 <i class="fa-solid fa-circle"></i>
                                 <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
                             </div>
-                            {post.author_id === sessionUser.id && (
+                            {sessionUser && post.author_id === sessionUser.id && (
                                 <div className='edit-delete-divs-post'>
                                     <div className='edit-post-btn-container' onClick={() => openEditModal(post)}>
                                         <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>

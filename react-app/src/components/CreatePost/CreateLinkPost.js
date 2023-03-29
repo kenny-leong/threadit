@@ -30,7 +30,7 @@ function CreateLink() {
     }
 
 
-    const openModal = () => {
+    const openImage = () => {
         setModalContent(<CreatePostImage />);
     };
 
@@ -49,7 +49,7 @@ function CreateLink() {
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
-                <div className='typeof-post' onClick={openModal}>
+                <div className='typeof-post'>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
