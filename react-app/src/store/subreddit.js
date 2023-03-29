@@ -27,6 +27,11 @@ const loadSubredditMembers = (members) => ({
     members
 });
 
+const loadSearchResults = (results) => ({
+    type: 'LOAD_SEARCH_RESULTS',
+    results
+});
+
 const addSubreddit = (subreddit) => ({
     type: 'ADD_SUBREDDIT',
     subreddit
@@ -105,6 +110,19 @@ export const getSubredditsByUser = (userId) => async (dispatch) => {
     }
 };
 
+
+// SEARCH FOR SUBREDDITS
+export const searchSubreddits = (query) => async (dispatch) => {
+    const res = await fetch(`/api/subreddits/search/${query}`);
+
+    if (res.ok) {
+        const subreddits = await res.json();
+        dispatch(loadSearchResults(subreddits.subreddits));
+        return subreddits.subreddits;
+    } else {
+        console.error('No results found.');
+    }
+}
 
 
 // CREATE A NEW SUBREDDIT
@@ -263,6 +281,16 @@ const subredditReducer = (state = initialState, action) => {
             return {
                 ...state,
                 subredditMembers: subredditMembers
+            }
+        case 'LOAD_SEARCH_RESULTS':
+            const searchResults = {};
+            const resultsArr = action.results;
+            resultsArr.forEach(result => {
+                searchResults[result.id] = result
+            });
+            return {
+                ...state,
+                searchResults: searchResults
             }
         case 'LOAD_SINGLE_SR':
             const oneSubreddit = action.subreddit;

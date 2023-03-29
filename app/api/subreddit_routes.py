@@ -205,3 +205,12 @@ def subreddits_by_member(user_id):
     memberships = SubredditMember.query.filter_by(user_id=user_id).all()
     subreddits = [membership.subreddit.to_dict() for membership in memberships]
     return {'subreddits': subreddits}
+
+
+@subreddit_routes.route('/search/<string:query>')
+def search_subreddits(query):
+    """
+    Query for subreddits that match the search query and returns them in a list of subreddit dictionaries
+    """
+    subreddits = Subreddit.query.filter(Subreddit.name.ilike(f'%{query}%')).all()
+    return {'subreddits': [subreddit.to_dict() for subreddit in subreddits]}

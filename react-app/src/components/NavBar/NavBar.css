@@ -197,3 +197,39 @@
 .logout-btn:hover {
     background-color: rgba(0, 110, 188, 0.669);
 }
+
+
+.search-results-container {
+    position: fixed;
+    width: 52%;
+    left: 28%;
+    top: 6.5%;
+    border-radius: 10px;
+    padding: 3px;
+    background-color: rgb(15, 15, 15);
+}
+
+.search-result-box {
+    height: 40px;
+    width: 100%;
+    background-color: rgb(15, 15, 15);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
+.search-result-box:hover {
+    background-color: rgba(56, 56, 56, 0.434);
+}
+
+.search-results-container a {
+    text-decoration: none;
+}
+
+.result-text {
+    font-family: 'Threadit';
+    color: rgb(150, 150, 150);
+    padding-left: 20px;
+}

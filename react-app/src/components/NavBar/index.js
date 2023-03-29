@@ -7,6 +7,7 @@ import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
 import { logout } from '../../store/session';
 import CreateSubreddit from '../CreateSubreddit';
+import { searchSubreddits } from '../../store/subreddit';
 import './NavBar.css';
 
 function NavBar() {
@@ -16,6 +17,8 @@ function NavBar() {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const dropdownRef = useRef(null);
 
+	const [searchQuery, setSearchQuery] = useState('');
+	const [searchResults, setSearchResults] = useState([]);
 
 
 	// closes dropdown menu by clicking anywhere on screen
@@ -36,6 +39,27 @@ function NavBar() {
 	}, [showDropdown]);
 
 
+	//fetches for search results in real time
+	useEffect(() => {
+		const fetchSearchResults = async () => {
+			const results = await dispatch(searchSubreddits(searchQuery));
+			setSearchResults(results);
+		};
+
+		if (searchQuery !== '') {
+			fetchSearchResults();
+		} else {
+			setSearchResults([]);
+		}
+	}, [dispatch, searchQuery]);
+
+
+	console.log(searchResults)
+
+
+
+
+
 	//function to handle logging out
 	const handleLogout = async (e) => {
 		e.preventDefault();
@@ -49,6 +73,15 @@ function NavBar() {
 	const toggleDropdown = () => {
 		setShowDropdown(!showDropdown);
 	};
+
+
+
+
+
+
+
+
+
 
 	return (
 		<div className='nav-bar-container'>
@@ -69,7 +102,20 @@ function NavBar() {
 				name="search-bar"
 				placeholder='Search Threadit'
 				required
+				value={searchQuery}
+				onChange={(e) => setSearchQuery(e.target.value)}
 			/>
+			{searchResults && searchResults.length > 0 && (
+				<div className='search-results-container'>
+					{searchResults.map(result => (
+						<Link to={`/subreddits/${result.id}`}>
+							<div className='search-result-box'>
+								<span className='result-text'>{`r/ ${result.name}`}</span>
+							</div>
+						</Link>
+					))}
+				</div>
+			)}
 			{(!sessionUser) && (
 				<div className='login-signup-divs'>
 					<div className='signup-btn-div'>
