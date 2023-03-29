@@ -105,17 +105,25 @@ function NavBar() {
 				value={searchQuery}
 				onChange={(e) => setSearchQuery(e.target.value)}
 			/>
-			{searchResults && searchResults.length > 0 && (
-				<div className='search-results-container'>
+			{searchQuery ? (
+				searchResults.length > 0 ? (
+					<div className='search-results-container'>
 					{searchResults.map(result => (
 						<Link to={`/subreddits/${result.id}`}>
-							<div className='search-result-box'>
-								<span className='result-text'>{`r/ ${result.name}`}</span>
-							</div>
+						<div className='search-result-box'>
+							<span className='result-text'>{`r/ ${result.name}`}</span>
+						</div>
 						</Link>
 					))}
-				</div>
-			)}
+					</div>
+				) : (
+					<div className='search-results-container'>
+					<div className='search-result-box'>
+						<span className='result-text'>No search results found</span>
+					</div>
+					</div>
+				)
+				) : null}
 			{(!sessionUser) && (
 				<div className='login-signup-divs'>
 					<div className='signup-btn-div'>
