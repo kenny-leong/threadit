@@ -10,6 +10,7 @@ import CommunitySection from "./components/CommunitySection";
 import OwnedSR from "./components/OwnedSR";
 import SubredditDetails from "./components/SubredditDetails";
 import MySubreddits from "./components/MySubreddits";
+import PopularFeed from "./components/PostFeed/PopularFeed";
 
 
 function App() {
@@ -37,6 +38,13 @@ function App() {
                 <PostFeed />
                 <CommunitySection />
               </Route>
+              <Route path="/popular">
+                <NavBar />
+                <FeedSideBar />
+                <TrendBar />
+                <PopularFeed />
+                <CommunitySection />
+              </Route>
               <Route path="/owned-subreddits">
                 <NavBar />
                 <FeedSideBar />
@@ -60,6 +68,13 @@ function App() {
                 <FeedSideBar />
                 <TrendBar />
                 <PostFeed />
+                <CommunitySection />
+              </Route>
+              <Route path="/popular">
+                <NavBar />
+                <FeedSideBar />
+                <TrendBar />
+                <PopularFeed />
                 <CommunitySection />
               </Route>
               <Route path="/subreddits/:subredditId">

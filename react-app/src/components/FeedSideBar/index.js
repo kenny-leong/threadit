@@ -31,10 +31,12 @@ function FeedSideBar() {
                         </div>
                     </Link>
                 )}
-                <div className='popular-channel-div'>
-                    <span><i class="fa-solid fa-arrow-trend-up"></i></span>
-                    <span className='popular-channel-text'>Popular</span>
-                </div>
+                <Link to='/popular'>
+                    <div className='popular-channel-div'>
+                        <span><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        <span className='popular-channel-text'>Popular</span>
+                    </div>
+                </Link>
             </div>
             <div className='topic-margin-div'>
                 <span className='topics-text'>TOPICS</span>

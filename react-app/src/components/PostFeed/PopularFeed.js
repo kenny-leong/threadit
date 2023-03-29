@@ -8,11 +8,10 @@ import { useModal } from "../../context/Modal";
 import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import bannerImg from '../../static/placeholder-banner.png';
-import './PostFeed.css'
 
 
 
-function PostFeed() {
+function PopularFeed() {
     const dispatch = useDispatch();
     const { setModalContent } = useModal();
 
@@ -36,19 +35,13 @@ function PostFeed() {
 
     const postArr = Object.values(allPosts);
 
-    // sorts all posts through if there is an image it will be higher ranked.
-    // otherwise will sort by how recently created the post was.
-    postArr.sort((a, b) => {
-        if (a.image_url && !b.image_url) {
-            return -1;
-        } else if (!a.image_url && b.image_url) {
-            return 1;
-        } else {
-            return new Date(b.created_at) - new Date(a.created_at);
-        }
+    // Calculate net votes for each post and add it as a new property
+    postArr.forEach(post => {
+        post.netVotes = post.upvotes - post.downvotes;
     });
 
-    console.log(postArr)
+    // Sort by net votes in descending order
+    postArr.sort((a, b) => b.netVotes - a.netVotes);
 
 
     function getTimeSincePostCreation(createdAt) {
@@ -156,4 +149,4 @@ function PostFeed() {
 
 
 
-export default PostFeed;
+export default PopularFeed;
