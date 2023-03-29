@@ -24,7 +24,7 @@ function CreateSubreddit() {
         e.preventDefault();
 
         const newSubreddit = await dispatch(createSubreddit(name, description))
-            .then((res) => {
+            .then(() => {
                 dispatch(getOwnedSubreddits(sessionUser.id));
                 closeModal();
             })

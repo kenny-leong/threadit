@@ -145,7 +145,10 @@ function SubredditDetails() {
     return (
         <div className='subreddit-details-div'>
             <div className='banner-img-div'>
-                <img className='banner-img' alt='banner' src={subredditDetails.banner_image ? subredditDetails.banner_image : bannerImg}/>
+                <img className='banner-img'
+                alt='banner' src={subredditDetails.banner_image ? subredditDetails.banner_image : bannerImg}
+                onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
+                />
                 <div className='gray-bg'>
                     <div className='span-container'>
                         <span className='sr-details-title'>{subredditDetails.name}</span>
@@ -166,7 +169,11 @@ function SubredditDetails() {
             </div>
             {sessionUser && (subredditMembers[sessionUser.id]) && (
                 <div className='create-post-div'>
-                    <img className='posting-profile-pic-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
+                    <img className='posting-profile-pic-img'
+                    alt='profile-pic'
+                    src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic}
+                    onError={(e) => {e.target.onerror = null; e.target.src=nullProfilePic}}
+                    />
                     <input
                     type="text"
                     placeholder='Create Post'
@@ -181,7 +188,11 @@ function SubredditDetails() {
                     </div>
                 </div>
             )}
-            <img className='profile-pic-sr-img' alt='profile-pic' src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic} />
+            <img className='profile-pic-sr-img'
+            alt='profile-pic'
+            src={subredditDetails.profile_picture ? subredditDetails.profile_picture : nullProfilePic}
+            onError={(e) => {e.target.onerror = null; e.target.src=nullProfilePic}}
+            />
             {(subredditPostArr === undefined || subredditPostArr.length === 0) && (
                 <div className='no-post-msg-div'>
                     <span className='no-post-msg'>No existing posts. Be the first to post!</span>
@@ -218,7 +229,11 @@ function SubredditDetails() {
                                 )}
                                 {(post.image_url) && (
                                     <div className='feed-post-div'>
-                                        <img className='feed-post-img' alt='post-img' src={post.image_url} />
+                                        <img className='feed-post-img'
+                                        alt='post-img'
+                                        src={post.image_url}
+                                        onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
+                                        />
                                     </div>
                                 )}
                                 <div className='feed-post-comment-bar'>
