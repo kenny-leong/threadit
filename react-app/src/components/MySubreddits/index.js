@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { deleteSubreddit, getAllSR, getOwnedSubreddits } from "../../store/subreddit";
+import { deleteSubreddit, getSubredditsByUser, removeSubredditMember, getSubredditMembers } from "../../store/subreddit";
 import ghibli from '../../static/transparent-ghibli.png';
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
 import { getSingleSR } from '../../store/subreddit';
+import { useModal } from "../../context/Modal";
 
 
 
@@ -18,39 +19,50 @@ function MySubreddits() {
 
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const ownedSubreddits = useSelector(state => state.subreddit.ownedSubreddits);
-
+    const subredditMemberships = useSelector(state => state.subreddit.memberSubreddits);
+    const { closeModal } = useModal();
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
 
 
     useEffect(() => {
-        if (sessionUser) dispatch(getOwnedSubreddits(sessionUser.id))
+        if (sessionUser) dispatch(getSubredditsByUser(sessionUser.id))
     }, [dispatch, sessionUser])
 
 
-    if (ownedSubreddits === undefined) return null;
+    if (subredditMemberships === undefined) return null;
+
 
     const handleDelete = async (subredditId) => {
         await dispatch(deleteSubreddit(subredditId))
             .then(() => {
-                dispatch(getAllSR())
-                dispatch(authenticate())
+                dispatch(getSubredditsByUser(sessionUser.id))
             })
     };
 
+    // handles leaving a subreddit
+	const handleLeave = async (subredditId) => {
 
-    const ownedSRArr = Object.values(ownedSubreddits)
+		await dispatch(removeSubredditMember(subredditId, sessionUser.id))
+        .then(() => {
+            dispatch(getSubredditsByUser(sessionUser.id))
+            dispatch(getSubredditMembers(subredditId))
+            closeModal();
+        });
+	};
+
+
+    const subredditMembershipArr = Object.values(subredditMemberships)
 
     return (
         <div className="owned-div">
             <div className="owned-sr-heading-div">
-                <span className="owned-sr-title">threadit for owners.</span>
+                <span className="owned-sr-title">my communities.</span>
             </div>
             <img src={ghibli} className='ghibli-img' alt='ghibli-img'/>
             <div className="sr-box-container">
-                {ownedSRArr.map((subreddit, index) => (
+                {subredditMembershipArr.map((subreddit, index) => (
                     <div className="owned-subreddit-box" key={index}>
                         <div className="box-section-sr">
                             <img className="owned-sr-profile-pic"
@@ -63,15 +75,22 @@ function MySubreddits() {
                             </Link>
                             <span className="owned-sr-desc">{subreddit.description}</span>
                         </div>
-                        <div className="owned-sr-edit-delete-div">
-                            <OpenModalButton
-                                buttonText={<span className='update-sr-owned'>Update</span>}
-                                modalComponent={<UpdateSubreddit />}
-                                className='update-sr-btn-owned'
-                                onButtonClick={() => dispatch(getSingleSR(subreddit.id))}
-                            />
-                            <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
-                        </div>
+                        {subreddit.creator_id === sessionUser.id && (
+                            <div className="owned-sr-edit-delete-div">
+                                <OpenModalButton
+                                    buttonText={<span className='update-sr-owned'>Update</span>}
+                                    modalComponent={<UpdateSubreddit />}
+                                    className='update-sr-btn-owned'
+                                    onButtonClick={() => dispatch(getSingleSR(subreddit.id))}
+                                />
+                                <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
+                            </div>
+                        )}
+                        {subreddit.creator_id !== sessionUser.id && (
+                            <div className="leave-subreddit-div">
+                                <button className="delete-owned-sr" onClick={() => handleLeave(subreddit.id)}>Leave</button>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
