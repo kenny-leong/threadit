@@ -1,59 +1,53 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import EditPost from './EditPost';
 import { useModal } from "../../context/Modal";
 import { updatePost, getSubredditPosts } from '../../store/post';
-import EditLink from './EditLink';
+import EditPost from './EditPost';
+import EditImgPost from './EditImgPost';
 
 
-
-
-function EditImgPost({ post }) {
+function EditLink({ post }) {
 
     const [title, setTitle] = useState(post.title);
-    const [imageURL, setImageURL] = useState(post.image_url);
+    const [textContent, setTextContent] = useState(post.content);
     const { closeModal, setModalContent } = useModal();
     const dispatch = useDispatch();
 
-
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(updatePost(post.id, title, null, imageURL))
+        await dispatch(updatePost(post.id, title, textContent, null))
         .then(() => {
             dispatch(getSubredditPosts(subredditDetails.id));
             closeModal();
         })
     }
 
-    const openModal = () => {
+    const openText = () => {
         setModalContent(<EditPost post={post}/>);
     };
 
-    const openLink = () => {
-        setModalContent(<EditLink post={post}/>)
+    const openImage = () => {
+        setModalContent(<EditImgPost post={post}/>);
     };
 
-
     return (
-        <div className='create-post-component img'>
+        <div className='create-post-component link'>
             <div className='create-post-title'>
                 <span className='post-heading-title'>Update Post</span>
             </div>
-            <div className='typeof-post-div'>
-                <div className='typeof-post' onClick={openModal}>
+            <div className='typeof-post-div' >
+                <div className='typeof-post text-modal' onClick={() => {openText()}}>
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
-                <div className='typeof-post image'>
+                <div className='typeof-post image-modal' onClick={openImage}>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
-                <div className='typeof-post' onClick={openLink}>
+                <div className='typeof-post link'>
                     <i class="fa-solid fa-link"></i>
                     <span className='typeof-heading'>Link</span>
                 </div>
@@ -68,15 +62,15 @@ function EditImgPost({ post }) {
             />
             <input
                 type="text"
-                value={imageURL}
-                placeholder='Image URL'
-                onChange={(e) => setImageURL(e.target.value)}
+                value={textContent}
+                placeholder='Link URL'
+                onChange={(e) => setTextContent(e.target.value)}
                 className='create-post-sr popup'
                 required
             />
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleSubmit} disabled={(title && title.length === 0) || (imageURL && imageURL.length < 8) || (!imageURL)}>Edit Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0}>Update</button>
             </div>
         </div>
     )
@@ -84,5 +78,4 @@ function EditImgPost({ post }) {
 
 
 
-
-export default EditImgPost;
+export default EditLink;

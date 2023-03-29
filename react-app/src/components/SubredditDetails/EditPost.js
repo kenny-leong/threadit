@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { updatePost, getSubredditPosts } from '../../store/post';
 import EditImgPost from './EditImgPost';
+import EditLink from './EditLink';
 
 
 
@@ -32,6 +33,10 @@ function EditPost({ post }) {
         setModalContent(<EditImgPost post={post}/>);
     };
 
+    const openLink = () => {
+        setModalContent(<EditLink post={post}/>)
+    };
+
 
     return (
         <div className='create-post-component text'>
@@ -47,7 +52,7 @@ function EditPost({ post }) {
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
-                <div className='typeof-post link'>
+                <div className='typeof-post' onClick={openLink}>
                     <i class="fa-solid fa-link"></i>
                     <span className='typeof-heading'>Link</span>
                 </div>
