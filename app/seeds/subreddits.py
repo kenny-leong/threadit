@@ -1,6 +1,7 @@
 from app.models import db, User, Subreddit, SubredditMember, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
+from random import randint
 
 # Adds a demo subreddit, you can add other subreddits here if you want
 def seed_subreddits():
@@ -26,6 +27,17 @@ def seed_subreddits():
 
         member = SubredditMember(user_id=creator.id, subreddit_id=subreddit.id)
         db.session.add(member)
+
+        # Add additional members to the subreddit
+        num_members = randint(10, 100)
+        member_user_ids = [creator.id]
+        for i in range(num_members - 1):
+            user_id = users[randint(0, len(users) - 1)].id
+            if user_id not in member_user_ids:
+                member_user_ids.append(user_id)
+                member = SubredditMember(user_id=user_id, subreddit_id=subreddit.id)
+                db.session.add(member)
+
 
     db.session.commit()
 

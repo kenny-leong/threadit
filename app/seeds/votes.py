@@ -16,30 +16,44 @@ def seed_votes():
     # Seed votes for each post
     for post in posts:
         # Decide whether to seed more upvotes or downvotes for this post
-        more_upvotes = choice([True, False])
-        num_votes = fake.random_int(min=10, max=50)
+        if fake.random.choices([True, False], weights=[0.8, 0.2])[0]:
+            more_upvotes = True
+            num_upvotes = fake.random_int(min=20, max=50)
+            num_downvotes = fake.random_int(min=10, max=30)
+        else:
+            more_upvotes = False
+            num_upvotes = fake.random_int(min=10, max=30)
+            num_downvotes = fake.random_int(min=20, max=50)
 
         # Seed votes for this post
-        for i in range(num_votes):
+        for i in range(num_upvotes):
             # Choose a random user who hasn't voted on this post yet
-            user = choice(users)
+            user = fake.random.choice(users)
             while post.id in votes_by_user[user.id]:
-                user = choice(users)
+                user = fake.random.choice(users)
 
-            # Decide whether to upvote or downvote
-            if more_upvotes:
-                vote_type = choice(['upvote', 'upvote', 'downvote'])
-            else:
-                vote_type = choice(['downvote', 'downvote', 'upvote'])
+            # Create an upvote and add it to the session
+            vote = Vote(user=user, post=post, type='upvote')
+            db.session.add(vote)
 
-            # Create the vote and add it to the session
-            vote = Vote(user=user, post=post, type=vote_type)
+            # Update the votes_by_user dictionary
+            votes_by_user[user.id].add(post.id)
+
+        for i in range(num_downvotes):
+            # Choose a random user who hasn't voted on this post yet
+            user = fake.random.choice(users)
+            while post.id in votes_by_user[user.id]:
+                user = fake.random.choice(users)
+
+            # Create a downvote and add it to the session
+            vote = Vote(user=user, post=post, type='downvote')
             db.session.add(vote)
 
             # Update the votes_by_user dictionary
             votes_by_user[user.id].add(post.id)
 
     db.session.commit()
+
 
 
 
