@@ -117,6 +117,11 @@ function SubredditDetails() {
         setModalContent(<CreatePostImage />);
     };
 
+    //opens the Attachment Post component
+    const openAttachmentModal = () => {
+        setModalContent(<CreatePostImage />);
+    };
+
 
     //function to handle joining a subreddit
 	const handleJoin = async (e) => {
@@ -183,7 +188,7 @@ function SubredditDetails() {
                     <div className='img-create-post' onClick={() => {openImageModal()}}>
                         <i class="fa-solid fa-image"></i>
                     </div>
-                    <div className='link-create-post' onClick={() => {openImageModal()}}>
+                    <div className='link-create-post' onClick={() => {openAttachmentModal()}}>
                         <i class="fa-solid fa-link"></i>
                     </div>
                 </div>
