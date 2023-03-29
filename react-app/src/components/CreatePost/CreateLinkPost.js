@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createPost, getSubredditPosts } from '../../store/post';
 import CreatePostImage from './PostImage';
-import CreateLink from './CreateLinkPost';
-import './CreatePost.css';
+import CreatePost from '.';
+import './CreateLinkPost.css';
 
 
 
-function CreatePost() {
+function CreateLink() {
 
     const [title, setTitle] = useState("");
     const [textContent, setTextContent] = useState("");
@@ -30,12 +30,12 @@ function CreatePost() {
     }
 
 
-    const openImage = () => {
+    const openModal = () => {
         setModalContent(<CreatePostImage />);
     };
 
-    const openLink = () => {
-        setModalContent(<CreateLink />)
+    const openText = () => {
+        setModalContent(<CreatePost />);
     };
 
 
@@ -44,16 +44,16 @@ function CreatePost() {
             <div className='create-post-title'>
                 <span className='post-heading-title'>Create a Post</span>
             </div>
-            <div className='typeof-post-div'>
-                <div className='typeof-post post'>
+            <div className='typeof-post-div' onClick={openText}>
+                <div className='typeof-post'>
                     <i class="fa-solid fa-comment-dots"></i>
                     <span className='typeof-heading'>Text</span>
                 </div>
-                <div className='typeof-post' onClick={openImage}>
+                <div className='typeof-post' onClick={openModal}>
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
-                <div className='typeof-post' onClick={openLink}>
+                <div className='typeof-post link'>
                     <i class="fa-solid fa-link"></i>
                     <span className='typeof-heading'>Link</span>
                 </div>
@@ -66,14 +66,14 @@ function CreatePost() {
                 className='create-post-sr popup'
                 required
             />
-            <div className='ta-div'>
-                <textarea
-                        value={textContent}
-                        placeholder='Text (optional)'
-                        className='sr-textarea-desc popup'
-                        onChange={(e) => setTextContent(e.target.value)}
-                />
-            </div>
+            <input
+                type="text"
+                value={textContent}
+                placeholder='Link URL'
+                onChange={(e) => setTextContent(e.target.value)}
+                className='create-post-sr popup'
+                required
+            />
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
                 <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0}>Post</button>
@@ -84,4 +84,4 @@ function CreatePost() {
 
 
 
-export default CreatePost;
+export default CreateLink;

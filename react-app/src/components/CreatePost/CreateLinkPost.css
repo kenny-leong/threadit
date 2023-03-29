@@ -7,7 +7,6 @@
 }
 
 .create-post-component.text {
-    height: 550px;
     width: 550px;
     background-color: rgb(21, 21, 21);
     border-radius: 10px;
@@ -113,7 +112,7 @@
     background-color: rgba(0, 93, 214, 0.801);
 }
 
-.typeof-post.post {
+.typeof-post.link {
     background-color: rgba(110, 110, 110, 0.193);
     border-bottom: 2px white solid;
 }

@@ -120,10 +120,6 @@
     border-bottom: 2px white solid;
 }
 
-.typeof-post.link {
-    cursor: not-allowed;
-}
-
 .create-post-btn.post:disabled {
     background-color: rgb(40, 40, 40);
     cursor: not-allowed;

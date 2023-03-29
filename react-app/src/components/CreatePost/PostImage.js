@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CreatePost from '.';
 import { useModal } from "../../context/Modal";
 import { createPost, getSubredditPosts } from '../../store/post';
+import CreateLink from './CreateLinkPost';
 import './CreateImgPost.css';
 
 
@@ -34,6 +35,10 @@ function CreatePostImage() {
         setModalContent(<CreatePost />);
     };
 
+    const openLink = () => {
+        setModalContent(<CreateLink />);
+    };
+
 
     return (
         <div className='create-post-component img'>
@@ -49,7 +54,7 @@ function CreatePostImage() {
                     <i class="fa-solid fa-image"></i>
                     <span className='typeof-heading'>Image</span>
                 </div>
-                <div className='typeof-post link'>
+                <div className='typeof-post' onClick={openLink}>
                     <i class="fa-solid fa-link"></i>
                     <span className='typeof-heading'>Link</span>
                 </div>
