@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { deleteSubreddit, getAllSR, getOwnedSubreddits } from "../../store/subreddit";
+import { getOwnedSubreddits, getSingleSR } from "../../store/subreddit";
 import ghibli from '../../static/transparent-ghibli.png';
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
-import { getSingleSR } from '../../store/subreddit';
+import { useModal } from "../../context/Modal"
+import DeleteSubreddit from "./DeleteSR";
 import './OwnedSR.css';
 
 
@@ -20,7 +21,7 @@ function OwnedSR() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const ownedSubreddits = useSelector(state => state.subreddit.ownedSubreddits);
-
+    const { setModalContent, closeModal } = useModal();
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 
@@ -33,11 +34,11 @@ function OwnedSR() {
 
     if (ownedSubreddits === undefined) return null;
 
-    const handleDelete = async (subredditId) => {
-        await dispatch(deleteSubreddit(subredditId))
-            .then(() => {
-                dispatch(getOwnedSubreddits(sessionUser.id))
-            })
+
+
+    //opens the Delete Subreddit component
+    const openModal = (subredditId) => {
+        setModalContent(<DeleteSubreddit subredditId={subredditId}/>);
     };
 
 
@@ -70,7 +71,7 @@ function OwnedSR() {
                                 className='update-sr-btn-owned'
                                 onButtonClick={() => dispatch(getSingleSR(subreddit.id))}
                             />
-                            <button className="delete-owned-sr" onClick={() => handleDelete(subreddit.id)}>Delete</button>
+                            <button className="delete-owned-sr" onClick={() => openModal(subreddit.id)}>Delete</button>
                         </div>
                     </div>
                 ))}
