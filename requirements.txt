@@ -35,3 +35,4 @@ sqlalchemy==1.4.46
 werkzeug==2.2.2
 wtforms==3.0.1
 zipp==3.15.0; python_version >= '3.7'
+faker==6.5.2

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SignupForm from '../SignupForm';
@@ -10,6 +10,49 @@ import './feedbar.css'
 function FeedSideBar() {
 
     const sessionUser = useSelector(state => state.session.user);
+    const [isGamingOpen, setIsGamingOpen] = useState(false);
+    const [isSportsOpen, setIsSportsOpen] = useState(false);
+    const [isBusinessOpen, setIsBusinessOpen] = useState(false);
+    const [isCryptoOpen, setIsCryptoOpen] = useState(false);
+    const [isTVOpen, setIsTVOpen] = useState(false);
+    const [isCelebOpen, setIsCelebOpen] = useState(false);
+
+    const toggleGamingDropdown = () => {
+        setIsGamingOpen(!isGamingOpen);
+    };
+
+    const toggleSportsDropdown = () => {
+        setIsSportsOpen(!isSportsOpen);
+    };
+
+    const toggleBusinessDropdown = () => {
+        setIsBusinessOpen(!isBusinessOpen);
+    };
+
+    const toggleCryptoDropdown = () => {
+        setIsCryptoOpen(!isCryptoOpen);
+    };
+
+    const toggleTVDropdown = () => {
+        setIsTVOpen(!isTVOpen);
+    };
+
+    const toggleCelebDropdown = () => {
+        setIsCelebOpen(!isCelebOpen);
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         <div className='feed-bar-div'>
@@ -40,33 +83,46 @@ function FeedSideBar() {
             </div>
             <div className='topic-margin-div'>
                 <span className='topics-text'>TOPICS</span>
-                <div className='gaming-channel-div'>
+                <div className='gaming-channel-div' onClick={toggleGamingDropdown}>
                     <span><i class="fa-brands fa-twitch"></i></span>
                     <span className='home-channel-text'>Gaming</span>
                 </div>
-                <div className='sports-channel-div'>
+                {isGamingOpen && (
+                    <div className='dropdown-container gaming'>
+                        <div className='dropdown-item gaming'>
+                            <span>Valorant</span>
+                        </div>
+                        <div className='dropdown-item gaming'>
+                            <span>Genshin Impact</span>
+                        </div>
+                        <div className='dropdown-item gaming'>
+                            <span>Maplestory</span>
+                        </div>
+                    </div>
+                )}
+                <div className='sports-channel-div' onClick={toggleSportsDropdown}>
                     <span><i class="fa-solid fa-basketball"></i></span>
                     <span className='home-channel-text'>Sports</span>
                 </div>
-                <div className='business-channel-div'>
+                <div className='business-channel-div' onClick={toggleBusinessDropdown}>
                     <span><i class="fa-solid fa-coins"></i></span>
                     <span className='home-channel-text'>Business, Economics, a..</span>
                 </div>
-                <div className='crypto-channel-div'>
+                <div className='crypto-channel-div' onClick={toggleCryptoDropdown}>
                     <span><i class="fa-brands fa-bitcoin"></i></span>
                     <span className='home-channel-text'>Crypto</span>
                 </div>
-                <div className='tv-channel-div'>
+                <div className='tv-channel-div' onClick={toggleTVDropdown}>
                     <span><i class="fa-solid fa-tv"></i></span>
                     <span className='home-channel-text'>Television</span>
                 </div>
-                <div className='celeb-channel-div'>
+                <div className='celeb-channel-div' onClick={toggleCelebDropdown}>
                     <span><i class="fa-regular fa-star"></i></span>
                     <span className='home-channel-text'>Celebrity</span>
                 </div>
                 <div className='more-topics-div'>
                     <span><i class="fa-solid fa-ellipsis"></i></span>
-                    <span className='home-channel-text'>More Topics</span>
+                    <span className='home-channel-text'>More Topics (Coming Soon)</span>
                 </div>
             </div>
             {!sessionUser && (
