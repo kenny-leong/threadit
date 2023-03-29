@@ -100,7 +100,7 @@ export const getSubredditsByUser = (userId) => async (dispatch) => {
     const res = await fetch(`/api/subreddits/member/${userId}`);
 
     if (res.ok) {
-        const data = await response.json();
+        const data = await res.json();
         dispatch(loadMemberSubreddits(data.subreddits));
     }
 };

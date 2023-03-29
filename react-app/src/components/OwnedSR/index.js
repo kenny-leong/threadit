@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { deleteSubreddit, getAllSR, getOwnedSubreddits } from "../../store/subreddit";
-import { authenticate } from "../../store/session";
 import ghibli from '../../static/transparent-ghibli.png';
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
@@ -37,8 +36,7 @@ function OwnedSR() {
     const handleDelete = async (subredditId) => {
         await dispatch(deleteSubreddit(subredditId))
             .then(() => {
-                dispatch(getAllSR())
-                dispatch(authenticate())
+                dispatch(getOwnedSubreddits(sessionUser.id))
             })
     };
 

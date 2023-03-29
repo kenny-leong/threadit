@@ -9,6 +9,7 @@ import PostFeed from "./components/PostFeed";
 import CommunitySection from "./components/CommunitySection";
 import OwnedSR from "./components/OwnedSR";
 import SubredditDetails from "./components/SubredditDetails";
+import MySubreddits from "./components/MySubreddits";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
               <Route path="/my-communities">
                 <NavBar />
                 <FeedSideBar />
+                <MySubreddits />
               </Route>
               <Route path="/subreddits/:subredditId">
                 <NavBar />
