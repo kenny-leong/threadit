@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
-import { getSubredditPosts, deletePost } from '../../store/post';
+import { getSubredditPosts, deletePost, getAllPosts } from '../../store/post';
 import './DeletePost.css';
 
 
@@ -18,6 +18,7 @@ function DeletePost({ postId }) {
         await dispatch(deletePost(postId))
         .then(() => {
             dispatch(getSubredditPosts(subredditDetails.id));
+            dispatch(getAllPosts())
             closeModal();
         })
     }
