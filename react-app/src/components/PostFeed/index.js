@@ -7,6 +7,7 @@ import { getAllSR } from '../../store/subreddit';
 import { useModal } from "../../context/Modal";
 import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
+import bannerImg from '../../static/placeholder-banner.png';
 import './PostFeed.css'
 
 
@@ -119,7 +120,11 @@ function PostFeed() {
                         )}
                         {(post.image_url) && (
                             <div className='feed-post-div'>
-                                <img className='feed-post-img' alt='post-img' src={post.image_url} />
+                                <img className='feed-post-img'
+                                alt='post-img'
+                                src={post.image_url}
+                                onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
+                                />
                             </div>
                         )}
                         <div className='feed-post-comment-bar'>

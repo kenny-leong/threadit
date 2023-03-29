@@ -55,7 +55,11 @@ function OwnedSR() {
                 {ownedSRArr.map((subreddit, index) => (
                     <div className="owned-subreddit-box" key={index}>
                         <div className="box-section-sr">
-                            <img className="owned-sr-profile-pic" alt='profile-pic' src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic} />
+                            <img className="owned-sr-profile-pic"
+                            alt='profile-pic'
+                            src={subreddit.profile_picture ? subreddit.profile_picture : nullProfilePic}
+                            onError={(e) => {e.target.onerror = null; e.target.src=nullProfilePic}}
+                            />
                             <Link to={`/subreddits/${subreddit.id}`}>
                                 <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
                             </Link>
