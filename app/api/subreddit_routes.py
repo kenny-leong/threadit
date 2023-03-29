@@ -195,3 +195,13 @@ def join_subreddit(id):
     db.session.commit()
 
     return jsonify(message='Subreddit joined successfully'), 200
+
+@subreddit_routes.route('/member/<int:user_id>')
+@login_required
+def subreddits_by_member(user_id):
+    """
+    Query for all subreddits a user is a member of by user id and return them in a list of subreddit dictionaries
+    """
+    memberships = SubredditMember.query.filter_by(user_id=user_id).all()
+    subreddits = [membership.subreddit.to_dict() for membership in memberships]
+    return {'subreddits': subreddits}

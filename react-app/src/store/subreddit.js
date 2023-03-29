@@ -17,6 +17,11 @@ const loadOwnedSubreddits = (subreddits) => ({
     subreddits
 });
 
+const loadMemberSubreddits = (subreddits) => ({
+    type: 'LOAD_MEMBER_SUBREDDITS',
+    subreddits
+});
+
 const loadSubredditMembers = (members) => ({
     type: 'LOAD_MEMBERS',
     members
@@ -87,7 +92,19 @@ export const getSubredditMembers = (subredditId) => async (dispatch) => {
       const subredditMembers = await res.json();
       dispatch(loadSubredditMembers(subredditMembers));
     }
-  };
+};
+
+
+// GET ALL SUBREDDITS THAT A USER IS A MEMBER OF
+export const getSubredditsByUser = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/subreddits/member/${userId}`);
+
+    if (res.ok) {
+        const data = await response.json();
+        dispatch(loadMemberSubreddits(data.subreddits));
+    }
+};
+
 
 
 // CREATE A NEW SUBREDDIT
@@ -128,7 +145,7 @@ export const addSubredditMember = (subredditId) => async (dispatch) => {
     } else {
         console.error('Failed to add subreddit member.');
     }
-  };
+};
 
 
 
@@ -226,6 +243,16 @@ const subredditReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ownedSubreddits: ownedSubreddits
+            }
+        case 'LOAD_MEMBER_SUBREDDITS':
+            const memberSubreddits = {};
+            const memberSRArr = action.subreddits;
+            memberSRArr.forEach(subreddit => {
+                memberSubreddits[subreddit.id] = subreddit
+            });
+            return {
+                ...state,
+                memberSubreddits: memberSubreddits
             }
         case 'LOAD_MEMBERS':
             const subredditMembers = {};
