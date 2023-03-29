@@ -6,7 +6,9 @@
     font-style: normal;
 }
 
-.create-post-component.text {
+.create-post-component.link {
+    max-height: 610px;
+    min-height: 350px;
     width: 550px;
     background-color: rgb(21, 21, 21);
     border-radius: 10px;

@@ -40,7 +40,7 @@ function CreateLink() {
 
 
     return (
-        <div className='create-post-component text'>
+        <div className='create-post-component link'>
             <div className='create-post-title'>
                 <span className='post-heading-title'>Create a Post</span>
             </div>
