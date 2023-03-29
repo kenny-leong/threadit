@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { deleteSubreddit, getSubredditsByUser, removeSubredditMember, getSubredditMembers } from "../../store/subreddit";
-import ghibli from '../../static/transparent-ghibli.png';
+import peek from '../../static/peeking.png'
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
 import { getSingleSR } from '../../store/subreddit';
@@ -60,7 +60,7 @@ function MySubreddits() {
             <div className="owned-sr-heading-div">
                 <span className="owned-sr-title">my communities.</span>
             </div>
-            <img src={ghibli} className='ghibli-img' alt='ghibli-img'/>
+            <img src={peek} className='ghibli-img' alt='ghibli-img'/>
             <div className="sr-box-container">
                 {subredditMembershipArr.map((subreddit, index) => (
                     <div className="owned-subreddit-box" key={index}>
