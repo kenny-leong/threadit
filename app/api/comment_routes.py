@@ -67,7 +67,6 @@ def delete_comment(id):
 
 
 @comment_routes.route('/post/<int:post_id>')
-@login_required
 def comments_by_post(post_id):
     """
     Query for all comments associated with a specific post and return them in a list of comment dictionaries
