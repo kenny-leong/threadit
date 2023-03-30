@@ -143,6 +143,9 @@
 .feed-post-comment-bar {
     display: flex;
     align-items: center;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    justify-content: space-evenly;
 }
 
 .feed-post-comment-bar .fa-comments {

@@ -134,21 +134,21 @@ function PostFeed() {
                                     />
                                 </div>
                             )}
+                            <div className='feed-post-comment-bar'>
+                                <div className='comments-and-text-div'>
+                                    <i class="fa-solid fa-comments"></i>
+                                    <span className='comment-div-text'>{`${post.comments.length} Comments`}</span>
+                                </div>
+                                <div className='repeat-and-text-div'>
+                                    <i class="fa-solid fa-repeat"></i>
+                                    <span className='comment-div-text'>Share</span>
+                                </div>
+                                <div className='bookmark-and-text-div'>
+                                    <i class="fa-regular fa-bookmark"></i>
+                                    <span className='comment-div-text'>Save</span>
+                                </div>
+                            </div>
                         </Link>
-                        <div className='feed-post-comment-bar'>
-                            <div className='comments-and-text-div'>
-                                <i class="fa-solid fa-comments"></i>
-                                <span className='comment-div-text'>5 Comments</span>
-                            </div>
-                            <div className='repeat-and-text-div'>
-                                <i class="fa-solid fa-repeat"></i>
-                                <span className='comment-div-text'>Share</span>
-                            </div>
-                            <div className='bookmark-and-text-div'>
-                                <i class="fa-regular fa-bookmark"></i>
-                                <span className='comment-div-text'>Save</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             ))}

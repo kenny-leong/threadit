@@ -37,5 +37,6 @@ class Post(db.Model):
             "subreddit_id": self.subreddit_id,
             "image_url": self.image_url,
             "upvotes": self.upvotes,
-            "downvotes": self.downvotes
+            "downvotes": self.downvotes,
+            "comments": [comment.to_dict() for comment in self.comments],
         }
