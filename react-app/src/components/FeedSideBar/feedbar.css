@@ -16,6 +16,7 @@
     height: 100%;
     width: 270px;
     background-color: rgb(24, 24, 24);
+    overflow-y: auto;
 }
 
 .feed-margin-div {
@@ -59,9 +60,12 @@
 .business-channel-div:hover,
 .crypto-channel-div:hover,
 .tv-channel-div:hover,
-.celeb-channel-div:hover,
-.more-topics-div:hover {
+.celeb-channel-div:hover {
     background-color: rgba(51, 51, 51, 0.462);
+}
+
+.more-topics-div:hover {
+    cursor: not-allowed;
 }
 
 .home-channel-div .fa-house {
@@ -173,4 +177,27 @@
     .join-div {
         display: none;
     }
+}
+
+
+.dropdown-container {
+    margin-left: 25px;
+}
+
+.dropdown-item {
+    margin-bottom: 5px;
+    font-family: 'Threadit';
+    color: #d19739;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(72, 72, 72, 0.382);
+    color: #f8c134;
 }

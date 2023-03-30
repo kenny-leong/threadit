@@ -104,22 +104,87 @@ function FeedSideBar() {
                     <span><i class="fa-solid fa-basketball"></i></span>
                     <span className='home-channel-text'>Sports</span>
                 </div>
+                {isSportsOpen && (
+                    <div className='dropdown-container sports'>
+                        <div className='dropdown-item sports'>
+                            <span>NFL</span>
+                        </div>
+                        <div className='dropdown-item sports'>
+                            <span>World Cup</span>
+                        </div>
+                        <div className='dropdown-item sports'>
+                            <span>NBA</span>
+                        </div>
+                    </div>
+                )}
                 <div className='business-channel-div' onClick={toggleBusinessDropdown}>
                     <span><i class="fa-solid fa-coins"></i></span>
                     <span className='home-channel-text'>Business, Economics, a..</span>
                 </div>
+                {isBusinessOpen && (
+                    <div className='dropdown-container business'>
+                        <div className='dropdown-item business'>
+                            <span>Robinhood</span>
+                        </div>
+                        <div className='dropdown-item business'>
+                            <span>Goldman Sachs</span>
+                        </div>
+                        <div className='dropdown-item business'>
+                            <span>Tech Layoffs</span>
+                        </div>
+                    </div>
+                )}
                 <div className='crypto-channel-div' onClick={toggleCryptoDropdown}>
                     <span><i class="fa-brands fa-bitcoin"></i></span>
                     <span className='home-channel-text'>Crypto</span>
                 </div>
+                {isCryptoOpen && (
+                    <div className='dropdown-container crypto'>
+                        <div className='dropdown-item crypto'>
+                            <span>Bitcoin</span>
+                        </div>
+                        <div className='dropdown-item crypto'>
+                            <span>Ethereum</span>
+                        </div>
+                        <div className='dropdown-item crypto'>
+                            <span>Dogecoin</span>
+                        </div>
+                    </div>
+                )}
                 <div className='tv-channel-div' onClick={toggleTVDropdown}>
                     <span><i class="fa-solid fa-tv"></i></span>
-                    <span className='home-channel-text'>Television</span>
+                    <span className='home-channel-text'>Anime</span>
                 </div>
+                {isTVOpen && (
+                    <div className='dropdown-container tv'>
+                        <div className='dropdown-item tv'>
+                            <span>Suzume</span>
+                        </div>
+                        <div className='dropdown-item tv'>
+                            <span>Demon Slayer</span>
+                        </div>
+                        <div className='dropdown-item tv'>
+                            <span>Jujutsu Kaisen</span>
+                        </div>
+                    </div>
+                )}
                 <div className='celeb-channel-div' onClick={toggleCelebDropdown}>
                     <span><i class="fa-regular fa-star"></i></span>
                     <span className='home-channel-text'>Celebrity</span>
                 </div>
+                {isCelebOpen && (
+                    <div className='dropdown-container celeb'>
+                        <div className='dropdown-item celeb'>
+                            <span>Kim Kardashian</span>
+                        </div>
+                        <div className='dropdown-item celeb'>
+                            <span>ITZY</span>
+                        </div>
+                        <div className='dropdown-item celeb'>
+                            <span>BLACKPINK</span>
+                        </div>
+                    </div>
+                )}
                 <div className='more-topics-div'>
                     <span><i class="fa-solid fa-ellipsis"></i></span>
                     <span className='home-channel-text'>More Topics (Coming Soon)</span>
