@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getPostById } from '../../store/post';
 import { useModal } from "../../context/Modal";
 import EditPost from '../SubredditDetails/EditPost';
+import { getAllUsers } from '../../store/session';
+import { getAllSR } from '../../store/subreddit';
 import bannerImg from '../../static/placeholder-banner.png';
 import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
@@ -33,10 +35,15 @@ function PostDetails() {
     useEffect(() => {
         dispatch(getPostById(postId))
         dispatch(getComments(postId))
-    }, [postId, subredditId]);
+        dispatch(getAllSR())
+        dispatch(getAllUsers())
+    }, [dispatch, postId, subredditId]);
 
 
-    if (!post || !allSubreddits || !allUsers || !allComments) return null;
+    if (!post || !allSubreddits || !allUsers || !allComments) {
+        console.log('hit null')
+        return null;
+    }
 
 
 
@@ -117,10 +124,10 @@ function PostDetails() {
                     </div>
                     {sessionUser && post.author_id === sessionUser.id && (
                         <div className='edit-delete-divs-post'>
-                            <div className='edit-post-btn-container' onClick={() => openEditModal(post)}>
+                            <div className='edit-post-btn-container' onClick={() => null}>
                                 <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
                             </div>
-                            <div className='delete-post-btn-container' onClick={() => openDeleteModal(post.id)}>
+                            <div className='delete-post-btn-container' onClick={() => null}>
                                 <span><i class="fa-solid fa-trash-can"></i></span>
                             </div>
                         </div>
