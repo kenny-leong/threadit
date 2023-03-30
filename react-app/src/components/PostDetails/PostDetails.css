@@ -182,3 +182,12 @@
     color: #a8a8a8;
     font-family: Helvetica;
 }
+
+.nouser-create-comment {
+    margin-top: 10px;
+}
+
+.create-comment-btn.join {
+    width: 150px;
+    background-color: #1352af;
+}

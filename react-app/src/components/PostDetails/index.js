@@ -8,6 +8,7 @@ import bannerImg from '../../static/placeholder-banner.png';
 import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
 import EditComment from './EditComment';
+import LoginForm from '../LoginForm';
 import './PostDetails.css'
 
 
@@ -73,9 +74,15 @@ function PostDetails() {
         setModalContent(<DeleteComment comment={comment}/>);
     };
 
-    //opens the update post component
+    //opens the update comment component
     const openEditModal = (comment) => {
         setModalContent(<EditComment comment={comment}/>)
+    };
+
+
+    //opens the login component
+    const openLogin = () => {
+        setModalContent(<LoginForm />)
     };
 
     const handleSubmit = async (e) => {
@@ -145,9 +152,16 @@ function PostDetails() {
                             className='sr-textarea-desc popup component'
                             onChange={(e) => setComment(e.target.value)}
                     />
-                    <div className='create-comment-btn-div'>
-                        <button className='create-comment-btn' onClick={handleSubmit}>Comment</button>
-                    </div>
+                    {sessionUser ? (
+                        <div className='create-comment-btn-div'>
+                            <button className='create-comment-btn' onClick={handleSubmit}>Comment</button>
+                        </div>
+                    ) :
+                    (
+                        <div className='nouser-create-comment'>
+                            <button className='create-comment-btn join' onClick={openLogin}>Join the conversation</button>
+                        </div>
+                    )}
                 </div>
                 <div className='comment-display'>
                     {commentArr.map(comment => (
