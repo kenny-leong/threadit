@@ -79,15 +79,21 @@ function FeedSideBar() {
                 </div>
                 {isGamingOpen && (
                     <div className='dropdown-container gaming'>
-                        <div className='dropdown-item gaming'>
-                            <span>Valorant</span>
-                        </div>
-                        <div className='dropdown-item gaming'>
-                            <span>Genshin Impact</span>
-                        </div>
-                        <div className='dropdown-item gaming'>
-                            <span>Maplestory</span>
-                        </div>
+                        <Link to='/subreddits/25'>
+                            <div className='dropdown-item gaming'>
+                                <span>Valorant</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/24'>
+                            <div className='dropdown-item gaming'>
+                                <span>Genshin Impact</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/23'>
+                            <div className='dropdown-item gaming'>
+                                <span>Maplestory</span>
+                            </div>
+                        </Link>
                     </div>
                 )}
                 <div className='sports-channel-div' onClick={toggleSportsDropdown}>
@@ -96,15 +102,21 @@ function FeedSideBar() {
                 </div>
                 {isSportsOpen && (
                     <div className='dropdown-container sports'>
-                        <div className='dropdown-item sports'>
-                            <span>NFL</span>
-                        </div>
-                        <div className='dropdown-item sports'>
-                            <span>World Cup</span>
-                        </div>
-                        <div className='dropdown-item sports'>
-                            <span>NBA</span>
-                        </div>
+                        <Link to='/subreddits/8'>
+                            <div className='dropdown-item sports'>
+                                <span>NFL</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/10'>
+                            <div className='dropdown-item sports'>
+                                <span>World Cup</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/9'>
+                            <div className='dropdown-item sports'>
+                                <span>NBA</span>
+                            </div>
+                        </Link>
                     </div>
                 )}
                 <div className='business-channel-div' onClick={toggleBusinessDropdown}>
@@ -113,15 +125,21 @@ function FeedSideBar() {
                 </div>
                 {isBusinessOpen && (
                     <div className='dropdown-container business'>
-                        <div className='dropdown-item business'>
-                            <span>Robinhood</span>
-                        </div>
-                        <div className='dropdown-item business'>
-                            <span>Goldman Sachs</span>
-                        </div>
-                        <div className='dropdown-item business'>
-                            <span>Bloomberg</span>
-                        </div>
+                        <Link to='/subreddits/11'>
+                            <div className='dropdown-item business'>
+                                <span>Robinhood</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/12'>
+                            <div className='dropdown-item business'>
+                                <span>Goldman Sachs</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/13'>
+                            <div className='dropdown-item business'>
+                                <span>Bloomberg</span>
+                            </div>
+                        </Link>
                     </div>
                 )}
                 <div className='crypto-channel-div' onClick={toggleCryptoDropdown}>
@@ -130,15 +148,21 @@ function FeedSideBar() {
                 </div>
                 {isCryptoOpen && (
                     <div className='dropdown-container crypto'>
-                        <div className='dropdown-item crypto'>
-                            <span>Bitcoin</span>
-                        </div>
-                        <div className='dropdown-item crypto'>
-                            <span>Ethereum</span>
-                        </div>
-                        <div className='dropdown-item crypto'>
-                            <span>Dogecoin</span>
-                        </div>
+                        <Link to='/subreddits/14'>
+                            <div className='dropdown-item crypto'>
+                                <span>Bitcoin</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/15'>
+                            <div className='dropdown-item crypto'>
+                                <span>Ethereum</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/16'>
+                            <div className='dropdown-item crypto'>
+                                <span>Dogecoin</span>
+                            </div>
+                        </Link>
                     </div>
                 )}
                 <div className='tv-channel-div' onClick={toggleTVDropdown}>
@@ -147,15 +171,21 @@ function FeedSideBar() {
                 </div>
                 {isTVOpen && (
                     <div className='dropdown-container tv'>
-                        <div className='dropdown-item tv'>
-                            <span>Suzume</span>
-                        </div>
-                        <div className='dropdown-item tv'>
-                            <span>Demon Slayer</span>
-                        </div>
-                        <div className='dropdown-item tv'>
-                            <span>Jujutsu Kaisen</span>
-                        </div>
+                        <Link to='/subreddits/17'>
+                            <div className='dropdown-item tv'>
+                                <span>Suzume</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/18'>
+                            <div className='dropdown-item tv'>
+                                <span>Demon Slayer</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/19'>
+                            <div className='dropdown-item tv'>
+                                <span>Jujutsu Kaisen</span>
+                            </div>
+                        </Link>
                     </div>
                 )}
                 <div className='celeb-channel-div' onClick={toggleCelebDropdown}>
@@ -164,15 +194,21 @@ function FeedSideBar() {
                 </div>
                 {isCelebOpen && (
                     <div className='dropdown-container celeb'>
-                        <div className='dropdown-item celeb'>
-                            <span>Kim Kardashian</span>
-                        </div>
-                        <div className='dropdown-item celeb'>
-                            <span>ITZY</span>
-                        </div>
-                        <div className='dropdown-item celeb'>
-                            <span>BLACKPINK</span>
-                        </div>
+                        <Link to='/subreddits/20'>
+                            <div className='dropdown-item celeb'>
+                                <span>Kim Kardashian</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/21'>
+                            <div className='dropdown-item celeb'>
+                                <span>ITZY</span>
+                            </div>
+                        </Link>
+                        <Link to='/subreddits/22'>
+                            <div className='dropdown-item celeb'>
+                                <span>BLACKPINK</span>
+                            </div>
+                        </Link>
                     </div>
                 )}
                 <div className='more-topics-div'>
