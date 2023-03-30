@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostById } from '../../store/post';
 import { useModal } from "../../context/Modal";
+import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import { getAllUsers } from '../../store/session';
 import { getAllSR } from '../../store/subreddit';
@@ -75,6 +76,16 @@ function PostDetails() {
         return `${timeDiffInMinutes} minute${timeDiffInMinutes === 1 ? '' : 's'}`;
     }
 
+    // opens the DeletePost component
+    const openDeletePost = (postId) => {
+        setModalContent(<DeletePost postId={postId}/>);
+    };
+
+    //opens the EditPost component
+    const openEditPost = (post) => {
+        setModalContent(<EditPost post={post}/>)
+    };
+
 
     // opens the DeleteComment component
     const openDeleteModal = (comment) => {
@@ -124,10 +135,10 @@ function PostDetails() {
                     </div>
                     {sessionUser && post.author_id === sessionUser.id && (
                         <div className='edit-delete-divs-post'>
-                            <div className='edit-post-btn-container' onClick={() => null}>
+                            <div className='edit-post-btn-container' onClick={() => openEditPost(post)}>
                                 <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
                             </div>
-                            <div className='delete-post-btn-container' onClick={() => null}>
+                            <div className='delete-post-btn-container' onClick={() => openDeletePost(post)}>
                                 <span><i class="fa-solid fa-trash-can"></i></span>
                             </div>
                         </div>
