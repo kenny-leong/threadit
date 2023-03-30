@@ -95,6 +95,7 @@ function App() {
                 <NavBar />
                 <FeedSideBar />
                 <PostDetails />
+                <JoinSideBar />
               </Route>
             </>
           )}
