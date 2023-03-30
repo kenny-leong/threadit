@@ -7,6 +7,7 @@ import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import bannerImg from '../../static/placeholder-banner.png';
 import { getComments, createComment } from '../../store/comment';
+import DeleteComment from './DeleteComment';
 import './PostDetails.css'
 
 
@@ -67,9 +68,9 @@ function PostDetails() {
     }
 
 
-    // opens the DeletePost component
-    const openDeleteModal = (postId) => {
-        setModalContent(<DeletePost postId={postId}/>);
+    // opens the DeleteComment component
+    const openDeleteModal = (comment) => {
+        setModalContent(<DeleteComment comment={comment}/>);
     };
 
     //opens the update post component
@@ -87,14 +88,6 @@ function PostDetails() {
             closeModal();
         })
     }
-
-
-    console.log(commentArr)
-
-
-
-
-
 
 
 
@@ -160,9 +153,21 @@ function PostDetails() {
                     {commentArr.map(comment => (
                         <div className='comment-box'>
                             <div className='username-comment-div'>
-                                <span className='comment-username'>{allUsers[comment.author_id].username}</span>
-                                <i class="fa-solid fa-circle"></i>
-                                <span className='created-at-time'>{`${getTimeSincePostCreation(comment.created_at)} ago`}</span>
+                                <div className='username-and-creation'>
+                                    <span className='comment-username'>{`${allUsers[comment.author_id].username}`}</span>
+                                    <i class="fa-solid fa-circle"></i>
+                                    <span className='created-at-time'>{`${getTimeSincePostCreation(comment.created_at)} ago`}</span>
+                                </div>
+                                {sessionUser && comment.author_id === sessionUser.id && (
+                                <div className='edit-delete-divs-post'>
+                                    <div className='edit-post-btn-container' onClick={() => openEditModal(comment)}>
+                                        <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
+                                    </div>
+                                    <div className='delete-post-btn-container' onClick={() => openDeleteModal(comment)}>
+                                        <span><i class="fa-solid fa-trash-can"></i></span>
+                                    </div>
+                                </div>
+                                )}
                             </div>
                             <div className='comment-content-div'>
                                 <span className='comment-content-span'>{comment.content}</span>

@@ -21,8 +21,8 @@ const editPost = (post) => ({
     post
 });
 
-const removePost = (postId) => ({
-    type: 'DELETE_POST'
+const removeComment = () => ({
+    type: 'DELETE_COMMENT'
 });
 
 
@@ -90,8 +90,8 @@ export const updatePost = (postId, title, content, image_url) => async (dispatch
 
 
 // DELETE AN EXISTING COMMENT
-export const deletePost = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/posts/${postId}`, {
+export const deleteComment = (commentId) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${commentId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ export const deletePost = (postId) => async (dispatch) => {
 
     if (res.ok) {
       const message = await res.json();
-      dispatch(removePost(postId));
+      dispatch(removeComment());
       return message;
     }
 };
@@ -163,7 +163,7 @@ const commentReducer = (state = initialState, action) => {
                     ...action.post
                 }
             }
-        case 'DELETE_POST':
+        case 'DELETE_COMMENT':
             const newState = {...state};
             return newState;
         default:

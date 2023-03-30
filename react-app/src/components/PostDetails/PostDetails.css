@@ -78,6 +78,12 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.username-and-creation {
+    display: flex;
+    align-items: center;
 }
 
 .username-comment-div .fa-circle {
@@ -111,7 +117,7 @@
 
 .vote-comment-icons {
     display: flex;
-    margin-top: 5px;
+    margin-top: 10px;
     flex-direction: row;
     align-items: center;
 }
@@ -119,7 +125,7 @@
 .vote-comment-icons .fa-arrow-up {
     margin-right: 8px;
     font-size: 20px;
-    color: rgb(69, 163, 69);
+    color: rgb(120, 220, 120);
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
