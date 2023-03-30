@@ -93,6 +93,7 @@
 .post-header-information {
     display: flex;
     align-items: center;
+    margin-left: 6px;
 }
 
 .post-header-information .fa-circle {
@@ -110,25 +111,31 @@
 }
 
 .feed-post-title {
-    margin-left: 6px;
     font-size: 20px;
     font-family: Helvetica;
-    margin-top: 15px;
     color: rgb(209, 209, 209);
-    margin-bottom: 20px;
     cursor: pointer;
+}
+
+.feed-post-title-div {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.post-content-area a {
+    text-decoration: none;
 }
 
 .feed-post-div {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .feed-post-img {
     max-height: 500px;
     max-width: 600px;
-    margin-top: 15px;
-    margin-bottom: 20px;
     min-width: 500px;
     min-height: 400px;
 }

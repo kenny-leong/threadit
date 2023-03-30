@@ -12,7 +12,7 @@ import SubredditDetails from "./components/SubredditDetails";
 import MySubreddits from "./components/MySubreddits";
 import PopularFeed from "./components/PostFeed/PopularFeed";
 import JoinSideBar from "./components/FeedSideBar/SideBarJoin";
-
+import PostDetails from "./components/PostDetails";
 
 function App() {
 
@@ -56,10 +56,15 @@ function App() {
                 <FeedSideBar />
                 <MySubreddits />
               </Route>
-              <Route path="/subreddits/:subredditId">
+              <Route exact path="/subreddits/:subredditId">
                 <NavBar />
                 <FeedSideBar />
                 <SubredditDetails />
+              </Route>
+              <Route path="/subreddits/:subredditId/posts/:postId">
+                <NavBar />
+                <FeedSideBar />
+                <PostDetails />
               </Route>
             </>
           ) : (
@@ -85,6 +90,11 @@ function App() {
                 <JoinSideBar />
                 <FeedSideBar />
                 <SubredditDetails />
+              </Route>
+              <Route path="/subreddits/:subredditId/posts/:postId">
+                <NavBar />
+                <FeedSideBar />
+                <PostDetails />
               </Route>
             </>
           )}

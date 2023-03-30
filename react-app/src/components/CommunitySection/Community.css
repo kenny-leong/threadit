@@ -93,7 +93,7 @@
     cursor: pointer;
 }
 
-.right-bar-links span:hover {
+.right-bar-links span:hover, .right-bar-links a:hover {
     color: white;
 }
 
