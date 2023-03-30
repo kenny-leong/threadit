@@ -44,16 +44,6 @@ function FeedSideBar() {
 
 
 
-
-
-
-
-
-
-
-
-
-
     return (
         <div className={sessionUser ? 'feed-bar-div' : 'feed-bar-div-no-user'}>
             <div className='feed-margin-div'>
