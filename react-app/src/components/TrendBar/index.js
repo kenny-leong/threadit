@@ -31,7 +31,7 @@ function TrendBar() {
                             </div>
                         </div>
                     </Link>
-                    <Link to='/subreddits/17/24'>
+                    <Link to='/subreddits/17/posts/24'>
                         <div className='trend-box three'>
                             <div className='trend-headings'>
                                 <span className='trend-title'>Viral Anime</span>
