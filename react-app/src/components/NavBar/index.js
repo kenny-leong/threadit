@@ -101,7 +101,7 @@ function NavBar() {
 					<div className='search-results-container'>
 					{searchResults.map(result => (
 						<Link to={`/subreddits/${result.id}`}>
-						<div className='search-result-box'>
+						<div className='search-result-box' onClick={() => setSearchQuery('')}>
 							<span className='result-text'>{`r/ ${result.name}`}</span>
 						</div>
 						</Link>
