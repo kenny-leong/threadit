@@ -25,6 +25,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 25px;
 }
 
 .sr-textarea-desc.popup.component {
@@ -42,7 +43,7 @@
 }
 
 .create-comment-btn-div {
-    width: 88%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
 }
