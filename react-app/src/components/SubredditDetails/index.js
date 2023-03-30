@@ -34,14 +34,13 @@ function SubredditDetails() {
     useEffect(() => {
         dispatch(getSingleSR(subredditId))
         dispatch(getSubredditPosts(subredditId))
-        if (sessionUser) dispatch(getSubredditMembers(subredditId))
+        dispatch(getSubredditMembers(subredditId))
         dispatch(getAllUsers())
     }, [dispatch, subredditId])
 
 
     // return null if this information isnt given
-    if (!subredditDetails || !allUsers) return null;
-    if ((sessionUser && (!subredditMembers))) return null
+    if (!subredditDetails || !allUsers || !subredditMembers) return null;
 
 
     // sort the feed chronologically with the most recent posts on top
@@ -216,7 +215,7 @@ function SubredditDetails() {
                             <div className='post-content-area'>
                                 <div className='post-header-info'>
                                     <span className='posted-by subreddit'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
-                                    {post.author_id === sessionUser.id && (
+                                    {sessionUser && post.author_id === sessionUser.id && (
                                         <div className='edit-delete-divs-post'>
                                             <div className='edit-post-btn-container' onClick={() => openEditModal(post)}>
                                                 <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>

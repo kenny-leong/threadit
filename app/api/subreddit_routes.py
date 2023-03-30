@@ -148,7 +148,6 @@ def subreddits_by_creator(user_id):
 
 
 @subreddit_routes.route('/<int:subredditId>/members')
-@login_required
 def get_subreddit_members(subredditId):
     """
     Query for all subreddit members by taking in a subredditId
