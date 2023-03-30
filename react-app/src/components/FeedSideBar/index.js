@@ -120,7 +120,7 @@ function FeedSideBar() {
                             <span>Goldman Sachs</span>
                         </div>
                         <div className='dropdown-item business'>
-                            <span>Tech Layoffs</span>
+                            <span>Bloomberg</span>
                         </div>
                     </div>
                 )}
