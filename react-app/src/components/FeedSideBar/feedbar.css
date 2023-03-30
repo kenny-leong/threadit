@@ -13,8 +13,8 @@
     left: 0px;
     bottom: 0px;
     top: 86px;
-    height: 100%;
     width: 270px;
+    height: 72.5%;
     background-color: rgb(24, 24, 24);
     overflow-y: auto;
 }
@@ -169,6 +169,7 @@
     bottom: 0;
     width: 270px;
     padding-bottom: 20px;
+    background-color: rgb(25, 25, 25);
 }
 
 
