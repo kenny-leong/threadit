@@ -137,7 +137,9 @@ function PostFeed() {
                             <div className='feed-post-comment-bar'>
                                 <div className='comments-and-text-div'>
                                     <i class="fa-solid fa-comments"></i>
-                                    <span className='comment-div-text'>{`${post.comments.length} Comments`}</span>
+                                    <span className='comment-div-text'>
+                                        {post.comments ? `${post.comments.length} Comments` : '0 Comments'}
+                                    </span>
                                 </div>
                                 <div className='repeat-and-text-div'>
                                     <i class="fa-solid fa-repeat"></i>
