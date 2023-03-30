@@ -3,11 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostById } from '../../store/post';
 import { useModal } from "../../context/Modal";
-import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import bannerImg from '../../static/placeholder-banner.png';
 import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
+import EditComment from './EditComment';
 import './PostDetails.css'
 
 
@@ -74,8 +74,8 @@ function PostDetails() {
     };
 
     //opens the update post component
-    const openEditModal = (post) => {
-        setModalContent(<EditPost post={post}/>)
+    const openEditModal = (comment) => {
+        setModalContent(<EditComment comment={comment}/>)
     };
 
     const handleSubmit = async (e) => {
