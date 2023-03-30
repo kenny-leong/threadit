@@ -36,12 +36,12 @@ function CommunitySection() {
             <div className='right-bar-links'>
                 <div className='line-div'>
                     <div className='ua-and-pp'>
-                        <span>User Agreement</span>
-                        <span>Privacy Policy</span>
+                        <span>LinkedIn</span>
+                        <span>GitHub</span>
                     </div>
                     <div className='cp-and-mcc'>
                         <span>Content Policy</span>
-                        <span>Moderator Code of Conduct</span>
+                        <span>Technologies Used</span>
                     </div>
                 </div>
             </div>
