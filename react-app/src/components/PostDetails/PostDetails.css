@@ -28,8 +28,9 @@
 }
 
 .sr-textarea-desc.popup.component {
-    width: 85%;
+    width: 100%;
     height: 100px;
+    margin-right: 25px;
     overflow-y: auto;
 }
 
