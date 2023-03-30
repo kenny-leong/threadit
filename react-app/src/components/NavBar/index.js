@@ -98,7 +98,7 @@ function NavBar() {
 			/>
 			{searchQuery ? (
 				searchResults.length > 0 ? (
-					<div className='search-results-container'>
+					<div className={sessionUser ? 'search-results-container-user' : 'search-results-container'}>
 					{searchResults.map(result => (
 						<Link to={`/subreddits/${result.id}`}>
 						<div className='search-result-box' onClick={() => setSearchQuery('')}>
@@ -108,10 +108,10 @@ function NavBar() {
 					))}
 					</div>
 				) : (
-					<div className='search-results-container'>
-					<div className='search-result-box'>
-						<span className='result-text'>No search results found</span>
-					</div>
+					<div className={sessionUser ? 'search-results-container-user' : 'search-results-container'}>
+						<div className='search-result-box'>
+							<span className='result-text'>No search results found</span>
+						</div>
 					</div>
 				)
 				) : null}
