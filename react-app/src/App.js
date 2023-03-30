@@ -11,6 +11,7 @@ import OwnedSR from "./components/OwnedSR";
 import SubredditDetails from "./components/SubredditDetails";
 import MySubreddits from "./components/MySubreddits";
 import PopularFeed from "./components/PostFeed/PopularFeed";
+import JoinSideBar from "./components/FeedSideBar/SideBarJoin";
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
             <>
               <Route exact path="/">
                 <NavBar />
+                <JoinSideBar />
                 <FeedSideBar />
                 <TrendBar />
                 <PostFeed />
@@ -72,6 +74,7 @@ function App() {
               </Route>
               <Route path="/popular">
                 <NavBar />
+                <JoinSideBar />
                 <FeedSideBar />
                 <TrendBar />
                 <PopularFeed />
@@ -79,6 +82,7 @@ function App() {
               </Route>
               <Route path="/subreddits/:subredditId">
                 <NavBar />
+                <JoinSideBar />
                 <FeedSideBar />
                 <SubredditDetails />
               </Route>

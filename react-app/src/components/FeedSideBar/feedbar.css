@@ -11,10 +11,9 @@
 .feed-bar-div {
     position: fixed;
     left: 0px;
-    bottom: 0px;
     top: 86px;
     width: 270px;
-    height: 92vh;
+    height: 92%;
     background-color: rgb(24, 24, 24);
     overflow-y: auto;
 }
@@ -22,10 +21,9 @@
 .feed-bar-div-no-user {
     position: fixed;
     left: 0px;
-    bottom: 0px;
     top: 86px;
     width: 270px;
-    height: 66.5%;
+    height: 72%;
     background-color: rgb(24, 24, 24);
     overflow-y: auto;
 }
@@ -135,54 +133,6 @@
     margin-right: 15px;
     padding-left: 28px;
 }
-
-.join-threadit-div {
-    padding-left: 25px;
-    border-top: 1px solid rgb(36, 36, 36);
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-    margin-bottom: 15px;
-}
-
-.join-text {
-    color: rgb(215, 215, 215);
-    font-family: 'Threadit';
-    font-size: 14px;
-    font-weight: 100;
-    line-height: 1.5;
-    width: 80%;
-}
-
-.join-now-btn {
-    display: flex;
-    justify-content: center;
-}
-
-.join-now-btn button {
-    height: 40px;
-    width: 240px;
-    border: 1px black solid;
-    border-radius: 20px;
-    background-color: rgb(0, 34, 112);
-    font-family: 'Threadit';
-    font-size: 15px;
-    color: rgb(219, 219, 219);
-    cursor: pointer;
-}
-
-.join-now-btn button:hover {
-    background-color: rgb(0, 57, 136);
-}
-
-.join-div {
-    position: fixed;
-    bottom: 0;
-    width: 270px;
-    padding-bottom: 20px;
-    background-color: rgb(25, 25, 25);
-}
-
 
 .dropdown-container {
     margin-left: 25px;
