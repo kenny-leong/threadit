@@ -12,7 +12,7 @@ class Subreddit(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.String(255))
+    description = db.Column(db.Text)
     profile_picture = db.Column(db.Text)
     banner_image = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)

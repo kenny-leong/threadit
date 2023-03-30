@@ -39,7 +39,7 @@ def upgrade():
     op.create_table('subreddits',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
-    sa.Column('description', sa.String(length=255), nullable=True),
+    sa.Column('description', sa.Text(), nullable=True),
     sa.Column('profile_picture', sa.Text(), nullable=True),
     sa.Column('banner_image', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
