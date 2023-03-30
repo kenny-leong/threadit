@@ -85,7 +85,7 @@ function App() {
                 <PopularFeed />
                 <CommunitySection />
               </Route>
-              <Route path="/subreddits/:subredditId">
+              <Route exact path="/subreddits/:subredditId">
                 <NavBar />
                 <JoinSideBar />
                 <FeedSideBar />
