@@ -1,0 +1,9 @@
+
+.create-comment-component {
+    background-color: rgb(21, 21, 21);
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 15px;
+    border: 1px solid rgb(112, 112, 112);
+    border-radius: 10px;
+}
