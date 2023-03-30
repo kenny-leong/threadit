@@ -235,9 +235,10 @@
     background-color: rgba(56, 56, 56, 0.434);
 }
 
-.search-results-container a {
+.search-results-container a, .search-results-container-user a {
     text-decoration: none;
 }
+
 
 .result-text {
     font-family: 'Threadit';
