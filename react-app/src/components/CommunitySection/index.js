@@ -36,8 +36,8 @@ function CommunitySection() {
             <div className='right-bar-links'>
                 <div className='line-div'>
                     <div className='ua-and-pp'>
-                        <span>LinkedIn</span>
-                        <span>GitHub</span>
+                        <a href='https://www.linkedin.com/in/kenny-leong97/' target='_blank' rel="noopener noreferrer">LinkedIn Profile</a>
+                        <a href='https://github.com/kenny-leong' target='_blank' rel="noopener noreferrer">GitHub Repository</a>
                     </div>
                     <div className='cp-and-mcc'>
                         <span>Content Policy</span>

@@ -63,8 +63,12 @@
     justify-content: space-between;
 }
 
+.line-div a {
+    text-decoration: none;
+}
 
-.ua-and-pp {
+
+.ua-and-pp a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -84,7 +88,7 @@
     font-size: 14px;
 }
 
-.ua-and-pp span, .cp-and-mcc span {
+.ua-and-pp a, .cp-and-mcc span {
     margin-bottom: 15px;
     cursor: pointer;
 }
