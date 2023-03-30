@@ -174,3 +174,11 @@
     padding-bottom: 2px;
     margin-left: 6px;
 }
+
+
+.no-comments-div {
+    display: flex;
+    align-items: center;
+    color: #a8a8a8;
+    font-family: Helvetica;
+}

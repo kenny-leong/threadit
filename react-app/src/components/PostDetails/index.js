@@ -183,6 +183,11 @@ function PostDetails() {
                             </div>
                         </div>
                     ))}
+                    {commentArr.length === 0 && (
+                        <div className='no-comments-div'>
+                            <span>No comments on this post yet. Be the first!</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
