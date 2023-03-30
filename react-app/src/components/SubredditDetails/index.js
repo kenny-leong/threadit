@@ -150,10 +150,12 @@ function SubredditDetails() {
     return (
         <div className='subreddit-details-div'>
             <div className='banner-img-div'>
-                <img className='banner-img'
-                alt='banner' src={subredditDetails.banner_image ? subredditDetails.banner_image : bannerImg}
-                onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
-                />
+                <div className='banner-img-container'>
+                    <img className='banner-img'
+                    alt='banner' src={subredditDetails.banner_image ? subredditDetails.banner_image : bannerImg}
+                    onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
+                    />
+                </div>
                 <div className='gray-bg'>
                     <div className='span-container'>
                         <span className='sr-details-title'>{subredditDetails.name}</span>
