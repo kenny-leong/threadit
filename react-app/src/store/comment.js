@@ -1,8 +1,8 @@
 // ----------------------------------- action creators ----------------------------------------
 
-const loadPosts = (posts) => ({
-    type: 'LOAD_POSTS',
-    posts
+const loadComments = (comments) => ({
+    type: 'LOAD_COMMENTS',
+    comments
 });
 
 const loadSinglePost = (post) => ({
@@ -10,14 +10,9 @@ const loadSinglePost = (post) => ({
   post
 });
 
-const loadSubredditPosts = (posts) => ({
-    type: 'LOAD_SUBREDDIT_POSTS',
-    posts
-});
-
-const addPost = (post) => ({
-    type: 'ADD_POST',
-    post
+const addComment = (comment) => ({
+    type: 'ADD_COMMENT',
+    comment
 });
 
 
@@ -33,65 +28,41 @@ const removePost = (postId) => ({
 
 // -------------------------------------- thunk action creators -----------------------------------
 
-// GET ALL POSTS
-export const getAllPosts = () => async (dispatch) => {
-    const res = await fetch('/api/posts');
 
-    if (res.ok) {
-        const allPosts = await res.json();
-        dispatch(loadPosts(allPosts));
-    }
-};
 
-// GET SPECIFIC POST BY POST ID
-export const getPostById = (postId) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${postId}`);
+// GET COMMENTS FOR A POST BY POST ID
+export const getComments = (postId) => async (dispatch) => {
+  const res = await fetch(`/api/comments/post/${postId}`);
 
   if (res.ok) {
-      const singlePost = await res.json();
-      dispatch(loadSinglePost(singlePost));
+      const comments = await res.json();
+      dispatch(loadComments(comments.comments));
   }
 };
 
 
-// GETS ALL POSTS FOR A GIVEN SUBREDDIT ID
-export const getSubredditPosts = (subredditId) => async (dispatch) => {
-    const res = await fetch(`/api/subreddits/${subredditId}/posts`);
 
-    if (res.ok) {
-      const posts = await res.json();
-      dispatch(loadSubredditPosts(posts));
-    }
-};
-
-// CREATE A NEW POST
-export const createPost = (title, content, subreddit_id, image_url) => async (dispatch) => {
-    const res = await fetch('/api/posts', {
+// CREATE A NEW COMMENT
+export const createComment = (postId, content) => async (dispatch) => {
+    const res = await fetch('/api/comments', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            title,
-            content,
-            subreddit_id,
-            image_url
+            post_id: postId,
+            content
         })
     });
 
     if (res.ok) {
-      const newPost = await res.json();
-      dispatch(addPost(newPost));
-      return newPost;
-    } else if (res.status < 500) {
-      const data = await res.json();
-      if (data.errors) return data.errors
-    } else {
-      return ['An error occurred. Please try again.']
+        const newComment = await res.json();
+        dispatch(addComment(newComment));
+        return newComment;
     }
 };
 
-// EDIT AN EXISTING POST
+// EDIT AN EXISTING COMMENT
 export const updatePost = (postId, title, content, image_url) => async (dispatch) => {
     const res = await fetch(`/api/posts/${postId}`, {
       method: 'PUT',
@@ -118,7 +89,7 @@ export const updatePost = (postId, title, content, image_url) => async (dispatch
 };
 
 
-// DELETE AN EXISTING POST
+// DELETE AN EXISTING COMMENT
 export const deletePost = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${postId}`, {
       method: 'DELETE',
@@ -138,6 +109,10 @@ export const deletePost = (postId) => async (dispatch) => {
 
 
 
+
+
+
+
 // ---------------------------------------- post reducer ----------------------------------------
 
 
@@ -145,17 +120,17 @@ export const deletePost = (postId) => async (dispatch) => {
 const initialState = {}
 
 
-const postReducer = (state = initialState, action) => {
+const commentReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'LOAD_POSTS':
-            const allPosts = {};
-            const postArr = action.posts.posts
-            postArr.forEach(post => {
-              allPosts[post.id] = post
+        case 'LOAD_COMMENTS':
+            const allComments = {};
+            const commentArr = action.comments
+            commentArr.forEach(comment => {
+              allComments[comment.id] = comment
             });
             return {
                 ...state,
-                allPosts: allPosts
+                allComments: allComments
             }
         case 'LOAD_POST_DETAILS':
             return {
@@ -174,11 +149,11 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 subredditPosts: subredditPosts
             }
-        case 'ADD_POST':
+        case 'ADD_COMMENT':
             return {
                 ...state,
-                singlePost: {
-                    ...action.post
+                singleComment: {
+                    ...action.comment
                 }
             }
         case 'EDIT_POST':
@@ -197,4 +172,4 @@ const postReducer = (state = initialState, action) => {
 }
 
 
-export default postReducer;
+export default commentReducer;

@@ -48,8 +48,6 @@ function PostFeed() {
         }
     });
 
-    console.log(postArr)
-
 
     function getTimeSincePostCreation(createdAt) {
         const postCreatedAt = new Date(createdAt);

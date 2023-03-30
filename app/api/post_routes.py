@@ -37,6 +37,17 @@ def create_post():
     return post.to_dict()
 
 
+@post_routes.route('/<int:id>')
+def get_post(id):
+    """
+    Query for a post by id and returns that post in a dictionary
+    """
+    post = Post.query.get(id)
+    if not post:
+        return jsonify(message='Post not found'), 404
+    return post.to_dict()
+
+
 @post_routes.route('/<int:id>/comments')
 def post_comments(id):
     """
@@ -47,6 +58,8 @@ def post_comments(id):
         return jsonify(message='Post not found'), 404
     comments = post.comments
     return {'comments': [comment.to_dict() for comment in comments]}
+
+
 
 @post_routes.route('/<int:id>')
 def post(id):
