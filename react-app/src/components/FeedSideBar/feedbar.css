@@ -14,7 +14,18 @@
     bottom: 0px;
     top: 86px;
     width: 270px;
-    height: 72.5%;
+    height: 92vh;
+    background-color: rgb(24, 24, 24);
+    overflow-y: auto;
+}
+
+.feed-bar-div-no-user {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    top: 86px;
+    width: 270px;
+    height: 75vh;
     background-color: rgb(24, 24, 24);
     overflow-y: auto;
 }
@@ -170,14 +181,6 @@
     width: 270px;
     padding-bottom: 20px;
     background-color: rgb(25, 25, 25);
-}
-
-
-
-@media screen and (max-height: 728px) {
-    .join-div {
-        display: none;
-    }
 }
 
 

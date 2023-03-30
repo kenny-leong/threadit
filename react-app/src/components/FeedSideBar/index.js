@@ -55,7 +55,7 @@ function FeedSideBar() {
 
 
     return (
-        <div className='feed-bar-div'>
+        <div className={sessionUser ? 'feed-bar-div' : 'feed-bar-div-no-user'}>
             <div className='feed-margin-div'>
                 <span className='feeds-text'>FEEDS</span>
                 {sessionUser && (
@@ -207,8 +207,6 @@ function FeedSideBar() {
             )}
         </div>
     )
-
-
 }
 
 
