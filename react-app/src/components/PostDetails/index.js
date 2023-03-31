@@ -42,7 +42,6 @@ function PostDetails() {
 
 
     if (!post || !allSubreddits || !allUsers || !allComments) {
-        console.log('hit null')
         return null;
     }
 
@@ -77,12 +76,12 @@ function PostDetails() {
     }
 
     // opens the DeletePost component
-    const openDeletePost = (postId) => {
+    const openDeletePost = () => {
         setModalContent(<DeletePost postId={postId}/>);
     };
 
     //opens the EditPost component
-    const openEditPost = (post) => {
+    const openEditPost = () => {
         setModalContent(<EditPost post={post}/>)
     };
 
@@ -137,10 +136,10 @@ function PostDetails() {
                     </div>
                     {sessionUser && post.author_id === sessionUser.id && (
                         <div className='edit-delete-divs-post'>
-                            <div className='edit-post-btn-container' onClick={() => openEditPost(post)}>
+                            <div className='edit-post-btn-container' onClick={() => openEditPost()}>
                                 <span className='edit-delete-post-btn'><i class="fa-solid fa-ellipsis"></i></span>
                             </div>
-                            <div className='delete-post-btn-container' onClick={() => openDeletePost(post)}>
+                            <div className='delete-post-btn-container' onClick={() => openDeletePost()}>
                                 <span><i class="fa-solid fa-trash-can"></i></span>
                             </div>
                         </div>

@@ -45,7 +45,7 @@ function CommunitySection() {
                     </div>
                 </div>
             </div>
-            <span className='trademark'>Threadit Inc © 2023. All rights reserved</span>
+            <span className='trademark'>Kenny Leong © 2023. All rights reserved</span>
         </>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
-import { createSubreddit, getOwnedSubreddits } from '../../store/subreddit';
+import { createSubreddit, getOwnedSubreddits, getAllSR } from '../../store/subreddit';
 import './CreateSubreddit.css'
 
 
@@ -26,6 +26,7 @@ function CreateSubreddit() {
         const newSubreddit = await dispatch(createSubreddit(name, description))
             .then(() => {
                 dispatch(getOwnedSubreddits(sessionUser.id));
+                dispatch(getAllSR())
                 closeModal();
             })
 
