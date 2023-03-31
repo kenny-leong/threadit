@@ -146,25 +146,23 @@ function PostDetails() {
                         </div>
                     )}
                 </div>
-                <Link to={`/subreddits/${post.subreddit_id}/posts/${post.id}`}>
-                    <div className='feed-post-title-div'>
-                        <span className='feed-post-title'>{post.title}</span>
+                <div className='feed-post-title-div'>
+                    <span className='feed-post-title'>{post.title}</span>
+                </div>
+                {(post.content) && (
+                    <div className='feed-post-text-content'>
+                        <span className='post content'>{post.content}</span>
                     </div>
-                    {(post.content) && (
-                        <div className='feed-post-text-content'>
-                            <span className='post content'>{post.content}</span>
-                        </div>
-                    )}
-                    {(post.image_url) && (
-                        <div className='feed-post-div'>
-                            <img className='feed-post-img'
-                            alt='post-img'
-                            src={post.image_url}
-                            onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
-                            />
-                        </div>
-                    )}
-                </Link>
+                )}
+                {(post.image_url) && (
+                    <div className='feed-post-div'>
+                        <img className='feed-post-img'
+                        alt='post-img'
+                        src={post.image_url}
+                        onError={(e) => {e.target.onerror = null; e.target.src=bannerImg}}
+                        />
+                    </div>
+                )}
                 <div className='input-comment-div'>
                     <textarea
                             value={comment}
