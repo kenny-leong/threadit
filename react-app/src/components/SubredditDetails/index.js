@@ -228,10 +228,10 @@ function SubredditDetails() {
                                         </div>
                                     )}
                                 </div>
-                                <div className='feed-post-title-div'>
-                                    <span className='feed-post-title'>{post.title}</span>
-                                </div>
                                 <Link to={`/subreddits/${post.subreddit_id}/posts/${post.id}`}>
+                                    <div className='feed-post-title-div'>
+                                        <span className='feed-post-title'>{post.title}</span>
+                                    </div>
                                     {(post.content) && (
                                         <div className='feed-post-text-content'>
                                             <span className='post content'>{post.content}</span>
