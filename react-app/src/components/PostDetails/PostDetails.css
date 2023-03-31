@@ -152,6 +152,7 @@
     margin-right: 8px;
     font-family: 'Helvetica';
     font-size: 18px;
+    color: rgb(229, 229, 229);
 }
 
 .reply-div {
@@ -188,6 +189,9 @@
 }
 
 .create-comment-btn.join {
-    width: 150px;
+    width: 120px;
+    height: 50px;
     background-color: #1352af;
+    color: rgb(233, 233, 233);
+    font-size: 14px;
 }
