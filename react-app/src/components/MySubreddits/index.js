@@ -8,7 +8,7 @@ import OpenModalButton from '../OpenModalButton';
 import { getSingleSR } from '../../store/subreddit';
 import { useModal } from "../../context/Modal";
 import DeleteSubreddit from "../OwnedSR/DeleteSR";
-
+import './MySubreddits.css';
 
 
 
@@ -73,7 +73,11 @@ function MySubreddits() {
                             <Link to={`/subreddits/${subreddit.id}`}>
                                 <span className="owned-sr-name">{`r/${subreddit.name}`}</span>
                             </Link>
-                            <span className="owned-sr-desc">{subreddit.description}</span>
+                            <span className="owned-sr-desc">
+                                {subreddit.description.length > 100
+                                    ? `${subreddit.description.slice(0, 100)}...`
+                                    : subreddit.description}
+                            </span>
                         </div>
                         {subreddit.creator_id === sessionUser.id && (
                             <div className="owned-sr-edit-delete-div">
