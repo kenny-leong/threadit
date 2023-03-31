@@ -17,8 +17,6 @@ function SignupForm() {
   const [errors, setErrors] = useState('');
   const { closeModal } = useModal();
 
-  if (sessionUser) return <Redirect to="/" />;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
