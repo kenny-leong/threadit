@@ -6,28 +6,53 @@
     font-style: normal;
 }
 
-
-
-.popular-box-container {
-    position: absolute;
-    right: 40px;
-    top: 395px;
-    width: 300px;
-    height: 285px;
-    border: 1px solid #343536;
-    border-radius: 2px;
-    z-index: 0;
-}
-
-
-
 @media screen and (max-width: 1320px) {
-    .popular-box-container, .right-bar-links span, .trademark, .right-bar-links, .line-div {
+    .communities-and-links-div {
         display: none;
     }
 }
 
-.popular-box-container div {
+.communities-and-links-div {
+    position: absolute;
+    right: 40px;
+    top: 395px;
+    width: 300px;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.communities-container {
+    border: 1px solid #343536;
+    border-radius: 2px;
+    margin-bottom: 25px;
+}
+
+
+.dropdown-com {
+    background-color: rgb(19, 19, 19);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dropdown-com a {
+    text-decoration: none;
+    color: #d6a212;
+    font-family: Helvetica;
+    font-size: 13px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 4px;
+    border-radius: 10px;
+}
+
+.dropdown-com a:hover {
+    background-color: rgba(52, 53, 54, 0.324);
+}
+
+
+.com-topic-div {
     border-bottom: 1px #343536 solid;
     height: 40px;
     display: flex;
@@ -37,23 +62,20 @@
     cursor: pointer;
 }
 
-.popular-box-container div:hover {
+.com-topic-div:hover {
     background-color: rgba(26, 26, 27, 0.57);
 }
 
-.popular-box-container div span {
+.com-topic-text {
     color: whitesmoke;
     font-family: 'Threadit';
     font-size: 10px;
     padding-left: 10px;
+    letter-spacing: 1px;
 }
 
 .right-bar-links {
-    position: absolute;
-    right: 40px;
-    top: 715px;
-    width: 300px;
-    z-index: 0;
+    margin-bottom: 15px;
 }
 
 .line-div {
@@ -97,14 +119,14 @@
     color: white;
 }
 
+.trademark-div {
+    display: flex;
+    justify-content: center;
+}
+
 .trademark {
-    position: absolute;
-    right: 15px;
-    top: 795px;
-    width: 300px;
     color: #b6b6b6;
     font-family: Helvetica;
     font-weight: 200;
     font-size: 14px;
-    z-index: 0;
 }
