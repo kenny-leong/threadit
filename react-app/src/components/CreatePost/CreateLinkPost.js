@@ -4,7 +4,6 @@ import { useModal } from "../../context/Modal";
 import { createPost, getSubredditPosts } from '../../store/post';
 import CreatePostImage from './PostImage';
 import CreatePost from '.';
-import axios from 'axios';
 import './CreateLinkPost.css';
 
 
@@ -13,29 +12,12 @@ function CreateLink() {
 
     const [title, setTitle] = useState("");
     const [linkURL, setLinkURL] = useState("");
-    const [error, setError] = useState('');
     const { closeModal, setModalContent } = useModal();
 
     const dispatch = useDispatch();
 
     const subredditDetails = useSelector(state => state.subreddit.singleSubreddit);
 
-
-    const handleURL = async (e) => {
-        e.preventDefault();
-
-        const response = await axios.get(linkURL)
-        .then(async () => {
-            if (response.status === 200) {
-                await dispatch(createPost(title, linkURL, subredditDetails.id));
-                dispatch(getSubredditPosts(subredditDetails.id));
-                closeModal();
-            }
-        })
-        .catch((err) => {
-            setError('Please enter a valid URL')
-        })
-    }
 
 
     const handleSubmit = async (e) => {
@@ -55,6 +37,11 @@ function CreateLink() {
     const openImage = () => {
         setModalContent(<CreatePostImage />);
     };
+
+
+
+
+
 
     return (
         <div className='create-post-component link'>
@@ -91,14 +78,9 @@ function CreateLink() {
                 className='create-post-sr popup'
                 required
             />
-            {error && (
-                <div className='link-post-err-div'>
-                    <span className='error-msg-link-post'>{error}</span>
-                </div>
-            )}
             <div className='create-post-btn-container'>
                 <button className='create-post-btn cancel' onClick={closeModal}>Cancel</button>
-                <button className='create-post-btn post' onClick={handleURL} disabled={title.length === 0 || linkURL.length === 0}>Post</button>
+                <button className='create-post-btn post' onClick={handleSubmit} disabled={title.length === 0 || linkURL.length < 5}>Post</button>
             </div>
         </div>
     )
