@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 1320px) {
     .communities-and-links-div {
-        display: none;
+        display: none !important;
     }
 }
 
