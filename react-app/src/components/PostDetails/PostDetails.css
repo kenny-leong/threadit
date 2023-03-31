@@ -19,6 +19,10 @@
     background-color: #141414;
 }
 
+.post.content {
+    color: rgb(168, 168, 168);
+}
+
 .input-comment-div {
     width: 100%;
     display: flex;

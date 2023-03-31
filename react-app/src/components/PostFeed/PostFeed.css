@@ -48,7 +48,7 @@
 }
 
 .total-votes {
-    color: rgb(214, 214, 214);
+    color: rgb(194, 194, 194);
     font-family: 'Threadit';
     font-size: 14;
     font-weight: 100;
@@ -56,8 +56,14 @@
     margin-bottom: 5px;
 }
 
-.vote-bar .fa-angles-up, .vote-bar .fa-angles-down {
-    color: rgb(173, 173, 173);
+.vote-bar .fa-angles-up {
+    color: rgb(115, 229, 105);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vote-bar .fa-angles-down {
+    color: rgb(251, 86, 86);
     font-size: 16px;
     cursor: pointer;
 }
@@ -74,7 +80,7 @@
 }
 
 .subreddit-for-post {
-    color: rgb(233, 172, 61);
+    color: rgba(255, 166, 0, 0.861);
     font-family: Helvetica;
     font-weight: 600;
     font-size: 14px;
