@@ -12,6 +12,7 @@
     width: 550px;
     background-color: rgb(21, 21, 21);
     border-radius: 10px;
+    padding-bottom: 25px;
 }
 
 .create-post-title {
@@ -117,4 +118,15 @@
 .typeof-post.link {
     background-color: rgba(110, 110, 110, 0.193);
     border-bottom: 2px white solid;
+}
+
+.link-post-err-div {
+    margin-top: 10px;
+}
+
+.error-msg-link-post {
+    font-family: 'Threadit';
+    margin-left: 15px;
+    color: rgb(202, 4, 4);
+
 }
