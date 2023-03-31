@@ -61,6 +61,13 @@
     font-family: 'Threadit';
     cursor: pointer;
     margin-top: 4px;
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+.create-comment-btn:disabled {
+    cursor: not-allowed;
+    background-color: gray;
 }
 
 .create-comment-btn:hover {

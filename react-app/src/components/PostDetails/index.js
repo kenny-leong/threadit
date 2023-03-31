@@ -171,7 +171,7 @@ function PostDetails() {
                     />
                     {sessionUser ? (
                         <div className='create-comment-btn-div'>
-                            <button className='create-comment-btn' onClick={handleSubmit}>Comment</button>
+                            <button className='create-comment-btn' onClick={handleSubmit} disabled={comment.length === 0}>Comment</button>
                         </div>
                     ) :
                     (

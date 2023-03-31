@@ -8,7 +8,6 @@ import OpenModalButton from '../OpenModalButton';
 import { getSingleSR } from '../../store/subreddit';
 import { useModal } from "../../context/Modal";
 import DeleteSubreddit from "../OwnedSR/DeleteSR";
-import './MySubreddits.css';
 
 
 
