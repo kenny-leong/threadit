@@ -43,7 +43,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(18, 18, 18);
+    background-color: #141414;
     border-radius: 10px;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .subreddit-for-post {
-    color: rgb(195, 195, 195);
+    color: rgb(216, 167, 78);
     font-family: Helvetica;
     font-weight: 600;
     font-size: 14px;
