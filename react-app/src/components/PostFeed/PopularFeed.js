@@ -115,6 +115,7 @@ function PopularFeed() {
                             <div className='feed-post-title-div'>
                                 <span className='feed-post-title'>{post.title}</span>
                             </div>
+                        </Link>
                             {(post.content) && (
                                 <div className='feed-post-text-content'>
                                     <span className='post content'>{post.content}</span>
@@ -129,6 +130,7 @@ function PopularFeed() {
                                     />
                                 </div>
                             )}
+                        <Link to={`/subreddits/${post.subreddit_id}/posts/${post.id}`}>
                             <div className='feed-post-comment-bar'>
                                 <div className='comments-and-text-div'>
                                     <i class="fa-solid fa-comments"></i>
