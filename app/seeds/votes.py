@@ -18,7 +18,7 @@ def seed_votes():
         # Decide whether to seed more upvotes or downvotes for this post
         if fake.random.choices([True, False], weights=[0.9, 0.1])[0]:
             more_upvotes = True
-            num_upvotes = fake.random_int(min=20, max=50)
+            num_upvotes = fake.random_int(min=20, max=80)
             num_downvotes = fake.random_int(min=10, max=30)
         else:
             more_upvotes = False

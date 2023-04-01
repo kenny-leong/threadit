@@ -21,7 +21,7 @@ def seed_comments():
     ]
 
     for post in posts:
-        num_comments = randint(15, 30)
+        num_comments = randint(10, 105)
         for i in range(num_comments):
             comment = Comment(content=fake.paragraph(), author=users[randint(0, len(users)-1)], post=post, created_at=fake.date_time_between(start_date='-1y', end_date='now'))
             comments.append(comment)
