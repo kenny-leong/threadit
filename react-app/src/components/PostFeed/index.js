@@ -41,9 +41,6 @@ function PostFeed() {
     if ((sessionUser && !userPostVotes) || (sessionUser && !subredditMemberships)) return null;
 
 
-    console.log(subredditMemberships)
-
-
     const postArr = Object.values(allPosts);
 
     // sorts all posts through if there is an image it will be higher ranked.
@@ -169,28 +166,14 @@ function PostFeed() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <div className='post-feed-div'>
             {postArr.map((post, index) => (
                 <div className='post-box' key={index}>
                     <div className='vote-bar'>
-                        <i class={`fa-solid fa-angles-up ${userPostVotes && userPostVotes[post.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handlePostUpvote(post, userPostVotes[post.id])}></i>
+                        <i class={`fa-solid fa-angles-up ${sessionUser && userPostVotes && userPostVotes[post.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handlePostUpvote(post, userPostVotes[post.id])}></i>
                         <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                        <i class={`fa-solid fa-angles-down ${userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handlePostDownvote(post, userPostVotes[post.id])}></i>
+                        <i class={`fa-solid fa-angles-down ${sessionUser && userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handlePostDownvote(post, userPostVotes[post.id])}></i>
                     </div>
                     <div className='post-content-area'>
                         <div className='post-feed-header-info'>
