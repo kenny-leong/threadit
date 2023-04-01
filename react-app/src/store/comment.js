@@ -5,11 +5,6 @@ const loadComments = (comments) => ({
     comments
 });
 
-const loadSinglePost = (post) => ({
-  type: 'LOAD_POST_DETAILS',
-  post
-});
-
 const addComment = (comment) => ({
     type: 'ADD_COMMENT',
     comment
@@ -123,23 +118,6 @@ const commentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allComments: allComments
-            }
-        case 'LOAD_POST_DETAILS':
-            return {
-              ...state,
-              postDetails: {
-                ...action.post
-              }
-            }
-        case 'LOAD_SUBREDDIT_POSTS':
-            const subredditPosts = {};
-            const subPostArr = action.posts.posts;
-            subPostArr.forEach(post => {
-                subredditPosts[post.id] = post
-            });
-            return {
-                ...state,
-                subredditPosts: subredditPosts
             }
         case 'ADD_COMMENT':
             return {

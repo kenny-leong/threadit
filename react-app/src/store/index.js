@@ -4,12 +4,14 @@ import sessionReducer from './session'
 import subredditReducer from './subreddit';
 import postReducer from './post';
 import commentReducer from './comment';
+import voteReducer from './vote';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   subreddit: subredditReducer,
   post: postReducer,
   comment: commentReducer,
+  vote: voteReducer
 });
 
 

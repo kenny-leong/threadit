@@ -12,6 +12,7 @@ import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
 import EditComment from './EditComment';
 import LoginForm from '../LoginForm';
+import { getPostVote, postVote, deletePostVote, getCommentVote, commentVote, deleteCommentVote } from '../../store/vote';
 import './PostDetails.css'
 
 
@@ -31,6 +32,7 @@ function PostDetails() {
     const allUsers = useSelector(state => state.session.allUsers)
     const sessionUser = useSelector(state => state.session.user)
     const allComments = useSelector(state => state.comment.allComments)
+    const voteDetails = useSelector(state => state.vote.voteDetails)
 
 
     useEffect(() => {
@@ -38,13 +40,13 @@ function PostDetails() {
         dispatch(getComments(postId))
         dispatch(getAllSR())
         dispatch(getAllUsers())
+        dispatch(getPostVote(postId))
     }, [dispatch, postId, subredditId]);
 
 
-    if (!post || !allSubreddits || !allUsers || !allComments) {
+    if (!post || !allSubreddits || !allUsers || !allComments || !voteDetails) {
         return null;
     }
-
 
 
     const commentArr = Object.values(allComments);
@@ -114,16 +116,121 @@ function PostDetails() {
     }
 
 
+    //handles logic for post upvoting
+    const handlePostUpvote = async (e) => {
+        e.preventDefault();
+
+        if (voteDetails.type === null) {
+            await dispatch(postVote(postId, 'upvote'))
+            await dispatch(getPostById(postId))
+            await dispatch(getPostVote(postId))
+        }
+
+        if (voteDetails.type === 'upvote') {
+            await dispatch(deletePostVote(postId))
+            await dispatch(getPostById(postId))
+            await dispatch(getPostVote(postId))
+        }
+
+        if (voteDetails.type === 'downvote') {
+            await dispatch(deletePostVote(postId));
+            await dispatch(postVote(postId, 'upvote'))
+            await dispatch(getPostById(postId))
+            await dispatch(getPostVote(postId))
+        }
+    }
+
+    //handles logic for post downvoting
+    const handlePostDownvote = async (e) => {
+        e.preventDefault();
+
+        if (voteDetails.type === null) {
+            await dispatch(postVote(postId, 'downvote'))
+            await dispatch(getPostById(postId))
+            await dispatch(getPostVote(postId))
+        }
+
+        if (voteDetails.type === 'downvote') {
+            await dispatch(deletePostVote(postId))
+            await dispatch(getPostById(postId))
+            await dispatch(getPostVote(postId))
+        }
+
+        if (voteDetails.type === 'upvote') {
+            await dispatch(deletePostVote(postId));
+            await dispatch(postVote(postId, 'downvote'))
+            await dispatch(getPostById(postId))
+            await dispatch(getPostVote(postId))
+        }
+    }
+
+
+    // handles logic for comment upvoting
+    const handleCommentUpvote = async (type, commentId) => {
+
+        if (type === null) {
+            await dispatch(commentVote(commentId, 'upvote'))
+            await dispatch(getComments(postId))
+        }
+
+        if (type === 'upvote') {
+            await dispatch(deleteCommentVote(commentId))
+            await dispatch(getComments(postId))
+        }
+
+        if (type === 'downvote') {
+            await dispatch(deleteCommentVote(commentId));
+            await dispatch(commentVote(commentId, 'upvote'))
+            await dispatch(getComments(postId))
+        }
+    }
+
+    // handles logic for comment upvoting
+    const handleCommentDownvote = async (type, commentId) => {
+
+        if (type === null) {
+            await dispatch(commentVote(commentId, 'downvote'))
+            await dispatch(getComments(postId))
+        }
+
+        if (type === 'downvote') {
+            await dispatch(deleteCommentVote(commentId))
+            await dispatch(getComments(postId))
+        }
+
+        if (type === 'upvote') {
+            await dispatch(deleteCommentVote(commentId));
+            await dispatch(commentVote(commentId, 'downvote'))
+            await dispatch(getComments(postId))
+        }
+    }
+
+
+
+
+
+
+
+    //sorts comments by most recent
     commentArr.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
+
+    const addVoteStatus = async (arr) => {
+        for (const comment of arr) {
+            const typeOfVote = await dispatch(getCommentVote(comment.id))
+            comment.userVote = typeOfVote.type;
+          }
+    }
+
+    addVoteStatus(commentArr);
 
 
     return (
         <div className='post-box component'>
             <div className='vote-bar component'>
-                <i class="fa-solid fa-angles-up"></i>
+                <i className={voteDetails.type === 'upvote' ? "fa-solid fa-angles-up highlighted" : "fa-solid fa-angles-up"} onClick={handlePostUpvote}></i>
                 <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                <i class="fa-solid fa-angles-down"></i>
+                <i className={voteDetails.type === 'downvote' ? "fa-solid fa-angles-down highlighted" : "fa-solid fa-angles-down"} onClick={handlePostDownvote}></i>
             </div>
             <div className='post-content-area component'>
                 <div className='post-feed-header-info'>
@@ -204,9 +311,10 @@ function PostDetails() {
                                 <span className='comment-content-span'>{comment.content}</span>
                             </div>
                             <div className='vote-comment-icons'>
-                                <i class="fa-solid fa-arrow-up"></i>
-                                    <span className='net-votes-comment'>{comment.upvotes - comment.downvotes}</span>
-                                <i class="fa-solid fa-arrow-down"></i>
+                                <i class={`fa-solid fa-arrow-up ${comment.userVote === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(comment.userVote, comment.id)}></i>
+                                <span className='net-votes-comment'>{comment.upvotes - comment.downvotes}</span>
+                                <i class={`fa-solid fa-arrow-down ${comment.userVote === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(comment.userVote, comment.id)}></i>
+
                                 <div className='reply-div'>
                                     <i class="fa-regular fa-message"></i>
                                     <span className='reply-comment'>Reply</span>
