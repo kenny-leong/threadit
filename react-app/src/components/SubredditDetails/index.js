@@ -161,6 +161,11 @@ function SubredditDetails() {
             return;
         }
 
+        if (!subredditMembers[sessionUser.id]) {
+            alert('Join subreddit to vote!')
+            return;
+        }
+
         if (type === undefined) {
             await dispatch(postVote(postId, 'upvote'))
             await dispatch(getSubredditPosts(subredditId))
@@ -187,6 +192,11 @@ function SubredditDetails() {
             if (!sessionUser) {
                 // Display an alert message if sessionUser does not exist
                 alert('Login to vote!');
+                return;
+            }
+
+            if (!subredditMembers[sessionUser.id]) {
+                alert('Join subreddit to vote!')
                 return;
             }
 
