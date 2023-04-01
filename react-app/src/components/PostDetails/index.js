@@ -6,7 +6,7 @@ import { useModal } from "../../context/Modal";
 import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import { getAllUsers } from '../../store/session';
-import { getAllSR } from '../../store/subreddit';
+import { getAllSR, getSubredditMembers } from '../../store/subreddit';
 import bannerImg from '../../static/placeholder-banner.png';
 import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
@@ -34,6 +34,7 @@ function PostDetails() {
     const allComments = useSelector(state => state.comment.allComments)
     const voteDetails = useSelector(state => state.vote.voteDetails)
     const userCommentVotes = useSelector(state => state.vote.allCommentVotes)
+    const subredditMembers = useSelector(state => state.subreddit.subredditMembers)
 
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function PostDetails() {
         dispatch(getComments(postId))
         dispatch(getAllSR())
         dispatch(getAllUsers())
+        dispatch(getSubredditMembers(subredditId))
         if (sessionUser) dispatch(getPostVote(postId))
         if (sessionUser) dispatch(getUserCommentVotes())
     }, [dispatch, postId, subredditId]);
@@ -130,6 +132,11 @@ function PostDetails() {
             return;
         }
 
+        if (!subredditMembers[sessionUser.id]) {
+            alert('Join subreddit to vote!')
+            return;
+        }
+
         if (voteDetails.type === null) {
             await dispatch(postVote(postId, 'upvote'))
             await dispatch(getPostById(postId))
@@ -157,6 +164,11 @@ function PostDetails() {
         if (!sessionUser) {
             // Display an alert message if sessionUser does not exist
             alert('Login to vote!');
+            return;
+        }
+
+        if (!subredditMembers[sessionUser.id]) {
+            alert('Join subreddit to vote!')
             return;
         }
 
@@ -189,20 +201,28 @@ function PostDetails() {
             return;
         }
 
-        if (type === null) {
+        if (!subredditMembers[sessionUser.id]) {
+            alert('Join subreddit to vote!')
+            return;
+        }
+
+        if (type === undefined) {
             await dispatch(commentVote(commentId, 'upvote'))
             await dispatch(getComments(postId))
+            await dispatch(getUserCommentVotes())
         }
 
         if (type === 'upvote') {
             await dispatch(deleteCommentVote(commentId))
             await dispatch(getComments(postId))
+            await dispatch(getUserCommentVotes())
         }
 
         if (type === 'downvote') {
             await dispatch(deleteCommentVote(commentId));
             await dispatch(commentVote(commentId, 'upvote'))
             await dispatch(getComments(postId))
+            await dispatch(getUserCommentVotes())
         }
     }
 
@@ -214,20 +234,28 @@ function PostDetails() {
             return;
         }
 
-        if (type === null) {
+        if (!subredditMembers[sessionUser.id]) {
+            alert('Join subreddit to vote!')
+            return;
+        }
+
+        if (type === undefined) {
             await dispatch(commentVote(commentId, 'downvote'))
             await dispatch(getComments(postId))
+            await dispatch(getUserCommentVotes())
         }
 
         if (type === 'downvote') {
             await dispatch(deleteCommentVote(commentId))
             await dispatch(getComments(postId))
+            await dispatch(getUserCommentVotes())
         }
 
         if (type === 'upvote') {
             await dispatch(deleteCommentVote(commentId));
             await dispatch(commentVote(commentId, 'downvote'))
             await dispatch(getComments(postId))
+            await dispatch(getUserCommentVotes())
         }
     }
 
@@ -325,9 +353,9 @@ function PostDetails() {
                                 <span className='comment-content-span'>{comment.content}</span>
                             </div>
                             <div className='vote-comment-icons'>
-                                <i class={`fa-solid fa-arrow-up ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(comment.userVote, comment.id)}></i>
+                                <i class={`fa-solid fa-arrow-up ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(userCommentVotes[comment.id], comment.id)}></i>
                                 <span className='net-votes-comment'>{comment.upvotes - comment.downvotes}</span>
-                                <i class={`fa-solid fa-arrow-down ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(comment.userVote, comment.id)}></i>
+                                <i class={`fa-solid fa-arrow-down ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(userCommentVotes[comment.id], comment.id)}></i>
                                 <div className='reply-div'>
                                     <i class="fa-regular fa-message"></i>
                                     <span className='reply-comment'>Reply</span>
