@@ -27,7 +27,7 @@ function TrendBar() {
                             <div className='trend-headings'>
                                 <span className='trend-title'>Maplestory</span>
                                 <span className='trend-desc'>The game has gained a large following and has been praise...</span>
-                                <span className='trend-category'>r/coding and more</span>
+                                <span className='trend-category'>r/gaming and more</span>
                             </div>
                         </div>
                     </Link>
