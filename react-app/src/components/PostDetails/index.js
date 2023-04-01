@@ -41,14 +41,16 @@ function PostDetails() {
         dispatch(getComments(postId))
         dispatch(getAllSR())
         dispatch(getAllUsers())
-        dispatch(getPostVote(postId))
-        dispatch(getUserCommentVotes())
+        if (sessionUser) dispatch(getPostVote(postId))
+        if (sessionUser) dispatch(getUserCommentVotes())
     }, [dispatch, postId, subredditId]);
 
 
-    if (!post || !allSubreddits || !allUsers || !allComments || !voteDetails || !userCommentVotes) {
+    if (!post || !allSubreddits || !allUsers || !allComments) {
         return null;
     }
+
+    if ((sessionUser && !userCommentVotes) || (sessionUser && !voteDetails)) return null;
 
 
     const commentArr = Object.values(allComments);
@@ -122,6 +124,12 @@ function PostDetails() {
     const handlePostUpvote = async (e) => {
         e.preventDefault();
 
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+          }
+
         if (voteDetails.type === null) {
             await dispatch(postVote(postId, 'upvote'))
             await dispatch(getPostById(postId))
@@ -146,6 +154,12 @@ function PostDetails() {
     const handlePostDownvote = async (e) => {
         e.preventDefault();
 
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+          }
+
         if (voteDetails.type === null) {
             await dispatch(postVote(postId, 'downvote'))
             await dispatch(getPostById(postId))
@@ -169,6 +183,11 @@ function PostDetails() {
 
     // handles logic for comment upvoting
     const handleCommentUpvote = async (type, commentId) => {
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+          }
 
         if (type === null) {
             await dispatch(commentVote(commentId, 'upvote'))
@@ -189,6 +208,11 @@ function PostDetails() {
 
     // handles logic for comment upvoting
     const handleCommentDownvote = async (type, commentId) => {
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+          }
 
         if (type === null) {
             await dispatch(commentVote(commentId, 'downvote'))
@@ -218,9 +242,9 @@ function PostDetails() {
     return (
         <div className='post-box component'>
             <div className='vote-bar component'>
-                <i className={voteDetails.type === 'upvote' ? "fa-solid fa-angles-up highlighted" : "fa-solid fa-angles-up"} onClick={handlePostUpvote}></i>
+                <i className={voteDetails && voteDetails.type === 'upvote' ? "fa-solid fa-angles-up highlighted" : "fa-solid fa-angles-up"} onClick={handlePostUpvote}></i>
                 <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                <i className={voteDetails.type === 'downvote' ? "fa-solid fa-angles-down highlighted" : "fa-solid fa-angles-down"} onClick={handlePostDownvote}></i>
+                <i className={voteDetails && voteDetails.type === 'downvote' ? "fa-solid fa-angles-down highlighted" : "fa-solid fa-angles-down"} onClick={handlePostDownvote}></i>
             </div>
             <div className='post-content-area component'>
                 <div className='post-feed-header-info'>
@@ -301,9 +325,9 @@ function PostDetails() {
                                 <span className='comment-content-span'>{comment.content}</span>
                             </div>
                             <div className='vote-comment-icons'>
-                                <i class={`fa-solid fa-arrow-up ${userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(comment.userVote, comment.id)}></i>
+                                <i class={`fa-solid fa-arrow-up ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(comment.userVote, comment.id)}></i>
                                 <span className='net-votes-comment'>{comment.upvotes - comment.downvotes}</span>
-                                <i class={`fa-solid fa-arrow-down ${userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(comment.userVote, comment.id)}></i>
+                                <i class={`fa-solid fa-arrow-down ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(comment.userVote, comment.id)}></i>
                                 <div className='reply-div'>
                                     <i class="fa-regular fa-message"></i>
                                     <span className='reply-comment'>Reply</span>
