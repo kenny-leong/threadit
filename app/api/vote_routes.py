@@ -128,3 +128,22 @@ def get_user_comment_vote(comment_id):
         return jsonify({'type': vote.type})
     else:
         return jsonify({'type': None})
+
+
+
+# Get all of the current user's post votes
+@vote_routes.route('/posts/user-votes', methods=['GET'])
+@login_required
+def get_user_post_votes():
+    votes = Vote.query.filter_by(user_id=current_user.id, comment_id=None).all()
+    vote_dict = {vote.post_id: vote.type for vote in votes}
+    return jsonify(vote_dict)
+
+
+# Get all of the current user's comment votes
+@vote_routes.route('/comments/user-votes', methods=['GET'])
+@login_required
+def get_user_comment_votes():
+    votes = Vote.query.filter_by(user_id=current_user.id, post_id=None).all()
+    vote_dict = {vote.comment_id: vote.type for vote in votes}
+    return jsonify(vote_dict)

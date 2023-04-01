@@ -5,6 +5,17 @@ const loadPostVoteStatus = (vote) => ({
     vote
 });
 
+const loadPostVotes = (votes) => ({
+    type: 'LOAD_POST_VOTES',
+    votes
+});
+
+const loadCommentVotes = (votes) => ({
+    type: 'LOAD_COMMENT_VOTES',
+    votes
+});
+
+
 const createVote = () => ({
     type: 'ADD_VOTE',
 });
@@ -17,7 +28,7 @@ const removeVote = () => ({
 
 // -------------------------------------- thunks -----------------------------------
 
-// Thunk for getting the user's vote for a post
+// GET SINGLE POST VOTE STATUS
 export const getPostVote = (postId) => async (dispatch) => {
     const res = await fetch(`/api/votes/posts/${postId}/user-vote`);
 
@@ -29,15 +40,28 @@ export const getPostVote = (postId) => async (dispatch) => {
 };
 
 
-// Thunk for getting the user's vote for a comment
-export const getCommentVote = (commentId) => async (dispatch) => {
-    const res = await fetch(`/api/votes/comments/${commentId}/user-vote`);
+// GET ALL USER POST VOTES
+export const getUserPostVotes = () => async (dispatch) => {
+    const res = await fetch(`/api/votes/posts/user-votes`);
 
     if (res.ok) {
         const data = await res.json();
+        dispatch(loadPostVotes(data))
         return data;
     }
 };
+
+// GET ALL USER COMMENT VOTES
+export const getUserCommentVotes = () => async (dispatch) => {
+    const res = await fetch(`/api/votes/comments/user-votes`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadCommentVotes(data))
+        return data;
+    }
+};
+
 
 
 // VOTE ON A POST
@@ -142,6 +166,16 @@ const voteReducer = (state = initialState, action) => {
                 voteDetails: {
                     ...action.vote
                 }
+            }
+        case 'LOAD_POST_VOTES':
+            return {
+                ...state,
+                allPostVotes: action.votes
+            }
+        case 'LOAD_COMMENT_VOTES':
+            return {
+                ...state,
+                allCommentVotes: action.votes
             }
         case 'ADD_VOTE':
             const newState = {...state};

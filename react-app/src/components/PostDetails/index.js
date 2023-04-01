@@ -12,7 +12,7 @@ import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
 import EditComment from './EditComment';
 import LoginForm from '../LoginForm';
-import { getPostVote, postVote, deletePostVote, getCommentVote, commentVote, deleteCommentVote } from '../../store/vote';
+import { getPostVote, postVote, deletePostVote, getUserCommentVotes, commentVote, deleteCommentVote } from '../../store/vote';
 import './PostDetails.css'
 
 
@@ -33,6 +33,7 @@ function PostDetails() {
     const sessionUser = useSelector(state => state.session.user)
     const allComments = useSelector(state => state.comment.allComments)
     const voteDetails = useSelector(state => state.vote.voteDetails)
+    const userCommentVotes = useSelector(state => state.vote.allCommentVotes)
 
 
     useEffect(() => {
@@ -41,10 +42,11 @@ function PostDetails() {
         dispatch(getAllSR())
         dispatch(getAllUsers())
         dispatch(getPostVote(postId))
+        dispatch(getUserCommentVotes())
     }, [dispatch, postId, subredditId]);
 
 
-    if (!post || !allSubreddits || !allUsers || !allComments || !voteDetails) {
+    if (!post || !allSubreddits || !allUsers || !allComments || !voteDetails || !userCommentVotes) {
         return null;
     }
 
@@ -207,22 +209,10 @@ function PostDetails() {
 
 
 
-
-
-
-
     //sorts comments by most recent
     commentArr.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
 
-    const addVoteStatus = async (arr) => {
-        for (const comment of arr) {
-            const typeOfVote = await dispatch(getCommentVote(comment.id))
-            comment.userVote = typeOfVote.type;
-          }
-    }
-
-    addVoteStatus(commentArr);
 
 
     return (
@@ -311,10 +301,9 @@ function PostDetails() {
                                 <span className='comment-content-span'>{comment.content}</span>
                             </div>
                             <div className='vote-comment-icons'>
-                                <i class={`fa-solid fa-arrow-up ${comment.userVote === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(comment.userVote, comment.id)}></i>
+                                <i class={`fa-solid fa-arrow-up ${userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handleCommentUpvote(comment.userVote, comment.id)}></i>
                                 <span className='net-votes-comment'>{comment.upvotes - comment.downvotes}</span>
-                                <i class={`fa-solid fa-arrow-down ${comment.userVote === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(comment.userVote, comment.id)}></i>
-
+                                <i class={`fa-solid fa-arrow-down ${userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(comment.userVote, comment.id)}></i>
                                 <div className='reply-div'>
                                     <i class="fa-regular fa-message"></i>
                                     <span className='reply-comment'>Reply</span>
