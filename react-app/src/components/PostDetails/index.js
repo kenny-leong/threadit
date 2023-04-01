@@ -34,7 +34,7 @@ function PostDetails() {
     const allComments = useSelector(state => state.comment.allComments)
     const voteDetails = useSelector(state => state.vote.voteDetails)
     const userCommentVotes = useSelector(state => state.vote.allCommentVotes)
-    const subredditMembers = useSelector(state => state.subreddit.subredditMembers)
+    let subredditMembers = useSelector(state => state.subreddit.subredditMembers)
 
 
     useEffect(() => {
@@ -48,12 +48,21 @@ function PostDetails() {
     }, [dispatch, postId, subredditId]);
 
 
-    if (!post || !allSubreddits || !allUsers || !allComments) {
+    if (!post || !allSubreddits || !allUsers || !allComments || !subredditMembers) {
         return null;
     }
 
     if ((sessionUser && !userCommentVotes) || (sessionUser && !voteDetails)) return null;
 
+    // normalize the subreddit member object with user ids
+    let subredditMemberArr;
+    if (subredditMembers) {
+        subredditMemberArr = Object.values(subredditMembers);
+        subredditMembers = {};
+        subredditMemberArr.forEach(member => {
+            subredditMembers[member.user_id] = member
+        });
+    }
 
     const commentArr = Object.values(allComments);
 
