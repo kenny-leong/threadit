@@ -13,6 +13,7 @@ import CreatePostImage from '../CreatePost/PostImage';
 import CreateLink from '../CreatePost/CreateLinkPost';
 import DeletePost from './DeletePost';
 import EditPost from './EditPost';
+import { getUserPostVotes, postVote, deletePostVote } from '../../store/vote';
 import './SubredditDetails.css';
 
 
@@ -27,6 +28,7 @@ function SubredditDetails() {
     const subredditPosts = useSelector(state => state.post.subredditPosts);
     const allUsers = useSelector(state => state.session.allUsers)
     const sessionUser = useSelector(state => state.session.user)
+    const userPostVotes = useSelector(state => state.vote.allPostVotes)
     let subredditMembers = useSelector(state => state.subreddit.subredditMembers)
 
 
@@ -36,12 +38,14 @@ function SubredditDetails() {
         dispatch(getSubredditPosts(subredditId))
         dispatch(getSubredditMembers(subredditId))
         dispatch(getAllUsers())
+        if (sessionUser) dispatch(getUserPostVotes())
     }, [dispatch, subredditId])
 
 
     // return null if this information isnt given
     if (!subredditDetails || !allUsers || !subredditMembers) return null;
 
+    if (sessionUser && !userPostVotes) return null;
 
     // sort the feed chronologically with the most recent posts on top
     let subredditPostArr;
@@ -147,6 +151,77 @@ function SubredditDetails() {
 	};
 
 
+
+    //handles logic for post upvoting
+    const handlePostUpvote = async (postId, type) => {
+
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+        }
+
+        if (type === undefined) {
+            await dispatch(postVote(postId, 'upvote'))
+            await dispatch(getSubredditPosts(subredditId))
+            await dispatch(getUserPostVotes())
+        }
+
+        if (type === 'upvote') {
+            await dispatch(deletePostVote(postId))
+            await dispatch(getSubredditPosts(subredditId))
+            await dispatch(getUserPostVotes())
+        }
+
+        if (type === 'downvote') {
+            await dispatch(deletePostVote(postId));
+            await dispatch(postVote(postId, 'upvote'))
+            await dispatch(getSubredditPosts(subredditId))
+            await dispatch(getUserPostVotes())
+        }
+    }
+
+        //handles logic for post downvoting
+        const handlePostDownvote = async (postId, type) => {
+
+            if (!sessionUser) {
+                // Display an alert message if sessionUser does not exist
+                alert('Login to vote!');
+                return;
+            }
+
+            if (type === undefined) {
+                await dispatch(postVote(postId, 'downvote'))
+                await dispatch(getSubredditPosts(subredditId))
+                await dispatch(getUserPostVotes())
+            }
+
+            if (type === 'downvote') {
+                await dispatch(deletePostVote(postId))
+                await dispatch(getSubredditPosts(subredditId))
+                await dispatch(getUserPostVotes())
+            }
+
+            if (type === 'upvote') {
+                await dispatch(deletePostVote(postId));
+                await dispatch(postVote(postId, 'downvote'))
+                await dispatch(getSubredditPosts(subredditId))
+                await dispatch(getUserPostVotes())
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className='subreddit-details-div'>
             <div className='banner-img-div'>
@@ -210,9 +285,9 @@ function SubredditDetails() {
                     {subredditPosts && subredditPostArr.map((post, index) => (
                         <div className='post-box' key={index}>
                             <div className='vote-bar'>
-                                <i class="fa-solid fa-angles-up"></i>
+                                <i class={`fa-solid fa-angles-up ${userPostVotes && userPostVotes[post.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handlePostUpvote(post.id, userPostVotes[post.id])}></i>
                                 <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                                <i class="fa-solid fa-angles-down"></i>
+                                <i class={`fa-solid fa-angles-down ${userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handlePostDownvote(post.id, userPostVotes[post.id])}></i>
                             </div>
                             <div className='post-content-area'>
                                 <div className='post-header-info'>

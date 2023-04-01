@@ -128,7 +128,7 @@ function PostDetails() {
             // Display an alert message if sessionUser does not exist
             alert('Login to vote!');
             return;
-          }
+        }
 
         if (voteDetails.type === null) {
             await dispatch(postVote(postId, 'upvote'))
@@ -158,7 +158,7 @@ function PostDetails() {
             // Display an alert message if sessionUser does not exist
             alert('Login to vote!');
             return;
-          }
+        }
 
         if (voteDetails.type === null) {
             await dispatch(postVote(postId, 'downvote'))
@@ -187,7 +187,7 @@ function PostDetails() {
             // Display an alert message if sessionUser does not exist
             alert('Login to vote!');
             return;
-          }
+        }
 
         if (type === null) {
             await dispatch(commentVote(commentId, 'upvote'))
@@ -212,7 +212,7 @@ function PostDetails() {
             // Display an alert message if sessionUser does not exist
             alert('Login to vote!');
             return;
-          }
+        }
 
         if (type === null) {
             await dispatch(commentVote(commentId, 'downvote'))
