@@ -8,6 +8,10 @@ import { useModal } from "../../context/Modal";
 import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import bannerImg from '../../static/placeholder-banner.png';
+import { getUserPostVotes, postVote, deletePostVote } from '../../store/vote';
+import { getSubredditsByUser } from '../../store/subreddit';
+
+
 
 
 
@@ -19,11 +23,17 @@ function PopularFeed() {
     const allSubreddits = useSelector(state => state.subreddit.allSubreddits)
     const allUsers = useSelector(state => state.session.allUsers)
     const sessionUser = useSelector(state => state.session.user)
+    const userPostVotes = useSelector(state => state.vote.allPostVotes)
+    const subredditMemberships = useSelector(state => state.subreddit.memberSubreddits)
+
+
 
     useEffect(() => {
         dispatch(getAllPosts());
         dispatch(getAllSR())
         dispatch(getAllUsers())
+        if (sessionUser) dispatch(getUserPostVotes())
+        if (sessionUser) dispatch(getSubredditsByUser(sessionUser.id))
     }, [dispatch])
 
 
@@ -32,6 +42,9 @@ function PopularFeed() {
     if (!allPosts || !allSubreddits || !allUsers) {
         return null
     }
+
+    if ((sessionUser && !userPostVotes) || (sessionUser && !subredditMemberships)) return null;
+
 
     const postArr = Object.values(allPosts);
 
@@ -82,14 +95,86 @@ function PopularFeed() {
     };
 
 
+
+    //handles logic for post upvoting
+    const handlePostUpvote = async (post, type) => {
+
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+        }
+
+        if (!subredditMemberships[post.subreddit_id]) {
+            alert('Join subreddit to vote!')
+            return;
+        }
+
+        if (type === undefined) {
+            await dispatch(postVote(post.id, 'upvote'))
+            await dispatch(getAllPosts());
+            await dispatch(getUserPostVotes())
+        }
+
+        if (type === 'upvote') {
+            await dispatch(deletePostVote(post.id))
+            await dispatch(getAllPosts());
+            await dispatch(getUserPostVotes())
+        }
+
+        if (type === 'downvote') {
+            await dispatch(deletePostVote(post.id));
+            await dispatch(postVote(post.id, 'upvote'))
+            await dispatch(getAllPosts());
+            await dispatch(getUserPostVotes())
+        }
+    }
+
+
+    // //handles logic for post downvoting
+    const handlePostDownvote = async (post, type) => {
+
+        if (!sessionUser) {
+            // Display an alert message if sessionUser does not exist
+            alert('Login to vote!');
+            return;
+        }
+
+        if (!subredditMemberships[post.subreddit_id]) {
+            alert('Join subreddit to vote!')
+            return;
+        }
+
+        if (type === undefined) {
+            await dispatch(postVote(post.id, 'downvote'))
+            await dispatch(getAllPosts());
+            await dispatch(getUserPostVotes())
+        }
+
+        if (type === 'downvote') {
+            await dispatch(deletePostVote(post.id))
+            await dispatch(getAllPosts());
+            await dispatch(getUserPostVotes())
+        }
+
+        if (type === 'upvote') {
+            await dispatch(deletePostVote(post.id));
+            await dispatch(postVote(post.id, 'downvote'))
+            await dispatch(getAllPosts());
+            await dispatch(getUserPostVotes())
+        }
+    }
+
+
+
     return (
         <div className='post-feed-div'>
             {postArr.map((post, index) => (
                 <div className='post-box' key={index}>
                     <div className='vote-bar'>
-                        <i class="fa-solid fa-angles-up"></i>
+                        <i class={`fa-solid fa-angles-up ${sessionUser && userPostVotes && userPostVotes[post.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handlePostUpvote(post, userPostVotes[post.id])}></i>
                         <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                        <i class="fa-solid fa-angles-down"></i>
+                        <i class={`fa-solid fa-angles-down ${sessionUser && userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handlePostDownvote(post, userPostVotes[post.id])}></i>
                     </div>
                     <div className='post-content-area'>
                         <div className='post-feed-header-info'>
