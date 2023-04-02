@@ -13,7 +13,7 @@ function TrendBar() {
             <div className='trending-div'>
                 <span className='trending-text'>Trending today</span>
                 <div className='trend-box-div'>
-                    <Link to='/subreddits/2/posts/22'>
+                    <Link to='/subreddits/2/posts/18'>
                         <div className='trend-box one'>
                             <div className='trend-headings'>
                                 <span className='trend-title'>Chonky(?) Cats</span>
@@ -22,7 +22,7 @@ function TrendBar() {
                             </div>
                         </div>
                     </Link>
-                    <Link to='/subreddits/23/posts/23'>
+                    <Link to='/subreddits/23/posts/19'>
                         <div className='trend-box two'>
                             <div className='trend-headings'>
                                 <span className='trend-title'>Maplestory</span>
@@ -31,7 +31,7 @@ function TrendBar() {
                             </div>
                         </div>
                     </Link>
-                    <Link to='/subreddits/17/posts/24'>
+                    <Link to='/subreddits/17/posts/20'>
                         <div className='trend-box three'>
                             <div className='trend-headings'>
                                 <span className='trend-title'>Viral Anime</span>
@@ -40,7 +40,7 @@ function TrendBar() {
                             </div>
                         </div>
                     </Link>
-                    <Link to='/subreddits/7/posts/25'>
+                    <Link to='/subreddits/7/posts/21'>
                         <div className='trend-box four'>
                             <div className='trend-headings'>
                                 <span className='trend-title'>Software Engineers</span>
