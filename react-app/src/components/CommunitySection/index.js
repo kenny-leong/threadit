@@ -230,7 +230,9 @@ function CommunitySection() {
                     </div>
                     <div className='cp-and-mcc'>
                         <a href='https://github.com/kenny-leong/threadit' target='_blank' rel="noopener noreferrer">Threadit Repository</a>
-                        <span>Technologies Used</span>
+                        <Link to='/project-info'>
+                            <span>Technologies Used</span>
+                        </Link>
                     </div>
                 </div>
             </div>

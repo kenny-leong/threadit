@@ -13,6 +13,7 @@ import MySubreddits from "./components/MySubreddits";
 import PopularFeed from "./components/PostFeed/PopularFeed";
 import JoinSideBar from "./components/FeedSideBar/SideBarJoin";
 import PostDetails from "./components/PostDetails";
+import ProjectInfo from "./components/ProjectInfo";
 
 function App() {
 
@@ -66,6 +67,11 @@ function App() {
                 <FeedSideBar />
                 <PostDetails />
               </Route>
+              <Route path="/project-info">
+                <NavBar />
+                <FeedSideBar />
+                <ProjectInfo />
+              </Route>
             </>
           ) : (
             <>
@@ -96,6 +102,11 @@ function App() {
                 <FeedSideBar />
                 <PostDetails />
                 <JoinSideBar />
+              </Route>
+              <Route path="/project-info">
+                <NavBar />
+                <FeedSideBar />
+                <ProjectInfo />
               </Route>
             </>
           )}
