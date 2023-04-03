@@ -28,7 +28,7 @@ function ProjectInfo() {
                 <span className="threadit-desc-proj">But there is more - Threadit is a hub where users who share similar interests and aspirations can connect and network. From exchanging ideas to fostering new relationships, Threadit offers a world of opportunity for all who enter. Embrace the journey of discovery and dialogue. Join Threadit today and be a part of the conversation. Sign up now and experience the boundless possibilities of the online universe.</span>
 
                 <div className="tech-used">
-                    <span className="title-proj-stack">TECH STACK</span>
+                    <span className="tech-stack-title">TECH STACK</span>
                 </div>
                 <span className="tech-stack-desc">For my tech stack I used a combination of Flask, PostgreSQL, React, and Redux — this stack is often referred to as PERN + Redux (PostgreSQL, Express.js, React, Node.js, and Redux state management) except with Flask replacing Express.js. This tech stack is designed to provide high performance and speed. React provides fast rendering of the front-end, while PostgreSQL is highly optimized for database queries.</span>
                 <div className="stacks-used-div">

@@ -164,7 +164,7 @@
     margin-top: 25px;
     text-shadow: 0 0 4px rgb(151, 151, 151);
     line-height: 1.5;
-    transition: transform 250ms;
+    transition: transform 200ms;
     cursor: pointer;
 }
 
@@ -193,8 +193,12 @@
     margin-top: 25px;
     text-shadow: 0 0 3px rgb(152, 152, 152);
     line-height: 1.5;
-    transition: transform 250ms;
+    transition: transform 500ms;
     cursor: pointer;
+}
+
+.stack-items:hover {
+    transform: translateY(-10px);
 }
 
 .stack-title {
@@ -204,18 +208,25 @@
     text-shadow: 0 0 10px rgba(136, 136, 136, 0.827);
     transition: transform 250ms;
     cursor: pointer;
-
 }
 
-.title-proj-stack {
+.stack-title:hover {
+    transform: translateY(-10px);
+}
+
+.tech-stack-title {
     color: rgb(255, 255, 255);
     font-family: 'Threadit';
     font-size: 40px;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: transform 250ms;
+
     cursor: pointer;
 }
 
-.title-proj-stack:hover {
+.tech-used {
+    transition: transform 250ms;
+}
+
+.tech-used:hover {
     transform: translateY(-10px);
 }
