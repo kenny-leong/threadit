@@ -251,3 +251,10 @@
     background-color: rgba(0, 52, 136, 0.135);;
     cursor: not-allowed;
 }
+
+
+@media screen and (max-height: 719px) {
+    .create-sr-div {
+        height: 83%;
+    }
+}

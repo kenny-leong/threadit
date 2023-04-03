@@ -159,3 +159,17 @@
 .dropdown-container a {
     text-decoration: none;
 }
+
+
+@media screen and (max-height: 719px) {
+    .feed-bar-div-no-user {
+        height: 63%;
+    }
+}
+
+
+@media screen and (min-height: 919px) {
+    .feed-bar-div-no-user {
+        height: 78%;
+    }
+}

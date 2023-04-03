@@ -125,3 +125,15 @@
     font-size: 15px;
     font-family: 'Threadit';
 }
+
+
+@media screen and (max-height: 719px) {
+    .login-div {
+      height: 500px;
+    }
+
+    .login-headings {
+        margin-top: 40px;
+    }
+
+  }
