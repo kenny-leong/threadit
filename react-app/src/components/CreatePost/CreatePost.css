@@ -13,6 +13,15 @@
     border-radius: 10px;
 }
 
+@media screen and (max-height: 670px) {
+    .create-post-component.text {
+        overflow-y: scroll;
+        padding-bottom: 25px;
+        padding-top: 55px;
+    }
+}
+
+
 .create-post-title {
     font-family: 'Threadit';
     font-weight: 400;
@@ -23,6 +32,8 @@
     align-items: center;
     margin-top: 25px;
 }
+
+
 
 .post-heading-title {
     margin-left: 10px;
