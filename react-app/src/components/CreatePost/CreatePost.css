@@ -17,7 +17,7 @@
     .create-post-component.text {
         overflow-y: scroll;
         padding-bottom: 25px;
-        padding-top: 55px;
+        height: 400px;
     }
 }
 
