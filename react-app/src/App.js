@@ -107,6 +107,7 @@ function App() {
                 <NavBar />
                 <FeedSideBar />
                 <ProjectInfo />
+                <JoinSideBar />
               </Route>
             </>
           )}

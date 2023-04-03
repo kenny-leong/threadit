@@ -14,7 +14,6 @@
 
 .image-bg-proj-info {
     overflow: hidden;
-    height: 100%;
     margin-left: 10px;
     border: 1px solid rgb(40, 40, 40);
     display: flex;
@@ -54,8 +53,6 @@
     transform: translateY(-10px);
 }
 
-
-
 .subheading-proj {
     color: rgb(249, 249, 249);
     font-family: 'Threadit';
@@ -89,7 +86,7 @@
     margin-top: 25px;
     color: rgb(31, 31, 31);
     font-family: 'Threadit';
-    font-size: 40px;
+    font-size: 35px;
     text-shadow: 0 0 10px rgba(233, 233, 233, 0.5);
 }
 
@@ -104,6 +101,8 @@
     margin-top: 15px;
     transition: transform 250ms;
     padding-bottom: 25px;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.151);
 }
 
 .creator-profile:hover {
@@ -154,6 +153,69 @@
 }
 
 .tech-used {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     margin-top: 30px;
+}
+
+.tech-stack-desc {
+    color: rgb(255, 255, 255);
+    font-family: 'Threadit';
+    font-size: 16px;
+    margin-top: 25px;
+    text-shadow: 0 0 4px rgb(151, 151, 151);
+    line-height: 1.5;
+    transition: transform 250ms;
+    cursor: pointer;
+}
+
+.tech-stack-desc:hover {
+    transform: translateY(-10px);
+}
+
+.stacks-used-div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.stacks-used {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stack-items {
+    color: rgb(255, 255, 255);
+    font-family: 'Threadit';
+    font-size: 16px;
+    margin-top: 25px;
+    text-shadow: 0 0 3px rgb(152, 152, 152);
+    line-height: 1.5;
+    transition: transform 250ms;
+    cursor: pointer;
+}
+
+.stack-title {
+    color: rgb(255, 255, 255);
+    font-family: 'Threadit';
+    font-size: 25px;
+    text-shadow: 0 0 10px rgba(136, 136, 136, 0.827);
+    transition: transform 250ms;
+    cursor: pointer;
+
+}
+
+.title-proj-stack {
+    color: rgb(255, 255, 255);
+    font-family: 'Threadit';
+    font-size: 40px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 250ms;
+    cursor: pointer;
+}
+
+.title-proj-stack:hover {
+    transform: translateY(-10px);
 }
