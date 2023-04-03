@@ -366,8 +366,8 @@ function PostDetails() {
                                 <span className='net-votes-comment'>{comment.upvotes - comment.downvotes}</span>
                                 <i class={`fa-solid fa-arrow-down ${userCommentVotes && userCommentVotes[comment.id] && userCommentVotes[comment.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handleCommentDownvote(userCommentVotes[comment.id], comment.id)}></i>
                                 <div className='reply-div'>
-                                    <i class="fa-regular fa-message"></i>
-                                    <span className='reply-comment'>Reply</span>
+                                    {/* <i class="fa-regular fa-message"></i> */}
+                                    {/* <span className='reply-comment'>Reply</span> */}
                                 </div>
                             </div>
                         </div>
