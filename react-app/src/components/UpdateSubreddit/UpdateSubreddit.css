@@ -21,6 +21,12 @@
     overflow-y: auto;
 }
 
+@media screen and (max-height: 719px) {
+    .update-sr-div {
+        height: 80%;
+    }
+}
+
 
 .placeholder-update {
     font-size: 20px;
