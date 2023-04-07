@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { deleteSubreddit, getSubredditsByUser, removeSubredditMember, getSubredditMembers, getAllSR } from "../../store/subreddit";
+import { getSubredditsByUser, removeSubredditMember, getSubredditMembers, getAllSR } from "../../store/subreddit";
 import peek from '../../static/peeking.png'
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';

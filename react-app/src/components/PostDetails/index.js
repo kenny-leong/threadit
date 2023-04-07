@@ -6,7 +6,7 @@ import { useModal } from "../../context/Modal";
 import DeletePost from '../SubredditDetails/DeletePost';
 import EditPost from '../SubredditDetails/EditPost';
 import { getAllUsers } from '../../store/session';
-import { getAllSR, getSubredditMembers } from '../../store/subreddit';
+import { getSingleSR, getSubredditMembers } from '../../store/subreddit';
 import bannerImg from '../../static/placeholder-banner.png';
 import { getComments, createComment } from '../../store/comment';
 import DeleteComment from './DeleteComment';
@@ -28,7 +28,7 @@ function PostDetails() {
     const [comment, setComment] = useState("");
 
     const post = useSelector(state => state.post.postDetails);
-    const allSubreddits = useSelector(state => state.subreddit.allSubreddits)
+    const singleSubreddit = useSelector(state => state.subreddit.singleSubreddit)
     const allUsers = useSelector(state => state.session.allUsers)
     const sessionUser = useSelector(state => state.session.user)
     const allComments = useSelector(state => state.comment.allComments)
@@ -40,7 +40,7 @@ function PostDetails() {
     useEffect(() => {
         dispatch(getPostById(postId))
         dispatch(getComments(postId))
-        dispatch(getAllSR())
+        dispatch(getSingleSR(subredditId))
         dispatch(getAllUsers())
         dispatch(getSubredditMembers(subredditId))
         if (sessionUser) dispatch(getPostVote(postId))
@@ -48,7 +48,7 @@ function PostDetails() {
     }, [dispatch, postId, subredditId]);
 
 
-    if (!post || !allSubreddits || !allUsers || !allComments || !subredditMembers) {
+    if (!post || !singleSubreddit || !allUsers || !allComments || !subredditMembers) {
         return null;
     }
 
@@ -287,7 +287,7 @@ function PostDetails() {
                 <div className='post-feed-header-info'>
                     <div className='post-header-information'>
                         <Link to={`/subreddits/${post.subreddit_id}`}>
-                            <span className='subreddit-for-post'>{`r/${allSubreddits[post.subreddit_id].name}`}</span>
+                            <span className='subreddit-for-post'>{`r/${singleSubreddit.name}`}</span>
                         </Link>
                         <i class="fa-solid fa-circle"></i>
                         <span className='posted-by'>{`Posted by u/${allUsers[post.author_id].username} ${getTimeSincePostCreation(post.created_at)} ago`}</span>
