@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal"
+import { getAllPosts } from '../../store/post';
 import { deleteSubreddit, getOwnedSubreddits, getSubredditsByUser } from '../../store/subreddit'
 
 
@@ -16,6 +17,7 @@ function DeleteSubreddit({ subredditId }) {
             .then(() => {
                 dispatch(getOwnedSubreddits(sessionUser.id))
                 dispatch(getSubredditsByUser(sessionUser.id))
+                dispatch(getAllPosts())
                 closeModal();
             })
     };

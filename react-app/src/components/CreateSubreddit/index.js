@@ -23,11 +23,6 @@ function CreateSubreddit() {
         setCharactersLeft(16 - name.length);
     }, [name]);
 
-
-    useEffect(() => {
-        if (createdSubreddit) history.push(`/subreddits/${createdSubreddit.id}`)
-    }, [createdSubreddit])
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -35,6 +30,7 @@ function CreateSubreddit() {
             .then(() => {
                 dispatch(getOwnedSubreddits(sessionUser.id));
                 dispatch(getAllSR());
+                history.push(`/subreddits/${createdSubreddit.id}`)
                 closeModal();
             })
     }
