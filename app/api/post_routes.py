@@ -37,16 +37,6 @@ def create_post():
     return post.to_dict()
 
 
-@post_routes.route('/<int:id>')
-def get_post(id):
-    """
-    Query for a post by id and returns that post in a dictionary
-    """
-    post = Post.query.get(id)
-    if not post:
-        return jsonify(message='Post not found'), 404
-    return post.to_dict()
-
 
 @post_routes.route('/<int:id>/comments')
 def post_comments(id):
@@ -61,13 +51,18 @@ def post_comments(id):
 
 
 
+
 @post_routes.route('/<int:id>')
-def post(id):
+def get_post(id):
     """
     Query for a post by id and returns that post in a dictionary
     """
     post = Post.query.get(id)
+    if not post:
+        return jsonify(message='Post not found'), 404
     return post.to_dict()
+
+
 
 
 @post_routes.route('/<int:id>', methods=['PUT'])
