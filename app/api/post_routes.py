@@ -13,6 +13,9 @@ def posts():
     return {'posts': [post.to_dict() for post in posts]}
 
 
+
+
+
 @post_routes.route('', methods=['POST'])
 @login_required
 def create_post():
@@ -49,6 +52,15 @@ def post_comments(id):
     comments = post.comments
     return {'comments': [comment.to_dict() for comment in comments]}
 
+
+
+@post_routes.route('/<int:page>/<int:per_page>')
+def paginate_posts(page, per_page):
+    """
+    Query for all posts with pagination and returns them in a list of post dictionaries
+    """
+    posts = Post.query.paginate(page, per_page, False)
+    return {'posts': [post.to_dict() for post in posts.items]}
 
 
 

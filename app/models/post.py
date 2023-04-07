@@ -38,5 +38,4 @@ class Post(db.Model):
             "image_url": self.image_url,
             "upvotes": self.upvotes,
             "downvotes": self.downvotes,
-            "comments": [comment.to_dict() for comment in self.comments],
         }

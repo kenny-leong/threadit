@@ -30,7 +30,6 @@ class Subreddit(db.Model):
             "banner_image": self.banner_image,
             "created_at": self.created_at.isoformat(),
             "creator_id": self.creator_id,
-            "members": [member.user.to_dict() for member in self.subreddit_members]
         }
 
 

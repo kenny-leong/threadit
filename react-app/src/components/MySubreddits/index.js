@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { deleteSubreddit, getSubredditsByUser, removeSubredditMember, getSubredditMembers } from "../../store/subreddit";
+import { deleteSubreddit, getSubredditsByUser, removeSubredditMember, getSubredditMembers, getAllSR } from "../../store/subreddit";
 import peek from '../../static/peeking.png'
 import UpdateSubreddit from '../UpdateSubreddit';
 import OpenModalButton from '../OpenModalButton';
@@ -20,6 +20,7 @@ function MySubreddits() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const subredditMemberships = useSelector(state => state.subreddit.memberSubreddits);
+    const allSubreddits = useSelector(state => state.subreddit.allSubreddits);
     const { closeModal, setModalContent } = useModal();
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
@@ -28,10 +29,20 @@ function MySubreddits() {
 
     useEffect(() => {
         if (sessionUser) dispatch(getSubredditsByUser(sessionUser.id))
+        if (sessionUser) dispatch(getAllSR())
     }, [dispatch, sessionUser])
 
 
-    if (subredditMemberships === undefined) return null;
+    if (!subredditMemberships || !allSubreddits) return null;
+
+    const subredditMembershipArr = [];
+
+    const subredditArr = Object.values(subredditMemberships);
+
+    subredditArr.forEach(subreddit => {
+        subredditMembershipArr.push(allSubreddits[subreddit.subreddit_id])
+    });
+
 
 
     //opens the Delete Subreddit component
@@ -52,7 +63,7 @@ function MySubreddits() {
 	};
 
 
-    const subredditMembershipArr = Object.values(subredditMemberships)
+
 
     return (
         <div className="owned-div">
