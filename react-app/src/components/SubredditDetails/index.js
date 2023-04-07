@@ -39,7 +39,7 @@ function SubredditDetails() {
         dispatch(getSubredditMembers(subredditId))
         dispatch(getAllUsers())
         if (sessionUser) dispatch(getUserPostVotes())
-    }, [dispatch, subredditId])
+    }, [dispatch, subredditId, sessionUser])
 
 
     // return null if this information isnt given

@@ -21,7 +21,7 @@ function OwnedSR() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const ownedSubreddits = useSelector(state => state.subreddit.ownedSubreddits);
-    const { setModalContent, closeModal } = useModal();
+    const { setModalContent } = useModal();
 
     const nullProfilePic = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
 

@@ -26,7 +26,7 @@ function CreateSubreddit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const newSubreddit = await dispatch(createSubreddit(name, description))
+        await dispatch(createSubreddit(name, description))
             .then(() => {
                 dispatch(getOwnedSubreddits(sessionUser.id));
                 dispatch(getAllSR());

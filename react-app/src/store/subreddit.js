@@ -159,7 +159,7 @@ export const addSubredditMember = (subredditId) => async (dispatch) => {
         body: JSON.stringify({ subredditId }),
     });
     if (res.ok) {
-        const data = await res.json();
+        await res.json();
         dispatch(addMember());
     } else {
         console.error('Failed to add subreddit member.');
@@ -218,7 +218,7 @@ export const removeSubredditMember = (subredditId, memberId) => async (dispatch)
     });
 
     if (res.ok) {
-        const data = await res.json();
+        await res.json();
         dispatch(removeSubreddit);
     }
 };

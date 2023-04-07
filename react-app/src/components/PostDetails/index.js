@@ -45,7 +45,7 @@ function PostDetails() {
         dispatch(getSubredditMembers(subredditId))
         if (sessionUser) dispatch(getPostVote(postId))
         if (sessionUser) dispatch(getUserCommentVotes())
-    }, [dispatch, postId, subredditId]);
+    }, [dispatch, postId, subredditId, sessionUser]);
 
 
     if (!post || !singleSubreddit || !allUsers || !allComments || !subredditMembers) {

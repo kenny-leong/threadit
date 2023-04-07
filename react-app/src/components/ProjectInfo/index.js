@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React from "react";
 import background from '../../static/proj-info.jpeg';
 import pfp from '../../static/cup-noodles.jpeg';
 import './ProjectInfo.css';

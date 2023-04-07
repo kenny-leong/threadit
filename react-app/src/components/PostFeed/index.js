@@ -31,7 +31,7 @@ function PostFeed() {
         dispatch(getAllUsers())
         if (sessionUser) dispatch(getUserPostVotes())
         if (sessionUser) dispatch(getSubredditsByUser(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
 
 

@@ -34,7 +34,7 @@ function PopularFeed() {
         dispatch(getAllUsers())
         if (sessionUser) dispatch(getUserPostVotes())
         if (sessionUser) dispatch(getSubredditsByUser(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
 
 
@@ -220,7 +220,7 @@ function PopularFeed() {
                                 <div className='comments-and-text-div'>
                                     <i class="fa-solid fa-comments"></i>
                                     <span className='comment-div-text'>
-                                        {post.comments ? `${post.comments.length} Comments` : '0 Comments'}
+                                        {post.num_comments > 0 ? `${post.num_comments} Comments` : '0 Comments'}
                                     </span>
                                 </div>
                                 <div className='repeat-and-text-div'>
