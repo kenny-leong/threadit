@@ -143,6 +143,7 @@ export const createSubreddit = (name, description, profile_picture, banner_image
     if (res.ok) {
         const newSubreddit = await res.json();
         dispatch(addSubreddit(newSubreddit));
+        return newSubreddit;
     } else {
         return 'Could not add new subthreadit.'
     }
@@ -301,7 +302,7 @@ const subredditReducer = (state = initialState, action) => {
         case 'ADD_SUBREDDIT':
             return {
                 ...state,
-                singleSubreddit: {
+                newSubreddit: {
                     ...action.subreddit
                 }
             }
