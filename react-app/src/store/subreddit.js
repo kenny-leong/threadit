@@ -268,7 +268,6 @@ const subredditReducer = (state = initialState, action) => {
             memberSRArr.forEach(subreddit => {
                 memberSubreddits[subreddit.subreddit_id] = subreddit
             });
-            console.log(memberSubreddits)
             return {
                 ...state,
                 memberSubreddits: memberSubreddits
