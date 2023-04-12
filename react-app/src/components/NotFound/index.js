@@ -15,6 +15,7 @@ function NotFound() {
         <div className='not-found-div'>
             <h1 className='not-found-header'>404 Page Not Found.</h1>
             <img src={notfoundimg} alt='not-found-img' className='not-found-img'/>
+            <span className='not-found-subheading'>the page you requested does not exist</span>
         </div>
     )
 

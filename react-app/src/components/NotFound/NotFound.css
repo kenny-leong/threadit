@@ -12,6 +12,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 
@@ -22,5 +23,14 @@
 
 .not-found-header {
     font-family: 'Threadit';
-    margin-bottom: 100px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+
+.not-found-subheading {
+    font-family: 'Threadit';
+    font-size: 17px;
+    margin-top: 40px;
+    padding-bottom: 30px;
 }
