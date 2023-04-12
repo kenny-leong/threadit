@@ -35,7 +35,7 @@ function SignupForm() {
     }
 
     if (password.length < 6) {
-      return setErrors('Password length must be at least 6 characters.')
+      return setErrors('Password must be at least 6 characters.')
     }
 
     if (password !== confirmPassword) {
