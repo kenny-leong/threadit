@@ -14,6 +14,7 @@ import PopularFeed from "./components/PostFeed/PopularFeed";
 import JoinSideBar from "./components/FeedSideBar/SideBarJoin";
 import PostDetails from "./components/PostDetails";
 import ProjectInfo from "./components/ProjectInfo";
+import NotFound from "./components/NotFound";
 
 function App() {
 
@@ -108,6 +109,12 @@ function App() {
                 <FeedSideBar />
                 <ProjectInfo />
                 <JoinSideBar />
+              </Route>
+              <Route path="*">
+                <NavBar />
+                <FeedSideBar />
+                <JoinSideBar />
+                <NotFound />
               </Route>
             </>
           )}
