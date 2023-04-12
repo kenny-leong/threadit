@@ -97,12 +97,6 @@ function PostFeed() {
     //handles logic for post upvoting
     const handlePostUpvote = async (post, type) => {
 
-        if (!sessionUser) {
-            // Display an alert message if sessionUser does not exist
-            alert('Login to vote!');
-            return;
-        }
-
         if (!subredditMemberships[post.subreddit_id]) {
             alert('Join subreddit to vote!')
             return;
@@ -131,12 +125,6 @@ function PostFeed() {
 
     // //handles logic for post downvoting
     const handlePostDownvote = async (post, type) => {
-
-        if (!sessionUser) {
-            // Display an alert message if sessionUser does not exist
-            alert('Login to vote!');
-            return;
-        }
 
         if (!subredditMemberships[post.subreddit_id]) {
             alert('Join subreddit to vote!')
