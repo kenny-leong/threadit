@@ -156,6 +156,8 @@ def get_subreddit_members(subredditId):
     return {'subreddit_members': [member.to_dict() for member in subreddit_members]}
 
 
+
+
 @subreddit_routes.route('/<int:subreddit_id>/members/<int:user_id>', methods=['DELETE'])
 @login_required
 def delete_subreddit_member(subreddit_id, user_id):

@@ -22,8 +22,20 @@ function SignupForm() {
       return setErrors('Please enter a valid email.')
     }
 
+    if (email.includes('@')) {
+      const emailChars = email.split('@');
+      console.log(emailChars)
+      if (emailChars[1].length < 5) {
+        return setErrors('Email needs a trailing domain.')
+      }
+    }
+
     if (username.length < 5) {
       return setErrors('Username must be at least 5 characters.')
+    }
+
+    if (password.length < 6) {
+      return setErrors('Password length must be at least 6 characters.')
     }
 
     if (password !== confirmPassword) {
