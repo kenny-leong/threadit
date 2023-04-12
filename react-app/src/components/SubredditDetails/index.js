@@ -155,12 +155,6 @@ function SubredditDetails() {
     //handles logic for post upvoting
     const handlePostUpvote = async (postId, type) => {
 
-        if (!sessionUser) {
-            // Display an alert message if sessionUser does not exist
-            alert('Login to vote!');
-            return;
-        }
-
         if (!subredditMembers[sessionUser.id]) {
             alert('Join subreddit to vote!')
             return;
@@ -188,12 +182,6 @@ function SubredditDetails() {
 
         //handles logic for post downvoting
         const handlePostDownvote = async (postId, type) => {
-
-            if (!sessionUser) {
-                // Display an alert message if sessionUser does not exist
-                alert('Login to vote!');
-                return;
-            }
 
             if (!subredditMembers[sessionUser.id]) {
                 alert('Join subreddit to vote!')
@@ -287,9 +275,21 @@ function SubredditDetails() {
                     {subredditPosts && subredditPostArr.map((post, index) => (
                         <div className='post-box' key={index}>
                             <div className='vote-bar'>
-                                <i class={`fa-solid fa-angles-up ${sessionUser && userPostVotes && userPostVotes[post.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => handlePostUpvote(post.id, userPostVotes[post.id])}></i>
+                                <i class={`fa-solid fa-angles-up ${sessionUser && userPostVotes && userPostVotes[post.id] === 'upvote' ? 'highlighted' : ''}`} onClick={() => {
+                                    if (!sessionUser) {
+                                        alert('Please log in to upvote this post!');
+                                        return;
+                                    }
+                                    userPostVotes && handlePostUpvote(post, userPostVotes[post.id])
+                                }}></i>
                                 <span className='total-votes'>{post.upvotes - post.downvotes}</span>
-                                <i class={`fa-solid fa-angles-down ${sessionUser && userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => handlePostDownvote(post.id, userPostVotes[post.id])}></i>
+                                <i class={`fa-solid fa-angles-down ${sessionUser && userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => {
+                                    if (!sessionUser) {
+                                        alert('Please log in to downvote this post!');
+                                        return;
+                                    }
+                                    handlePostDownvote(post, userPostVotes[post.id])
+                                }}></i>
                             </div>
                             <div className='post-content-area'>
                                 <div className='post-header-info'>
