@@ -33,27 +33,26 @@ function App() {
         <Switch>
           {sessionUser ? (
             <>
-              <Redirect from="/" to="/home" exact />
-              <Route path="/home">
+              <Route path="/home" exact>
                 <NavBar />
                 <FeedSideBar />
                 <TrendBar />
                 <PostFeed />
                 <CommunitySection />
               </Route>
-              <Route path="/popular">
+              <Route path="/popular" exact>
                 <NavBar />
                 <FeedSideBar />
                 <TrendBar />
                 <PopularFeed />
                 <CommunitySection />
               </Route>
-              <Route path="/owned-subreddits">
+              <Route path="/owned-subreddits" exact>
                 <NavBar />
                 <FeedSideBar />
                 <OwnedSR />
               </Route>
-              <Route path="/my-communities">
+              <Route path="/my-communities" exact>
                 <NavBar />
                 <FeedSideBar />
                 <MySubreddits />
@@ -68,10 +67,16 @@ function App() {
                 <FeedSideBar />
                 <PostDetails />
               </Route>
-              <Route path="/project-info">
+              <Route path="/project-info" exact>
                 <NavBar />
                 <FeedSideBar />
                 <ProjectInfo />
+              </Route>
+              <Route path="*">
+                <NavBar />
+                <FeedSideBar />
+                <JoinSideBar />
+                <NotFound />
               </Route>
             </>
           ) : (
