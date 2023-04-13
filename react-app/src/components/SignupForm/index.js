@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 import LoginForm from "../LoginForm";
 import OpenModalButton from "../OpenModalButton";
@@ -14,6 +15,7 @@ function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState('');
   const { closeModal } = useModal();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,12 +44,13 @@ function SignupForm() {
       return setErrors('Passwords do not match.');
     }
 
-    const data = await dispatch(signUp(username, email, password));
-    if (data) {
-      setErrors('Unable to sign in. Please try again.');
-    } else {
-      closeModal();
-    }
+    await dispatch(signUp(username, email, password))
+      .then(() => {
+        history.push('/home')
+        closeModal();
+      })
+
+
   };
 
   return (
