@@ -30,9 +30,9 @@ function App() {
   return (
     <>
       {isLoaded && (
-        <Switch>
+        <>
           {sessionUser ? (
-            <>
+            <Switch>
               <Route path="/home" exact>
                 <NavBar />
                 <FeedSideBar />
@@ -62,12 +62,12 @@ function App() {
                 <FeedSideBar />
                 <SubredditDetails />
               </Route>
-              <Route path="/subreddits/:subredditId/posts/:postId">
+              <Route exact path="/subreddits/:subredditId/posts/:postId">
                 <NavBar />
                 <FeedSideBar />
                 <PostDetails />
               </Route>
-              <Route path="/project-info" exact>
+              <Route exact path="/project-info">
                 <NavBar />
                 <FeedSideBar />
                 <ProjectInfo />
@@ -75,12 +75,11 @@ function App() {
               <Route path="*">
                 <NavBar />
                 <FeedSideBar />
-                <JoinSideBar />
                 <NotFound />
               </Route>
-            </>
+            </Switch>
           ) : (
-            <>
+            <Switch>
               <Route exact path="/">
                 <NavBar />
                 <JoinSideBar />
@@ -89,7 +88,7 @@ function App() {
                 <PostFeed />
                 <CommunitySection />
               </Route>
-              <Route path="/popular">
+              <Route exact path="/popular">
                 <NavBar />
                 <JoinSideBar />
                 <FeedSideBar />
@@ -103,13 +102,13 @@ function App() {
                 <FeedSideBar />
                 <SubredditDetails />
               </Route>
-              <Route path="/subreddits/:subredditId/posts/:postId">
+              <Route exact path="/subreddits/:subredditId/posts/:postId">
                 <NavBar />
                 <FeedSideBar />
                 <PostDetails />
                 <JoinSideBar />
               </Route>
-              <Route path="/project-info">
+              <Route exact path="/project-info">
                 <NavBar />
                 <FeedSideBar />
                 <ProjectInfo />
@@ -118,12 +117,12 @@ function App() {
               <Route path="*">
                 <NavBar />
                 <FeedSideBar />
-                <JoinSideBar />
                 <NotFound />
+                <JoinSideBar />
               </Route>
-            </>
+            </Switch>
           )}
-        </Switch>
+        </>
       )}
     </>
   );
