@@ -26,7 +26,6 @@ function SignupForm() {
 
     if (email.includes('@')) {
       const emailChars = email.split('@');
-      console.log(emailChars)
       if (emailChars[1].length < 5) {
         return setErrors('Email needs a trailing domain.')
       }
