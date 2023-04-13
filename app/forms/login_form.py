@@ -4,12 +4,21 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 
+# def user_exists(form, field):
+#     # Checking if user exists
+#     email = field.data
+#     user = User.query.filter(User.email == email).first()
+#     if not user:
+#         raise ValidationError('Email provided not found.')
+
 def user_exists(form, field):
     # Checking if user exists
-    email = field.data
-    user = User.query.filter(User.email == email).first()
+    email_or_username = field.data
+    user = User.query.filter(
+        (User.email == email_or_username) | (User.username == email_or_username)
+    ).first()
     if not user:
-        raise ValidationError('Email provided not found.')
+        raise ValidationError('User not found.')
 
 
 def password_matches(form, field):
@@ -17,6 +26,9 @@ def password_matches(form, field):
     password = field.data
     email = form.data['email']
     user = User.query.filter(User.email == email).first()
+    user = User.query.filter(
+        (User.email == email) | (User.username == email)
+    ).first()
     if not user:
         raise ValidationError('No such user exists.')
     if not user.check_password(password):

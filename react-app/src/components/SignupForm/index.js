@@ -43,12 +43,10 @@ function SignupForm() {
       return setErrors('Passwords do not match.');
     }
 
-    await dispatch(signUp(username, email, password))
-      .then(() => {
-        history.push('/home')
-        closeModal();
-      })
+    await dispatch(signUp(username, email, password));
 
+    history.push('/home')
+    closeModal();
 
   };
 
