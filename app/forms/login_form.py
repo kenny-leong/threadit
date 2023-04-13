@@ -4,13 +4,6 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 
-# def user_exists(form, field):
-#     # Checking if user exists
-#     email = field.data
-#     user = User.query.filter(User.email == email).first()
-#     if not user:
-#         raise ValidationError('Email provided not found.')
-
 def user_exists(form, field):
     # Checking if user exists
     email_or_username = field.data
