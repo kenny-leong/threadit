@@ -32,11 +32,6 @@ const loadSearchResults = (results) => ({
     results
 });
 
-const addSubreddit = (subreddit) => ({
-    type: 'ADD_SUBREDDIT',
-    subreddit
-});
-
 const addMember = () => ({
     type: 'ADD_SUBREDDIT_MEMBER'
 });
@@ -142,7 +137,6 @@ export const createSubreddit = (name, description, profile_picture, banner_image
 
     if (res.ok) {
         const newSubreddit = await res.json();
-        dispatch(addSubreddit(newSubreddit));
         return newSubreddit;
     } else {
         return 'Could not add new subthreadit.'
@@ -298,13 +292,6 @@ const subredditReducer = (state = initialState, action) => {
             return {
                 ...state,
                 singleSubreddit: oneSubreddit
-            }
-        case 'ADD_SUBREDDIT':
-            return {
-                ...state,
-                newSubreddit: {
-                    ...action.subreddit
-                }
             }
         case 'ADD_SUBREDDIT_MEMBER':
             const memberState = {...state};

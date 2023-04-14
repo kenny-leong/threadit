@@ -14,7 +14,6 @@ function CreateSubreddit() {
     const [charactersLeft, setCharactersLeft] = useState(16);
     const { closeModal } = useModal();
     const sessionUser = useSelector(state => state.session.user);
-    const createdSubreddit = useSelector(state => state.subreddit.newSubreddit);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -26,11 +25,11 @@ function CreateSubreddit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(createSubreddit(name, description))
-            .then(() => {
+        const newSubreddit = await dispatch(createSubreddit(name, description))
+            .then((res) => {
                 dispatch(getOwnedSubreddits(sessionUser.id));
                 dispatch(getAllSR());
-                history.push(`/subreddits/${createdSubreddit.id}`)
+                history.push(`/subreddits/${res.id}`)
                 closeModal();
             })
     }
