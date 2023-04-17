@@ -33,6 +33,13 @@ function App() {
         <>
           {sessionUser ? (
             <Switch>
+              <Route path="/" exact>
+                <NavBar />
+                <FeedSideBar />
+                <TrendBar />
+                <PostFeed />
+                <CommunitySection />
+              </Route>
               <Route path="/home" exact>
                 <NavBar />
                 <FeedSideBar />
