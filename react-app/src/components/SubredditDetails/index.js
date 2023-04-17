@@ -155,11 +155,6 @@ function SubredditDetails() {
     //handles logic for post upvoting
     const handlePostUpvote = async (postId, type) => {
 
-        if (!subredditMembers[sessionUser.id]) {
-            alert('Join subreddit to vote!')
-            return;
-        }
-
         if (type === undefined) {
             await dispatch(postVote(postId, 'upvote'))
             await dispatch(getSubredditPosts(subredditId))
@@ -182,11 +177,6 @@ function SubredditDetails() {
 
         //handles logic for post downvoting
         const handlePostDownvote = async (postId, type) => {
-
-            if (!subredditMembers[sessionUser.id]) {
-                alert('Join subreddit to vote!')
-                return;
-            }
 
             if (type === undefined) {
                 await dispatch(postVote(postId, 'downvote'))
@@ -280,7 +270,11 @@ function SubredditDetails() {
                                         alert('Please log in to upvote this post!');
                                         return;
                                     }
-                                    userPostVotes && handlePostUpvote(post, userPostVotes[post.id])
+                                    if (!subredditMembers[sessionUser.id]) {
+                                        alert('Please join subthreadit to upvote this post!');
+                                        return;
+                                    }
+                                    userPostVotes && handlePostUpvote(post.id, userPostVotes[post.id])
                                 }}></i>
                                 <span className='total-votes'>{post.upvotes - post.downvotes}</span>
                                 <i class={`fa-solid fa-angles-down ${sessionUser && userPostVotes && userPostVotes[post.id] === 'downvote' ? 'highlighted' : ''}`} onClick={() => {
@@ -288,7 +282,11 @@ function SubredditDetails() {
                                         alert('Please log in to downvote this post!');
                                         return;
                                     }
-                                    handlePostDownvote(post, userPostVotes[post.id])
+                                    if (!subredditMembers[sessionUser.id]) {
+                                        alert('Please join subthreadit to downvote this post!');
+                                        return;
+                                    }
+                                    handlePostDownvote(post.id, userPostVotes[post.id])
                                 }}></i>
                             </div>
                             <div className='post-content-area'>
