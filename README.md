@@ -1,6 +1,6 @@
 # threadit
 
-Threadit is a web application that allows users to share and discuss content through the creation of posts and comments in various subreddits. This project is a clone of the popular social news and discussion website Reddit, and is built using Python-Flask as the backend and React as the frontend.
+Threadit is a web application inspired by Reddit that allows users to share and discuss content through the creation of posts and comments in various threads. This project aims to replicate the popular layout of Reddit and go a step further by making the UI/UX easier for new users to navigate. Threadit is built with a Python/Flask backend and React/Redux frontend for responsiveness.
 
 ## Features
 
