@@ -29,6 +29,7 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 ## Demo User Implementation:
 
 * Feel free to test the site features through clicking the "Demo User" button which will directly log you in
+
 ![demo_login](https://user-images.githubusercontent.com/47682357/233448854-b54ef847-fcd1-432d-b030-f44221502be6.gif)
 
 
