@@ -42,6 +42,8 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 * Passwords must be matching when entered twice or the signup button will be disabled
 * Friendly reminders will display and signup will be blocked if fields are not properly filled out
 
+![signup-user](https://user-images.githubusercontent.com/47682357/233459468-02d7c562-b386-4cda-b1dd-1aef456caadc.gif)
+
 
 
 ## User Login and Authentication:
