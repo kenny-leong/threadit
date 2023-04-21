@@ -52,6 +52,7 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 * If there are no matching credentials an error message is displayed
 * Login button is disabled if there are null fields or if the amount of characters entered is not within the acceptable range
 
+![login](https://user-images.githubusercontent.com/47682357/233544861-9e3649a6-94d7-4540-89d0-67f332bca4cc.gif)
 
 
 ## Search Bar
@@ -59,6 +60,7 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 * Users are able to use the search bar to search through subreddits without being logged in
 * There is a list of results that populates when using the search bar
 
+![search-bar](https://user-images.githubusercontent.com/47682357/233545041-0a13a0cd-9e34-428b-8ce5-afe7966e2a2c.gif)
 
 
 ## View Joined Communities
