@@ -67,12 +67,14 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 
 * Logged in users can view all the joined communities they have joined and leave them if they want
 
+![my-communities](https://user-images.githubusercontent.com/47682357/233545504-d3a804bb-78dc-4725-b130-0ae4bb8b489d.gif)
 
 
 ## View Owned Subreddits
 
 * Logged in users can view the subreddit they have created and update or delete them
 
+![owner-section](https://user-images.githubusercontent.com/47682357/233545814-3524e324-4673-4f99-8bbe-2c40cf741b28.gif)
 
 
 ## View Posts:
