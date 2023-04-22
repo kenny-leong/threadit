@@ -9,6 +9,8 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 
 ## Technologies/Frameworks Used:
 
+![Screenshot 2023-04-22 at 1 23 42 PM](https://user-images.githubusercontent.com/47682357/233798130-279c3564-36e4-4432-a932-49bfd3eef84d.png)
+
 * JavaScript
 * PostgreSQL
 * Flask
