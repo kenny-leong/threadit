@@ -82,10 +82,20 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 ![vote-system](https://user-images.githubusercontent.com/47682357/233799019-4469894c-c0ca-4a44-9ec5-3fdd2845a3c9.gif)
 
 
+## Create/Update Subreddit
+
+* Users can create a subreddit as long as the subreddit name is not already taken
+* Users can update their subreddit with a description, banner picture, and profile picture
+
+![create-subreddit](https://user-images.githubusercontent.com/47682357/233799163-e2044c26-73d2-4f3e-855a-ff5ef1a2a7dd.gif)
+
+
 ## Create/Update a Comment
 
 * Users can comment under a post if they have joined the subreddit the post belongs to
 * Users can edit their comments as long it belongs to the user
+
+![create-comment](https://user-images.githubusercontent.com/47682357/233799265-46e31d75-d132-4276-b95e-9155a2b9e778.gif)
 
 
 ## View Posts:
@@ -100,13 +110,6 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 * Users can view and browse different subreddits regardless of whether they are logged in
 * Users are unable to post in subreddits unless they are logged in
 * Subreddits will automatically be generated with a creation date and display the number of members
-
-
-
-## Create/Update Subreddit
-
-* Users can create a subreddit as long as the subreddit name is not already taken
-* Users can update their subreddit with a description, banner picture, and profile picture
 
 
 
