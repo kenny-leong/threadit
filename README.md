@@ -79,6 +79,7 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 * Users can vote on a post as long as they have joined the subreddit the post belongs to
 * Users can update or delete a vote by either toggling it (pressing their existing vote again) or by changing the vote type (upvote -> downvote)
 
+![vote-system](https://user-images.githubusercontent.com/47682357/233799019-4469894c-c0ca-4a44-9ec5-3fdd2845a3c9.gif)
 
 
 ## Create/Update a Comment
