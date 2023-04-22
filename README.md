@@ -65,18 +65,32 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 ![owner-section](https://user-images.githubusercontent.com/47682357/233545814-3524e324-4673-4f99-8bbe-2c40cf741b28.gif)
 
 
-## View Posts:
-
-* Users can view posts regardless of whether they are logged in or not
-* Users can view the comments underneath the post
-
-
-
 ## Create/Update a Post:
 
 * Logged in users can create a post of three different types (Text, Image, and Link)
 * Users are able to see their post in the main feed and within the subreddit page
 * Users are able to edit their own posts and swap the type of post
+
+![create-post](https://user-images.githubusercontent.com/47682357/233798889-ca098582-ce9d-47ec-9282-e7b66484f035.gif)
+
+
+## Create/Update a Vote
+
+* Users can vote on a post as long as they have joined the subreddit the post belongs to
+* Users can update or delete a vote by either toggling it (pressing their existing vote again) or by changing the vote type (upvote -> downvote)
+
+
+
+## Create/Update a Comment
+
+* Users can comment under a post if they have joined the subreddit the post belongs to
+* Users can edit their comments as long it belongs to the user
+
+
+## View Posts:
+
+* Users can view posts regardless of whether they are logged in or not
+* Users can view the comments underneath the post
 
 
 
@@ -101,14 +115,6 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 * Users are unable to post a comment unless they are logged in
 
 
-
-## Create/Update a Comment
-
-* Users can comment under a post if they have joined the subreddit the post belongs to
-* Users can edit their comments as long it belongs to the user
-
-
-
 ## View Votes
 
 * Users can view the net votes (upvotes - downvotes) of a post or comment without being logged in
@@ -117,10 +123,6 @@ Threadit is a web application inspired by Reddit that allows users to share and 
 
 
 
-## Create/Update a Vote
-
-* Users can vote on a post as long as they have joined the subreddit the post belongs to
-* Users can update or delete a vote by either toggling it (pressing their existing vote again) or by changing the vote type (upvote -> downvote)
 
 
 
