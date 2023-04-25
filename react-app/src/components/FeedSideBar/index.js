@@ -209,10 +209,6 @@ function FeedSideBar() {
                         </Link>
                     </div>
                 )}
-                <div className='more-topics-div'>
-                    <span><i class="fa-solid fa-ellipsis"></i></span>
-                    <span className='home-channel-text'>More Topics (Coming Soon)</span>
-                </div>
             </div>
         </div>
     )
